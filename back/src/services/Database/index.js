@@ -1,11 +1,17 @@
 const RoleService = require("../Role");
 const UserService = require("../User");
+const CheatService = require("../Cheat");
+const CategoryService = require("../Category");
+// const BookmarkService = require("../Bookmark");
 const { faker } = require("@faker-js/faker");
 
 class DatabaseService {
   constructor() {
     this.roleService = new RoleService();
     this.userService = new UserService();
+    this.cheatService = new CheatService();
+    this.categoryService = new CategoryService();
+    // this.bookmarkService = new BookmarkService();
   }
     /**
    * @description Create mandatory roles
@@ -38,9 +44,7 @@ class DatabaseService {
         lastname: "root",
         username: "root",
         password: "root",
-        phone: "0606060606",
-        address: "1 rue de la paix",
-        city: "Marseille",
+        image: "https://avatars.githubusercontent.com/u/59500000?v=4",
         role_id: 2,
       },
       {
@@ -49,9 +53,7 @@ class DatabaseService {
         lastname: "Bancq",
         username: "cyril.bancq",
         password: "cyril",
-        phone: "0606060606",
-        address: "1 rue de la paix",
-        city: "Marseille",
+        image: "https://avatars.githubusercontent.com/u/59500000?v=4",
         role_id: 2,
       },
       {
@@ -60,9 +62,7 @@ class DatabaseService {
         lastname: "Meirone",
         username: "anais.meirone",
         password: "anais",
-        phone: "0606060606",
-        address: "1 rue de la paix",
-        city: "Marseille",
+        image: "https://avatars.githubusercontent.com/u/59500000?v=4",
         role_id: 2,
       },
       {
@@ -71,9 +71,7 @@ class DatabaseService {
         lastname: "Hadjal",
         username: "issam.hadjal",
         password: "issam",
-        phone: "0606060606",
-        address: "1 rue de la paix",
-        city: "Marseille",
+        image: "https://avatars.githubusercontent.com/u/59500000?v=4",
         role_id: 2,
       },
       {
@@ -82,9 +80,7 @@ class DatabaseService {
         lastname: "Cadau",
         username: "samuel.cadau",
         password: "samuel",
-        phone: "0606060606",
-        address: "1 rue de la paix",
-        city: "Marseille",
+        image: "https://avatars.githubusercontent.com/u/59500000?v=4",
         role_id: 2,
       },
       {
@@ -93,9 +89,7 @@ class DatabaseService {
         lastname: "Amar",
         username: "aaron.amar",
         password: "aaron",
-        phone: "0606060606",
-        address: "1 rue de la paix",
-        city: "Marseille",
+        image: "https://avatars.githubusercontent.com/u/59500000?v=4",
         role_id: 2,
       },
     ];
@@ -111,15 +105,84 @@ class DatabaseService {
         lastname: faker.name.lastName(),
         username: faker.internet.userName(),
         password: faker.internet.password(),
-        phone: faker.phone.number(),
-        address: faker.address.streetAddress(),
-        city: faker.address.city(),
+        image: faker.image.avatar(),
         role_id: 1,
       });
     }
 
     return true;
   }
+   /**
+   * @description Create mandatory categories
+   */
+   async createMandatoryCategories() {
+    const categories = [
+      {
+        title: "UrinaireCategory",
+      },
+      {
+        title: "PulmonaireCategory",
+      },
+    ];
+
+    for (let i = 0; i < categories.length; i++) {
+      await this.categoryService.create(categories[i]);
+    }
+
+    return true;
+  }
+
+   /**
+   * @description Create mandatory cheats
+   */
+   async createMandatoryCheats() {
+    const cheats = [
+      {
+        title: "urinaire",
+        description: "urinaire",
+        image: "urinaire",
+        category_id: 1,
+      },
+      {
+        title: "pulmonaire",
+        description: "pulmonaire",
+        image: "pulmonaire",
+        category_id: 2,
+      },
+    ];
+
+    for (let i = 0; i < cheats.length; i++) {
+      await this.cheatService.create(cheats[i]);
+    }
+
+    return true;
+  }
+  // async createMandatoryBookmarks() {
+  //   const bookmarks = [
+  //     {
+  //       cheat_id: 1,
+  //       user_id: 1,
+  //     },
+  //     {
+  //       cheat_id: 2,
+  //       user_id: 1,
+  //     },
+  //     {
+  //       cheat_id: 1,
+  //       user_id: 8,
+  //     },
+  //     {
+  //       cheat_id: 2,
+  //       user_id: 17,
+  //     },
+  //   ];
+
+  //   for (let i = 0; i < bookmarks.length; i++) {
+  //     await this.bookmarkService.create(bookmarks[i]);
+  //   }
+
+  //   return true;
+  // }
 
 }
 

@@ -74,8 +74,9 @@ app.get("/", (req, res) => {
 require("./src/routes/User")(app);
 require("./src/routes/Auth")(app);
 require("./src/routes/Role")(app);
-// require("./src/routes/Crypto/crypto.route")(app);
-// require("./src/routes/Bookmark/bookmark.route")(app);
+require("./src/routes/Cheat")(app);
+require("./src/routes/Bookmark")(app);
+require("./src/routes/Category")(app);
 // require("./src/routes/RssField/rssField.route")(app);
 // require("./src/routes/Picture/picture.routes")(app);
 // require("./src/routes/RssField/rssField.route")(app);

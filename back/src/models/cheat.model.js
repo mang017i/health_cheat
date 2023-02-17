@@ -1,31 +1,17 @@
 module.exports = (sequelize, Sequelize) => {
-  const User = sequelize.define(
-    "User",
+  const Cheat = sequelize.define(
+    "Cheat",
     {
       id: {
         type: Sequelize.INTEGER.UNSIGNED, // Already Positive
         primaryKey: true,
         autoIncrement: true,
       },
-      email: {
-        unique: true,
+      title: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      firstname: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      lastname: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      username: {
-        unique: true,
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      password: {
+      description: {
         type: Sequelize.STRING,
         allowNull: false,
       },
@@ -35,9 +21,9 @@ module.exports = (sequelize, Sequelize) => {
       },
     },
     {
-      tableName: "users",
+      tableName: "cheats",
       timestamps: false,
     }
   );
-  return User;
+  return Cheat;
 };

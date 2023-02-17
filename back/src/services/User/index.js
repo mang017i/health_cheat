@@ -1,10 +1,10 @@
 const User = require("../../models/index")["User"];
 const Role = require("../../models/index")["Role"];
+const Cheat = require("../../models/index")["Cheat"];
 const jwt = require("jsonwebtoken");
 const config = require("../../config/auth.config");
-
 const bcrypt = require("bcryptjs");
-const { access } = require("fs");
+// const { access } = require("fs");
 
 class UserService {
   constructor() {
@@ -46,7 +46,14 @@ class UserService {
    */
   async findAll() {
     return await this.user
-      .findAll({})
+      .findAll({
+        include: [
+          {
+            model: Cheat,
+            as: "cheats",
+          },
+        ],
+      })
       .then((users) => {
         if (users) {
           return users;
@@ -66,6 +73,12 @@ class UserService {
         where: {
           id: id,
         },
+        include: [
+          {
+            model: Cheat,
+            as: "cheats",
+          },
+        ],
       })
       .then((user) => {
         if (user) {

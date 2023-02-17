@@ -1,9 +1,9 @@
 const fs = require("fs");
 const path = require("path");
 const Sequelize = require("sequelize");
-require("dotenv").config();
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || "development";
+require("dotenv").config();
 
 console.log(__dirname);
 const config = require("../config/database.config")[env];
@@ -68,6 +68,8 @@ db.Sequelize = Sequelize;
 
 db.Role = require("./role.model")(sequelize, Sequelize);
 db.User = require("./user.model")(sequelize, Sequelize);
+db.Cheat = require("./cheat.model")(sequelize, Sequelize);
+db.Bookmark = require("./bookmark.model")(sequelize, Sequelize);
 
 //= ==============================
 // Define all Relationships below
@@ -83,7 +85,28 @@ db.User.belongsTo(db.Role, {
   foreignKey: "role_id",
   as: "role",
 });
-
+// Category has many Cheats
+db.Category.hasMany(db.Cheat, {
+  foreignKey: "category_id",
+  as: "cheats",
+});
+// Cheat has one Category
+db.Cheat.belongsTo(db.Category, {
+  foreignKey: "category_id",
+  as: "category",
+});
+// User has many cheat
+db.User.belongsToMany(db.Cheat, {
+  through: "Bookmark",
+  as: "cheats",
+  foreignKey: "user_id",
+});
+// cheat has many User
+db.Cheat.belongsToMany(db.User, {
+  through: "Bookmark",
+  as: "users",
+  foreignKey: "cheat_id",
+});
 
 
 module.exports = db;

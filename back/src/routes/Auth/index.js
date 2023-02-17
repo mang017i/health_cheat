@@ -1,8 +1,8 @@
 module.exports = (app) => {
   const Controller = require("../../controllers/Auth");
   const Auth = new Controller();
-  // const passport = require("passport");
   const router = require("express").Router();
+  // const passport = require("passport");
   // const { successResponse, errorResponse } = require("../../helpers/index");
 
   // app.use(passport.initialize());

@@ -1,34 +1,34 @@
 module.exports = (app) => {
-  const Controller = require("../../controllers/Role");
-  const Role = new Controller();
+  const Controller = require("../../controllers/Category");
+  const Category = new Controller();
   const router = require("express").Router();
   // const { authJwt } = require("../../middleware");
 
 
-  // Create a new Role
+  // Create a new Category
   router.post("/add",
   // [authJwt.verifyToken, authJwt.isAdmin],
-  Role.create);
+  Category.create);
 
-  // Retrieve all Roles
+  // Retrieve all Categories
   router.get("/",
   // [authJwt.verifyToken, authJwt.isAdmin],
-  Role.findAll);
+  Category.findAll);
 
-  // Retrieve a single Role with id
+  // Retrieve a single Category with id
   router.get("/:id",
   // [authJwt.verifyToken, authJwt.isAdmin],
-  Role.findOne);
+  Category.findOne);
 
-  // Update a Role with id
+  // Update a Category with id
   router.put("/update/:id",
   // [authJwt.verifyToken, authJwt.isAdmin],
-  Role.update);
+  Category.update);
 
-  // Delete a Role with id
+  // Delete a Category with id
   router.delete("/remove/:id",
   // [authJwt.verifyToken, authJwt.isAdmin],
-  Role.delete);
+  Category.delete);
 
-  app.use('/api/roles', router);
+  app.use('/api/categories', router);
 };

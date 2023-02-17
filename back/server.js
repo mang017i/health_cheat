@@ -1,9 +1,9 @@
 const dotenv = require('dotenv');
 const app = require('./app');
-
 const DatabaseService = require("./src/services/Database");
 const DBData = new DatabaseService();
-
+// const CheatService = require("./src/services/Cheat");
+// const Cheat = new CheatService();
 
 const setUpExpress = () => {
   dotenv.config({ path: ".env" });
@@ -18,6 +18,9 @@ const setUpExpress = () => {
       console.log("Loading Sync DB...");
       DBData.createMandatoryRoles();
       DBData.createMandatoryUsers();
+      DBData.createMandatoryCategories();
+      DBData.createMandatoryCheats();
+      // DBData.createMandatoryBookmarks();
       console.log("Sync DB loaded successfully.");
     });
   });

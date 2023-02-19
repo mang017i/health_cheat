@@ -30,8 +30,6 @@ module.exports = (app) => {
   // [authJwt.verifyToken, authJwt.isAdmin],
   User.delete);
 
-  // Update a User password with id
-  // router.put("/:id/password", User.updatePassword);
 
   app.use("/api/users", router);
 };

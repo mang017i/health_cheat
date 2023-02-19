@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "/api/categories";
+const API_URL = "http://localhost:8080/api/categories";
 
 class CategoryService {
   create(data) {
@@ -26,4 +26,4 @@ class CategoryService {
 
 const categoryService = new CategoryService();
 
-export default categoryService();
+export default categoryService;

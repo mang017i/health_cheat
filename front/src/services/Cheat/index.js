@@ -27,4 +27,4 @@ class CheatService {
 
 const cheatService = new CheatService();
 
-export default cheatService();
+export default cheatService;

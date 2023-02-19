@@ -72,10 +72,43 @@ const SearchInCheatName = () => {
       <h1>SearchInCheatName</h1>
 
       <TextField
+        // background de l'input en bleu foncé
+        style={{
+          backgroundColor: "rgb(0, 0, 0, 0.5)",
+          borderRadius: "5px",
+        }}
+
+
+        sx={{
+          "& .MuiOutlinedInput-root": {
+            "& fieldset": {
+              borderColor: "white",
+            },
+            "&:hover fieldset": {
+              borderColor: "white",
+            },
+            "&.Mui-focused fieldset": {
+              borderColor: "white",
+            },
+          },
+        }}
+        InputLabelProps={{
+          style: {
+            color: "white",
+          },
+        }}
+        InputProps={{
+          style: {
+            color: "white",
+          },
+        }}
+
         id="outlined-basic"
         label="Nom de la fiche "
-        variant="outlined"
+        variant="filled"
         onChange={handleChange}
+
+        className="searchInput"
       />
 
       <h2>Fiches correspondantes à la recherche : </h2>

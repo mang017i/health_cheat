@@ -5,13 +5,16 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
-import OutlinedInput from "@mui/material/OutlinedInput";
 import Checkbox from "@mui/material/Checkbox";
 import ListItemText from "@mui/material/ListItemText";
 import Button from "@mui/material/Button";
-
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
+
+
+
+
+
 
 const MenuProps = {
   PaperProps: {
@@ -66,16 +69,18 @@ const SearchInCategory = () => {
   return (
     <div>
       <FormControl sx={{ m: 1, minWidth: 180 }} onClick={handleSubmit}>
-        <InputLabel id="categories-multiselect-input">Catégories</InputLabel>
+        <InputLabel style={{color: "white", display: "flex", justifyContent: "center"}} id="categories-multiselect-label">
+          Catégories
+        </InputLabel>
         <Select
           labelId="categories-multiselect-label"
           id="categories-multiselect"
           multiple
           value={categoryName}
           onChange={handleChange}
-          input={<OutlinedInput label="Catégorie" />}
           renderValue={(selected) => selected.join(", ")}
           MenuProps={MenuProps}
+          // variant="filled"
         >
           {categories.map((category) => (
             <MenuItem key={category.id} value={category.title}>

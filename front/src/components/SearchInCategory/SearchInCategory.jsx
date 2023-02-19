@@ -59,9 +59,9 @@ const SearchInCategory = () => {
     const response = await CategoryService.findAll().then((response) => {
       console.log(response.data);
     });
+    let categories = response.data.map((category) => category.name);
 
-    setCategories(response.data);
-    console.log(JSON.stringify(response.data, null, 2), "response.data");
+    console.log(JSON.stringify(categories));
   }
 
 

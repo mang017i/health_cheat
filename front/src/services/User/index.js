@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:3000/api/users";
+const API_URL = "http://localhost:8080/api/users";
 
 class UserService {
   getAllUsers() {
-    return axios.get(`${API_URL}`);
+    return axios.get(API_URL);
   }
 
   getUserById(id) {

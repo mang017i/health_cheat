@@ -10,20 +10,19 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import HomePage from "./pages/HomePage/HomePage";
 import IndexCheatPage from "./pages/IndexCheatPage/IndexCheatPage";
 // import ShowCheatPage from './pages/ShowCheatPage/ShowCheatPage';
-import SearchInCategory from "./components/SearchInCategory/SearchInCategory";
 
 function App() {
   return (
     <div className="health_cheat">
       <BrowserRouter>
         <NavigationBar />
-        <SearchInCategory />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/cheats" element={<IndexCheatPage />} />
           <Route path="/profile" element={<Dashboard />} />
           <Route path="*" element={<h1>404</h1>} />
-          {/* <Route path="/cheat/:id" element={<ShowCheatPage />} /> */}
+          {/* <Route path="/cheat/:id" element={<ShowCheatPage />} /> */}*
+
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/reset" element={<ResetPassword />} />

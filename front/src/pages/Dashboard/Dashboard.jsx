@@ -3,7 +3,7 @@ import './Dashboard.css';
 
 const Dashboard = () => {
   return (
-    <div>
+    <div className='container'>
       <h1>Profile</h1>
     </div>
   );

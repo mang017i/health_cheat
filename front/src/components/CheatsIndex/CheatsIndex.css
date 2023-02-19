@@ -1,0 +1,23 @@
+.fff{
+  height: 100%;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+.cheatCard_container{
+  margin: 30px 0 ;
+  height: 30vh;
+  width: 100vw;
+  overflow: hidden;
+}
+.cheat_card{
+  height: 100%;
+  width: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

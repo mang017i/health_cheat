@@ -1,14 +1,17 @@
-import React from 'react';
-import './IndexCheatPage.css';
-import SearchInCheatName from '../../components/SearchInCheatName/SearchInCheatName';
+import React from "react";
+import "./IndexCheatPage.css";
+import CheatsIndex from "../../components/CheatsIndex/CheatsIndex";
+import Modal from "../../components/Modal/Modal";
 
 const IndexCheatPage = () => {
   return (
-    <div>
-      <h1>IndexCheatPage</h1>
+    <div className="container">
+      <h1>Fiches</h1>
+      <Modal />
+      <CheatsIndex />
       <SearchInCheatName />
     </div>
   );
-}
+};
 
 export default IndexCheatPage;

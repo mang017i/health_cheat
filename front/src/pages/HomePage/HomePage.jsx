@@ -3,10 +3,9 @@ import './HomePage.css';
 import SearchInCategory from '../../components/SearchInCategory/SearchInCategory';
 
 
-
 const HomePage = () => {
   return (
-    <div>
+    <div className='container'>
       <h1>Home Page</h1>
       <div>
         <SearchInCategory />

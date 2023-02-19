@@ -9,6 +9,7 @@ const IndexCheatPage = () => {
       <h1>Fiches</h1>
       <Modal />
       <CheatsIndex />
+      <SearchInCheatName />
     </div>
   );
 };

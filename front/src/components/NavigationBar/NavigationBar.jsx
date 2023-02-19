@@ -18,8 +18,8 @@ const NavigationBar = () => {
       <div className="navigation-bar__menu">
         <ul>
           <li onClick={() => handleNavigation("/")}>Accueil</li>
-          <li onClick={() => handleNavigation("/cheats")}>Glossaire des fiches</li>
-          <li onClick={() => handleNavigation("/profile")}>Profile</li>
+          <li onClick={() => handleNavigation("/cheats")}>Fiches</li>
+          <li onClick={() => handleNavigation("/profile")}>Profil</li>
           <li onClick={() => handleNavigation("/login")}>Login</li>
           <li onClick={() => handleNavigation("/register")}>Register</li>
         </ul>

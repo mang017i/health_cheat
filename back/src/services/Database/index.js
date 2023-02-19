@@ -139,20 +139,29 @@ class DatabaseService {
     const cheats = [
       {
         title: "urinaire",
-        description: "urinaire",
-        image: "urinaire",
+        description: "La cystite est une infection urinaire localisée au niveau de la vessie. Le plus souvent, elle est due à la bactérie Escherichia Coli.",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQl8HaQ_201vTKuSsfr3-6lRkZsblE9GJmpXg&usqp=CAU",
         category_id: 1,
       },
       {
         title: "pulmonaire",
-        description: "pulmonaire",
-        image: "pulmonaire",
+        description: "On appelle « Pulmonaire » diverses plantes et lichens dont les feuilles, la racine ou le thalle ont une forme évoquant plus ou moins celle d'un poumon.",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJoI8LQQGyv1LGAYiVwC39N-gSuTEaRSnyQVbm7Nqj6WBFt4LF8AIzZlKbfpId_yz3Ol4&usqp=CAU",
         category_id: 2,
       },
     ];
 
     for (let i = 0; i < cheats.length; i++) {
       await this.cheatService.create(cheats[i]);
+    }
+
+    for (let i = 0; i < 50; i++) {
+      await this.cheatService.create({
+        title: faker.science.unit().name,
+        description: faker.hacker.phrase(),
+        image: faker.image.imageUrl(),
+        category_id: 1,
+      });
     }
 
     return true;

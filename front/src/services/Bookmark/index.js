@@ -34,4 +34,4 @@ class BookmarkService {
 
 const bookmarkService = new BookmarkService();
 
-export default bookmarkService();
+export default bookmarkService;

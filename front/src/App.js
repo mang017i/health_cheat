@@ -1,23 +1,33 @@
-import logo from './logo.svg';
+import React from 'react';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import './App.css';
+
+
+import NavigationBar from './components/NavigationBar/NavigationBar';
+import LoginPage from './pages/Auth/LoginPage';
+import RegisterPage from './pages/Auth/RegisterPage';
+import ResetPassword from './pages/Auth/ResetPassword';
+import Dashboard from './pages/Dashboard/Dashboard';
+import HomePage from './pages/HomePage/HomePage';
+import IndexCheatPage from './pages/IndexCheatPage/IndexCheatPage';
+// import ShowCheatPage from './pages/ShowCheatPage/ShowCheatPage';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="health_cheat">
+      <BrowserRouter>
+        <NavigationBar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/cheats" element={<IndexCheatPage />} />
+          <Route path="/profile" element={<Dashboard />} />
+          <Route path="*" element={<h1>404</h1>} />
+          {/* <Route path="/cheat/:id" element={<ShowCheatPage />} /> */}
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/reset" element={<ResetPassword />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

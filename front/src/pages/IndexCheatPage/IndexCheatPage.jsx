@@ -8,7 +8,9 @@ const IndexCheatPage = () => {
   return (
     <div className="container">
       <h1>Fiches</h1>
-      <SearchInCheatName />
+
+      {/* <SearchInCheatName /> */}
+
       <Modal />
       <CheatsIndex />
     </div>

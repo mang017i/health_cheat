@@ -40,6 +40,9 @@ const NavigationBar = () => {
     setUsers(users);
   }
 
+
+
+
   return (
     <div className="navigation-bar">
       <div className="navigation-bar__logo">
@@ -48,11 +51,23 @@ const NavigationBar = () => {
       <div className="navigation-bar__menu">
         <ul>
           <li onClick={() => handleNavigation("/categories")}>Catégories</li>
-          <li onClick={() => handleNavigation("/cheats")}>Fiches</li>
+          {window.location.pathname !== "/cheats" ? (
+            <li onClick={() => handleNavigation("/cheats")}>Fiches</li>
+          ) : (
+            <li onClick={() => handleNavigation("/cheats")}  style={{display: "none"}}>Fiches</li>
+          )}
+
+
+
         </ul>
       </div>
       <div className="settings">
-        <SearchInCheatName />
+        <Box className="searchBar" sx={{ flexGrow: 1 }}>
+
+            <SearchInCheatName />
+
+        </Box>
+
 
         <Box className="avatarUser" sx={{ flexGrow: 0 }}>
           <Tooltip title="Open settings">

@@ -1,19 +1,29 @@
 import React from "react";
+import { useContext } from "react";
 import "./SearchInCheatName.css";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import CheatService from "../../services/Cheat";
 
-const SearchInCheatName = () => {
-  //
+import { FilteredCheatsContext } from "../../utils/Context";
+
+
+const SearchInCheatName = (props) => {
+  const contextValue = useContext(FilteredCheatsContext);
+
   const [cheats, setCheats] = useState([]);
   const [foundCheat, setFoundCheat] = useState([]);
   const [prevInputLength, setPrevInputLength] = useState(0);
+
   const [searchError, setSearchError] = useState("");
 
+  const navigate = useNavigate();
   useEffect(() => {
     getAllCheatNames();
-  }, []);
+    console.log(contextValue.filteredCheats, "contextValue.filteredCheats");
+  }, [contextValue.filteredCheats]);
+
 
   async function getAllCheatNames() {
     const response = await CheatService.findAll();
@@ -23,18 +33,17 @@ const SearchInCheatName = () => {
       cheats.push(cheat);
     });
     console.log(cheats, "cheats");
-
     setCheats(cheats);
   }
 
   // commence à filtrer les cheatNames dès que l'utilisateur tape deux lettres
-  const handleChange = (event) => {
+  function handleChange (event) {
     let userInput = event.target.value;
 
     if (userInput.length < prevInputLength) {
       setFoundCheat([]);
       setSearchError("");
-    } else if (userInput.length >= 2) {
+    } else if (userInput.length >= 1) {
       // récupère les noms des cheats
       let cheatsNames = cheats.map((cheat) => {
         return cheat.title;
@@ -51,58 +60,107 @@ const SearchInCheatName = () => {
       // met à jour le state avec les cheats filtrées
       if (filteredCheats.length === 0) {
         setFoundCheat([]);
-        console.log("Aucun résultat trouvé pour cette recherche");
-        setSearchError("Aucun résultat trouvé pour cette recherche");
+        setSearchError("Aucun résultat");
+
       } else {
         // met à jour le state avec les cheats filtrées
         setFoundCheat(filteredCheats);
-        console.log(filteredCheats, "filteredCheats");
+        return filteredCheats;
       }
     } else {
       setFoundCheat([]);
     }
     setPrevInputLength(userInput.length);
+
   };
 
+   const handleClick = () => {
+
+    if (foundCheat.length > 0) {
+      let filter = foundCheat;
+      console.log(filter, "filter");
+      console.log(contextValue.filteredCheats, "contextValue.filteredCheats");
+      // console.log(filteredCheats, "filteredCheats");
+      if (window.location.pathname !== "/cheats") {
+        // on va sur la page des cheats
+        navigate("/cheats");
+        contextValue.updateFilteredCheats(filter);
+
+      } else {
+        contextValue.updateFilteredCheats(filter);
+
+      }
+    }
+  }
+
+
+  async function handleKeyPress(event) {
+    handleChange(event);
+    if (event.key === "Enter") {
+      handleClick();
+    }
+
+  }
+
+  function handleResetSearch() {
+    setFoundCheat([]);
+    setSearchError("");
+    contextValue.updateFilteredCheats([]);
+    setPrevInputLength(0);
+    setCheats([]);
+    let inputClass = document.querySelector(".css-10botns-MuiInputBase-input-MuiFilledInput-input");
+    inputClass.value = "";
+  }
+
+
+
+
+
+
   return (
-    <div className="input_searchByName">
-      <TextField
-        style={{
-          backgroundColor: "rgb(0, 0, 0, 0.5)",
-          borderRadius: "5px",
-          height: "90%",
-        }}
-        sx={{
-          "& .MuiOutlinedInput-root": {
-            "& fieldset": {
-              borderColor: "white",
+    <>
+      <div className="input_searchByName">
+        <TextField
+          style={{
+            backgroundColor: "rgb(0, 0, 0, 0.5)",
+            borderRadius: "5px",
+            height: "90%",
+          }}
+          InputLabelProps={{
+            style: {
+              color: "white",
             },
-            "&:hover fieldset": {
-              borderColor: "white",
+          }}
+          InputProps={{
+            style: {
+              backgroundColor: "rgb(0, 0, 0, 0.5)",
+              color: "white",
             },
-            "&.Mui-focused fieldset": {
-              borderColor: "white",
-            },
-          },
-        }}
-        InputLabelProps={{
-          style: {
-            color: "white",
-          },
-        }}
-        InputProps={{
-          style: {
-            color: "white",
-          },
-        }}
-        id="filled-basic"
-        label="Nom de la fiche "
-        variant="filled"
-        onChange={handleChange}
-        className="searchInput"
-      />
-      <span class="material-symbols-outlined">search</span>
-    </div>
+          }}
+          id="filled-basic"
+          label="Nom de la fiche"
+          variant="filled"
+          onChange={handleChange}
+          onKeyPress={handleKeyPress}
+          className="searchInput"
+          // ajoute error si la recherche n'a pas de résultat et affiche un message d'erreur
+          error={searchError.length > 0}
+          errorMessages={searchError}
+        />
+
+        <div
+          onClick={handleClick}
+          className="searchIcon"
+          style={{ cursor: "pointer" }}
+        >
+          <span class="material-symbols-outlined">search</span>
+        </div>
+      </div>
+      <div className="resetSearch" onClick={handleResetSearch}>
+        <span class="material-symbols-outlined">close</span>
+      </div>
+      <div className="searchError">{searchError}</div>
+    </>
   );
 };
 

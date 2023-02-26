@@ -32,11 +32,10 @@
         display: flex !important;
         justify-content: center;
         align-items: center !important;
-        width: 100% !important;
         height: 45px  !important;
         position: absolute;
         top: -22px !important;
-        left: -12px !important;
+        left: 12px !important;
 }
 
 .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root:focus-visible, .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root:focus, .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root:hover, .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
@@ -51,4 +50,66 @@
 
 .css-hfutr2-MuiSvgIcon-root-MuiSelect-icon {
   color: white !important;
+}
+.searchByCategory {
+  display: flex;
+  margin : 8vh 0 0 10vw;
+  justify-content: flex-start;
+  align-items: center;
+  width: 62%;
+  height: 45px;
+
+}
+.inputCategory{
+  width: 20vw;
+}
+
+.MuiInputBase-root.MuiOutlinedInput-root.MuiInputBase-colorPrimary.MuiInputBase-formControl.css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root{
+  width: 100% !important;
+}
+.MuiFormControl-root.css-1f4ug3e-MuiFormControl-root{
+  display: flex;
+  width: 100%;
+  flex-direction:row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.searchByCategory .css-sghohy-MuiButtonBase-root-MuiButton-root{
+  padding: 4.8px 0;
+  width: 20px!important;
+  background-color: #baeeff;
+  opacity:.8;
+  transition: all .4s ease-out;
+}
+.searchByCategory .css-sghohy-MuiButtonBase-root-MuiButton-root:hover {
+  background-color: #eb2682;
+  opacity:1;
+}
+.searchByCategory .css-8je8zh-MuiTouchRipple-root{
+  width:25px
+}
+.searchByCategory .createCheat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 17vw;
+  height: 35px;
+  margin-top: 5px;
+}
+.searchByCategory .createCheat button {
+  background-color: #baeeff;
+  margin-bottom: 5px;
+  opacity: .6;
+  transition: all .3s ease-out;
+  box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.4);
+  width: 100% !important;
+  font-size: .8rem;
+  height: 100%;
+  padding: 0 10px;
+  color:#fff;
+  padding: 5px;
+}
+.createCheat button:hover{
+  opacity: 1;
+  background-color: #eb2682;
 }

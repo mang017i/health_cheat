@@ -1,0 +1,15 @@
+.cheat_container{
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+.cheat_container h1{
+  margin: 14vh 0 0 0;
+  font-size: 2rem;
+  width: 85%;
+  text-align: center;
+  text-shadow: .5px .5px 0px #eb2682;
+}

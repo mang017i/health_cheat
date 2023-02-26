@@ -19,10 +19,9 @@
   height: 70px;
   background-size: cover;
   opacity: .8;
-  transition: all .3s ease-out;
+  transition:all .3s ease-out;
 }
-
-.logoNav:hover {
+.logoNav:hover{
   opacity: 1;
 }
 

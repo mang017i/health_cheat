@@ -56,9 +56,6 @@ const NavigationBar = () => {
           ) : (
             <li onClick={() => handleNavigation("/cheats")}  style={{display: "none"}}>Fiches</li>
           )}
-
-
-
         </ul>
       </div>
       <div className="settings">

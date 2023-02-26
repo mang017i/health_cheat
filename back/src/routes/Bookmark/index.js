@@ -9,7 +9,7 @@ module.exports = (app) => {
   Bookmark.getAllBookmarks);
 
   // Retrieve all Bookmarks of a User
-  router.get("/user/:id",
+  router.get("/user",
   // authJwt.verifyToken,
   Bookmark.getAllBookmarksForUser);
 

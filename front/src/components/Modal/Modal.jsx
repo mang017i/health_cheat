@@ -6,7 +6,7 @@ import Fade from '@mui/material/Fade';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import './Modal.css';
-import Form from '../Login/Login'
+import Form from '../Auth/Login'
 
 const style = {
   position: 'absolute',

@@ -77,8 +77,7 @@ require("./src/routes/Role")(app);
 require("./src/routes/Cheat")(app);
 require("./src/routes/Bookmark")(app);
 require("./src/routes/Category")(app);
-// require("./src/routes/RssField/rssField.route")(app);
-// require("./src/routes/Picture/picture.routes")(app);
-// require("./src/routes/RssField/rssField.route")(app);
+require("./src/routes/Material")(app);
+require("./src/routes/Equipment")(app);
 
 module.exports = app;

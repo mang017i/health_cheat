@@ -1,3 +1,24 @@
-.login_container h1{
-  margin: 10vh 0;
+.container_auth{
+  width: 100vw;
+  height: 93.2vh;
+  display: flex;
+  position: relative;
+}
+.container_auth h1{
+  margin: 0;
+}
+.auth_background{
+  height: 100%;
+  width: 60vw;
+  background-image: url('../../../../back/public/images/login.jpg');
+  background-size: cover;
+  background-position: -80px;
+}
+.blur{
+  height: 100%;
+  width: 60vw;
+  position: absolute;
+  top: 0;
+  right:0;
+  background-color: rgba(0, 0, 0, 0.4);
 }

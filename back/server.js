@@ -19,6 +19,7 @@ const setUpExpress = () => {
       DBData.createMandatoryRoles();
       DBData.createMandatoryUsers();
       DBData.createMandatoryCategories();
+      DBData.createMandatoryMaterials();
       DBData.createMandatoryCheats();
       // DBData.createMandatoryBookmarks();
       console.log("Sync DB loaded successfully.");

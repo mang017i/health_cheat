@@ -69,7 +69,10 @@ db.Sequelize = Sequelize;
 db.Role = require("./role.model")(sequelize, Sequelize);
 db.User = require("./user.model")(sequelize, Sequelize);
 db.Cheat = require("./cheat.model")(sequelize, Sequelize);
+db.Category = require("./categories.model")(sequelize, Sequelize);
+db.Material = require("./materials.model")(sequelize, Sequelize);
 db.Bookmark = require("./bookmark.model")(sequelize, Sequelize);
+db.Equipment = require("./equipment.model")(sequelize, Sequelize);
 
 //= ==============================
 // Define all Relationships below
@@ -94,6 +97,18 @@ db.Category.hasMany(db.Cheat, {
 db.Cheat.belongsTo(db.Category, {
   foreignKey: "category_id",
   as: "category",
+});
+// User has many cheat
+db.Material.belongsToMany(db.Cheat, {
+  through: "Equipment",
+  as: "cheats",
+  foreignKey: "material_id",
+});
+// cheat has many User
+db.Cheat.belongsToMany(db.Material, {
+  through: "Equipment",
+  as: "materials",
+  foreignKey: "cheat_id",
 });
 // User has many cheat
 db.User.belongsToMany(db.Cheat, {

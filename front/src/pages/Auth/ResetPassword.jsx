@@ -1,9 +1,13 @@
 import React from 'react';
+import ResetForm from '../../components/Auth/Reset';
+import './auth.css';
 
 const ResetPassword = () => {
   return (
-    <div className='container'>
-      <h1>Reset Password Page</h1>
+    <div className='container_auth'>
+      <ResetForm />
+      <div className="auth_background"></div>
+      <div className="blur"></div>
     </div>
   );
 }

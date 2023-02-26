@@ -3,18 +3,24 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 50px;
-  background-color: #0d062e;
+  height: 7vh;
+  background-color: #264653;
   border-bottom: 1px solid #e6e6e6;
-  padding: 0 20px;
+  padding-left:20px;
 }
-
+.logoNav {
+  background-image: url('../../../../back/public/images/logonav.png');
+  width: 70px;
+  height: 70px;
+  background-size: cover;
+}
 .navigation-bar__logo {
   display: flex;
   align-items: center;
   height: 100%;
-  width: 15%;
+  width: 5%;
   cursor: pointer;
+  overflow:hidden;
 }
 
 
@@ -24,7 +30,7 @@
   justify-content: space-between;
   align-items: center;
   height: 100%;
-  width: 40%;
+  width: 30%;
 }
 
 .navigation-bar__menu > ul {
@@ -38,4 +44,26 @@
 
 .navigation-bar__menu > ul > li {
   cursor: pointer;
+}
+.avatar{
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  border: 2px solid #C6F3C6;
+  box-shadow: 0 0 1px 1px rgba(167, 167, 167, 0.9);
+}
+.settings{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  align-self: flex-end;
+  justify-self: flex-end;
+  margin-left: 10vw;
+}
+.avatarUser{
+  margin-left: 17vw;
 }

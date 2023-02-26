@@ -12,14 +12,6 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      firstname: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      lastname: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
       username: {
         unique: true,
         type: Sequelize.STRING,
@@ -29,7 +21,7 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      image: {
+      avatar: {
         type: Sequelize.STRING,
         allowNull: true,
       },

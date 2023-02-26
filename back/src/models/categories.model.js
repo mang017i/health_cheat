@@ -13,6 +13,14 @@ module.exports = (sequelize, Sequelize) => {
         allowNull: false,
         unique: true,
       },
+      icon: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      image: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
     },
     {
       tableName: "categories",

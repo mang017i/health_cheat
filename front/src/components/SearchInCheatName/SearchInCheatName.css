@@ -1,11 +1,33 @@
 
 
+.input_searchByName{
+  height: 85%;
+  position: relative;
+  margin-top: 3px;
+}
+.input_searchByName .css-e4w4as-MuiFormLabel-root-MuiInputLabel-root{
+  font-size : .8rem!important;
+  color: rgba(255, 255, 255, .7)!important;
+  top: -5px!important;
+}
+.input_searchByName .css-1ff8729-MuiInputBase-root-MuiFilledInput-root{
+  height: 100%;
+}
 
-
-
-
+.input_searchByName label[data-shrink=false]+.MuiInputBase-formControl .css-10botns-MuiInputBase-input-MuiFilledInput-input{
+  padding: 0 12px;
+}
 .searchError {
   color: red;
   font-size: 20px;
   margin-top: 5px;
+}
+.input_searchByName .css-o943dk-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+  top: -7px!important;
+}
+.input_searchByName span{
+  position:absolute;
+  top: 7px;
+  right: 5px;
+  color: rgba(255, 255, 255, .7);
 }

@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-
 import NavigationBar from "./components/NavigationBar/NavigationBar";
+import Sidebar from "./components/Sidebar/Sidebar";
 import LoginPage from "./pages/Auth/LoginPage";
 import RegisterPage from "./pages/Auth/RegisterPage";
 import ResetPassword from "./pages/Auth/ResetPassword";
@@ -16,7 +16,7 @@ function App() {
     <div className="health_cheat">
       <BrowserRouter>
         <NavigationBar />
-
+        <Sidebar />
         {/* <SearchInCategory /> */}
 
         <Routes>

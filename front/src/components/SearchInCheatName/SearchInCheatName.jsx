@@ -11,7 +11,6 @@ const SearchInCheatName = () => {
   const [prevInputLength, setPrevInputLength] = useState(0);
   const [searchError, setSearchError] = useState("");
 
-
   useEffect(() => {
     getAllCheatNames();
   }, []);
@@ -65,20 +64,14 @@ const SearchInCheatName = () => {
     setPrevInputLength(userInput.length);
   };
 
-
-
   return (
-    <div>
-      <h1>SearchInCheatName</h1>
-
+    <div className="input_searchByName">
       <TextField
-        // background de l'input en bleu foncé
         style={{
           backgroundColor: "rgb(0, 0, 0, 0.5)",
           borderRadius: "5px",
+          height: "90%",
         }}
-
-
         sx={{
           "& .MuiOutlinedInput-root": {
             "& fieldset": {
@@ -102,26 +95,13 @@ const SearchInCheatName = () => {
             color: "white",
           },
         }}
-
-        id="outlined-basic"
+        id="filled-basic"
         label="Nom de la fiche "
         variant="filled"
         onChange={handleChange}
-
         className="searchInput"
       />
-
-      <h2>Fiches correspondantes à la recherche : </h2>
-      <ul>
-       {foundCheat && foundCheat.length > 0 ? (
-          foundCheat.map((cheat) => {
-            return <li key={cheat.id}>{cheat.title}</li>;
-          })
-        ) : (
-          <span className="searchError">{searchError}</span>
-        )}
-      </ul>
-
+      <span class="material-symbols-outlined">search</span>
     </div>
   );
 };

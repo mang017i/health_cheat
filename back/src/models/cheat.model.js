@@ -12,8 +12,16 @@ module.exports = (sequelize, Sequelize) => {
         allowNull: false,
       },
       description: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT("long"),
         allowNull: false,
+      },
+      step: {
+        type: Sequelize.TEXT("long"),
+        allowNull: true,
+      },
+      recommendation: {
+        type: Sequelize.TEXT("long"),
+        allowNull: true,
       },
       image: {
         type: Sequelize.STRING,

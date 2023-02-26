@@ -7,14 +7,10 @@ import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import Checkbox from "@mui/material/Checkbox";
 import ListItemText from "@mui/material/ListItemText";
+import Modal from "../Modal/Modal";
 import Button from "@mui/material/Button";
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
-
-
-
-
-
 
 const MenuProps = {
   PaperProps: {
@@ -67,34 +63,45 @@ const SearchInCategory = () => {
   }
 
   return (
-    <div>
+    <div className="searchByCategory">
       <FormControl sx={{ m: 1, minWidth: 180 }} onClick={handleSubmit}>
-        <InputLabel style={{color: "white", display: "flex", justifyContent: "center"}} id="categories-multiselect-label">
-          Catégories
-        </InputLabel>
-        <Select
-          labelId="categories-multiselect-label"
-          id="categories-multiselect"
-          multiple
-          value={categoryName}
-          onChange={handleChange}
-          renderValue={(selected) => selected.join(", ")}
-          MenuProps={MenuProps}
-          // variant="filled"
-        >
-          {categories.map((category) => (
-            <MenuItem key={category.id} value={category.title}>
-              <Checkbox checked={categoryName.indexOf(category.title) > -1} />
-              <ListItemText primary={category.title} />
-            </MenuItem>
-          ))}
-        </Select>
-        <br />
-        <Button type="submit" variant="outlined" color="primary">
-          Rechercher
+        <div className="inputCategory">
+          <InputLabel
+            style={{
+              color: "white",
+              display: "flex",
+              justifyContent: "center",
+            }}
+            id="categories-multiselect-label"
+          >
+            Catégories
+          </InputLabel>
+          <Select
+            labelId="categories-multiselect-label"
+            id="categories-multiselect"
+            multiple
+            value={categoryName}
+            onChange={handleChange}
+            renderValue={(selected) => selected.join(", ")}
+            MenuProps={MenuProps}
+            // variant="filled"
+          >
+            {categories.map((category) => (
+              <MenuItem key={category.id} value={category.title}>
+                <Checkbox checked={categoryName.indexOf(category.title) > -1} />
+                <ListItemText primary={category.title} />
+              </MenuItem>
+            ))}
+          </Select>
+        </div>
+        <Button type="submit" variant="contained" color="primary">
+          <span class="material-symbols-outlined">search</span>
         </Button>
       </FormControl>
-      <div>
+      <div className="createCheat">
+        <Modal />
+      </div>
+      {/* <div>
         <h2>
           {" "}
           Catégories sélectionnées :{" "}
@@ -126,7 +133,7 @@ const SearchInCategory = () => {
             </div>
           }
         </h2>
-      </div>
+      </div> */}
     </div>
   );
 };

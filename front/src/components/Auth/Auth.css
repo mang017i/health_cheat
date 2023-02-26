@@ -24,7 +24,7 @@
 .title h1 {
   margin: 0;
   font-size: 2.8rem;
-  text-shadow: 1px 1px 0px #264653;
+  text-shadow: 1px 1px 0px #3aa8d4;
 }
 .general .logo {
   background-image: url('../../../../back/public/images/logo.png');
@@ -33,19 +33,19 @@
   background-size: cover;
 }
 .auth_form h2{
-  color: #BAA5FF;
+  color: #baeeff;
   text-shadow: .5px .5px 0px #8b575c;
 }
 .auth_form span {
   color: #eb2682;
-  text-shadow: .5px .5px 0px #BAA5FF;
+  text-shadow: .5px .5px 0px #baeeff;
   cursor: pointer;
 }
 .general p{
-  text-shadow: .3px .3px 0px #264653;
+  text-shadow: .3px .3px 0px #45b1dc;
 }
 .auth_form span:hover {
-  color: #BAA5FF;
+  color: #baeeff;
 }
 .input_part {
   display: flex;
@@ -67,20 +67,20 @@
   cursor: pointer;
   margin: 20px 10px;
   border-radius: 4px;
-  background-color: #BAA5FF;
+  background-color: #baeeff;
 }
 .submitBtn button:hover {
   background-color: #eb2682;
 }
 .input_part span {
   color: white;
-  text-shadow: .5px .5px 0px #BAA5FF;
+  text-shadow: .5px .5px 0px #baeeff;
   cursor: pointer;
   font-size: 1rem
 }
 .css-1ff8729-MuiInputBase-root-MuiFilledInput-root:after {
-  border-bottom: 2px solid #BAA5FF!important;
+  border-bottom: 2px solid #baeeff!important;
 }
 .css-o943dk-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
-  color:#BAA5FF!important;
+  color:#baeeff!important;
 }

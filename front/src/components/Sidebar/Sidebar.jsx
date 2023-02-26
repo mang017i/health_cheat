@@ -26,12 +26,11 @@ const Sidebar = () => {
   return (
     <nav>
       <ul>
-      {categories.map((category) => (
+        {categories.map((category) => (
             <li>
               <span class='material-symbols-outlined'>{category.icon}</span>
-          </li>
-          ))}
-
+            </li>
+        ))}
       </ul>
     </nav>
   );

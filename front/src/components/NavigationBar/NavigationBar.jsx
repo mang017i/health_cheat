@@ -47,8 +47,8 @@ const NavigationBar = () => {
       </div>
       <div className="navigation-bar__menu">
         <ul>
-          <li onClick={() => handleNavigation("/categories")}>Catégories</li>
-          <li onClick={() => handleNavigation("/cheats")}>Fiches</li>
+          <li className="menuNav" onClick={() => handleNavigation("/categories")}>Catégories</li>
+          <li className="menuNav" onClick={() => handleNavigation("/cheats")}>Fiches</li>
         </ul>
       </div>
       <div className="settings">

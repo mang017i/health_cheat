@@ -1,5 +1,10 @@
 .modal_content{
-  height: 60vh;
-  width: 40vw;
+  height: 85vh;
+  width: 50vw!important;
   border-radius: 10px;
+  background-color: #C6F3C6!important;
+  margin-top: 3vh;
+}
+.modal_content h2{
+  color: #baeeff;
 }

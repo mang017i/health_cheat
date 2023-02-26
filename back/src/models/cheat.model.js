@@ -27,6 +27,16 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
         allowNull: true,
       },
+      creator: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        defaultValue: "Anonymous",
+      },
+      createdAt: {
+        type: Sequelize.DATE,
+        allowNull: false,
+        defaultValue: Sequelize.NOW,
+      },
     },
     {
       tableName: "cheats",

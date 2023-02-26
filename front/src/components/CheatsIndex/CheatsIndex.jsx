@@ -8,6 +8,8 @@ import TableBody from "@mui/material/TableBody";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 
+import { Card, CardActionArea, CardContent, CardMedia, Typography } from "@mui/material";
+
 export default function ActionAreaCard() {
   const contextValue = useContext(FilteredCheatsContext);
 
@@ -111,14 +113,13 @@ export default function ActionAreaCard() {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
-  
-  
+
+
   return (
+    <div className="cheats_container">
     <section className="cheatsIndex">
       {contextValue.filteredCheats.length === 0 && handleDisplayCheatsIndex()}
       {contextValue.filteredCheats && handleDisplayFilteredCheats()}
-    </section>
-    <div className="cheats_container">
       <Table aria-label="simple table">
         <TableBody>
           {cheats
@@ -151,6 +152,7 @@ export default function ActionAreaCard() {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Table>
+    </section>
     </div>
   );
 }

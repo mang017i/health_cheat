@@ -1,10 +1,110 @@
 .modal_content{
-  height: 85vh;
-  width: 50vw!important;
+  height: 90vh;
+  width: 60vw!important;
   border-radius: 10px;
   background-color: #C6F3C6!important;
   margin-top: 3vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.css-1wnsr1i{
+  padding: 16px 32px!important;
+}
+.modal_content h1{
+  font-size: 1.8rem;
+}
+.modal_content .logo{
+  width:60px;
+  height: 60px;
 }
 .modal_content h2{
-  color: #baeeff;
+  color: #070f6a;
+  margin: 0;
+  font-size: 1rem;
+}
+.modal_content .general{
+  margin-bottom: 15px !important;
+}
+.input_part{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 84%;
+  overflow:hidden;
+}
+.inputBasics{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+}
+.inputBasics .input{
+  width: 100%;
+  height: 40px;
+}
+.inputBasics div label{
+  font-size: .8rem;
+  top: -4px!important;
+}
+.inputBasics button{
+  width: 100%;
+  height: 20px;
+  margin-top: 2px;
+  font-size: .6rem
+}
+.inputBasics div{
+  height: 100%;
+}
+.inputBasics::after{
+  display: none;
+}
+
+.not_important{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+}
+.not_important::after{
+  display: none;
+}
+.not_important .input{
+  width: 49%;
+}
+.textarea{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 80%;
+}
+.textarea div {
+  margin-top: 8px;
+  background-color: rgba(0, 0, 0, 0.03);
+}
+.textarea div label{
+  margin-top: 15px;
+  font-size: .8rem;
+}
+.textarea .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused{
+  top: -6px!important;
+  left: 12px!important;
+  color: #541485;
+}
+
+.textarea .MuiInputBase-root.MuiOutlinedInput-root.MuiInputBase-colorPrimary.css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root
+{
+  height: 30px;
+}
+.textarea .MuiInputBase-root.MuiOutlinedInput-root.MuiInputBase-colorPrimary.css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root div{
+  padding: 5px 32px 5px 12px!important;
+  font-size: .8rem;
+}
+.matos{
+  padding:0;
+  margin:5px 0 0 0;
+  font-size: .6rem;
 }

@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import CheatService from "../../services/Cheat";
-
+import moment from "moment";
 import { FilteredCheatsContext } from "../../utils/Context";
 
 
@@ -30,6 +30,9 @@ const SearchInCheatName = (props) => {
     const cheatsResult = response.data.data;
     let cheats = [];
     cheatsResult.forEach((cheat) => {
+      cheat.createdAt = moment(cheat.createdAt).format(" HH:mm DD/MM/YYYY");
+      cheat.title =
+          cheat.title.charAt(0).toUpperCase() + cheat.title.slice(1);
       cheats.push(cheat);
     });
     console.log(cheats, "cheats");

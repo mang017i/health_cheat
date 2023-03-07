@@ -7,6 +7,7 @@ import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
+// import { Card, CardActionArea, CardContent, CardMedia, Typography } from "@mui/material";
 
 export default function ActionAreaCard() {
   const contextValue = useContext(FilteredCheatsContext);
@@ -97,6 +98,7 @@ export default function ActionAreaCard() {
     }
   };
 
+
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -129,7 +131,6 @@ export default function ActionAreaCard() {
                       <p className="cheat_creator">{cheat.creator}</p>
                       <p className="cheat_created">{cheat.createdAt}</p>
                     </div>
-                  </div>
                 </TableRow>
               ))}
           </TableBody>

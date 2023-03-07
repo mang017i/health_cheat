@@ -5,11 +5,16 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #908989;
+  background-image: url("../../back/public/images/back.jpg");
   color: white;
+  background-size: cover;
+  background-position: 55px;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+#root {
+  background-color: rgba(0, 0, 0, 0.3);
 }

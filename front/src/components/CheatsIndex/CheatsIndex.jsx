@@ -7,6 +7,7 @@ import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
+// import { Card, CardActionArea, CardContent, CardMedia, Typography } from "@mui/material";
 
 export default function ActionAreaCard() {
   const contextValue = useContext(FilteredCheatsContext);
@@ -32,78 +33,75 @@ export default function ActionAreaCard() {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
-  const handleDisplayCheatsIndex = () => {
-    if (cheats.length > 0) {
-      return (
-        <div className="fff">
-          {cheats.map((cheat) => (
-            <Card className="cheatCard_container" sx={{ maxWidth: 345 }}>
-              <CardActionArea key={cheat.id} className="cheat_card">
-                <CardMedia
-                  component="img"
-                  height="140"
-                  image={cheat.image}
-                  alt="green iguana"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    {cheat.title}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {cheat.description}
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          ))}
-        </div>
-      );
-    }
-  };
+  // const handleDisplayCheatsIndex = () => {
+  //   if (cheats.length > 0) {
+  //     return (
+  //       <div className="fff">
+  //         {cheats.map((cheat) => (
+  //           <Card className="cheatCard_container" sx={{ maxWidth: 345 }}>
+  //             <CardActionArea key={cheat.id} className="cheat_card">
+  //               <CardMedia
+  //                 component="img"
+  //                 height="140"
+  //                 image={cheat.image}
+  //                 alt="green iguana"
+  //               />
+  //               <CardContent>
+  //                 <Typography gutterBottom variant="h5" component="div">
+  //                   {cheat.title}
+  //                 </Typography>
+  //                 <Typography variant="body2" color="text.secondary">
+  //                   {cheat.description}
+  //                 </Typography>
+  //               </CardContent>
+  //             </CardActionArea>
+  //           </Card>
+  //         ))}
+  //       </div>
+  //     );
+  //   }
+  // };
 
+  // const handleDisplayFilteredCheats = () => {
+  //   if (contextValue.filteredCheats && contextValue.filteredCheats.length > 0) {
+  //     return (
+  //       <div>
+  //         {contextValue.filteredCheats.map((cheat) => {
+  //           return (
+  //             <div className="cheatCard">
+  //               <Card
+  //                 sx={{
+  //                   maxWidth: 345,
+  //                   backgroundColor: "rgb(0, 0, 0, 0.5)",
+  //                   color: "white",
+  //                 }}
+  //               >
+  //                 <CardActionArea>
+  //                   <CardMedia
+  //                     component="img"
+  //                     height="140"
+  //                     image={cheat.image}
+  //                     alt="cheat image"
+  //                   />
+  //                   <CardContent>
+  //                     <Typography gutterBottom variant="h5" component="div">
+  //                       {cheat.title}
+  //                     </Typography>
+  //                     <Typography variant="body2" color="text.secondary">
+  //                       {cheat.description}
+  //                     </Typography>
+  //                   </CardContent>
+  //                 </CardActionArea>
+  //               </Card>
+  //             </div>
+  //           );
+  //         })}
+  //       </div>
+  //     );
+  //   }
+  // };
 
-
-  const handleDisplayFilteredCheats = () => {
-    if (contextValue.filteredCheats && contextValue.filteredCheats.length > 0) {
-      return (
-        <div>
-          {contextValue.filteredCheats.map((cheat) => {
-            return (
-              <div className="cheatCard">
-                <Card
-                  sx={{
-                    maxWidth: 345,
-                    backgroundColor: "rgb(0, 0, 0, 0.5)",
-                    color: "white",
-                  }}
-                >
-                  <CardActionArea>
-                    <CardMedia
-                      component="img"
-                      height="140"
-                      image={cheat.image}
-                      alt="cheat image"
-                    />
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" component="div">
-                        {cheat.title}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        {cheat.description}
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
-              </div>
-            );
-          })}
-        </div>
-      );
-    }
-  };
-
-
-    const handleChangePage = (event, newPage) => {
+  const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
 
@@ -111,14 +109,13 @@ export default function ActionAreaCard() {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
-  
-  
+
   return (
-    <section className="cheatsIndex">
-      {contextValue.filteredCheats.length === 0 && handleDisplayCheatsIndex()}
-      {contextValue.filteredCheats && handleDisplayFilteredCheats()}
-    </section>
     <div className="cheats_container">
+      {/* <section className="cheatsIndex">
+        {contextValue.filteredCheats.length === 0 && handleDisplayCheatsIndex()}
+        {contextValue.filteredCheats && handleDisplayFilteredCheats()}
+      </section> */}
       <Table aria-label="simple table">
         <TableBody>
           {cheats

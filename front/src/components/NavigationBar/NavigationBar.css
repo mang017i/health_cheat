@@ -66,6 +66,18 @@
 .navigation-bar__menu>ul>li {
   cursor: pointer;
   height: 100%;
+  color: white;
+  opacity: .8;
+  transition: all .3s ease-out;
+  padding-top: 14px;
+  text-shadow: .5px .5px 0px #88daf5;
+}
+.navigation-bar__menu>ul>li:hover{
+  opacity: 1;
+  color: #eb2682;
+  border-bottom: 3px solid #eb2682;
+  text-shadow: .5px .5px 0px #972e78;
+  font-weight: 700;
 }
 
 .avatar {
@@ -91,18 +103,4 @@
 
 .avatarUser {
   margin-left: 17vw;
-}
-
-.menuNav {
-  color: white;
-  opacity: .8;
-  transition: all .3s ease-out;
-  padding-top: 14px;
-  text-shadow: .5px .5px 0px #88daf5;
-}
-
-.menuNav:hover {
-  opacity: 1;
-  color: #eb2682;
-  border-bottom: 3px solid #eb2682;
 }

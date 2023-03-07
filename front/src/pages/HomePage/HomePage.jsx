@@ -9,7 +9,6 @@ import Minion from '../../components/Minion/Minion'
 const HomePage = () => {
   return (
     <div className='container'>
-      <h1>Home Page</h1>
       <div className='home_container'>
         <HomeAside />
         <Minion />

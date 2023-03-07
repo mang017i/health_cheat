@@ -74,26 +74,18 @@ export default function TransitionsModal() {
               <h2>Création de ma fiche</h2>
             </div>
             <div className="input_part">
+              <div className="inputBasics">
+
               <TextField
                 className="input"
                 id="filled-basic"
                 label="Titre"
                 variant="filled"
               />
-              <div className="not_important">
-                <TextField
-                  className="input"
-                  id="filled-basic"
-                  label="Username"
-                  variant="filled"
-                />
-                <TextField
-                  className="input"
-                  id="filled-basic"
-                  label="Télécharge une image"
-                  variant="filled"
-                />
+                <Button variant="contained">Télécharge une photo pour ta fiche</Button>
               </div>
+              <div className="textarea">
+
               <TextField
                 id="outlined-multiline-static"
                 label="Description"
@@ -118,6 +110,7 @@ export default function TransitionsModal() {
                 variant="outlined"
                 placeholder="Recommandation ici ..."
               />
+              <p class="matos">Sélectionne du matériel :</p>
               <Select
                 labelId="materials-multiselect-label"
                 id="Materials-multiselect"
@@ -137,6 +130,7 @@ export default function TransitionsModal() {
                   </MenuItem>
                 ))}
               </Select>
+              </div>
               <div className="submitBtn">
                 <Button variant="contained">Création</Button>
               </div>

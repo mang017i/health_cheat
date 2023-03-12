@@ -131,6 +131,7 @@ export default function ActionAreaCard() {
                       <p className="cheat_creator">{cheat.creator}</p>
                       <p className="cheat_created">{cheat.createdAt}</p>
                     </div>
+                  </div>
                 </TableRow>
               ))}
           </TableBody>

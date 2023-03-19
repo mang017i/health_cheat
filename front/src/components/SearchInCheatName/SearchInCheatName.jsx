@@ -21,7 +21,6 @@ const SearchInCheatName = (props) => {
   const navigate = useNavigate();
   useEffect(() => {
     getAllCheatNames();
-    console.log(contextValue.filteredCheats, "contextValue.filteredCheats");
   }, [contextValue.filteredCheats]);
 
 
@@ -35,7 +34,6 @@ const SearchInCheatName = (props) => {
           cheat.title.charAt(0).toUpperCase() + cheat.title.slice(1);
       cheats.push(cheat);
     });
-    console.log(cheats, "cheats");
     setCheats(cheats);
   }
 
@@ -81,11 +79,7 @@ const SearchInCheatName = (props) => {
 
     if (foundCheat.length > 0) {
       let filter = foundCheat;
-      console.log(filter, "filter");
-      console.log(contextValue.filteredCheats, "contextValue.filteredCheats");
-      // console.log(filteredCheats, "filteredCheats");
       if (window.location.pathname !== "/cheats") {
-        // on va sur la page des cheats
         navigate("/cheats");
         contextValue.updateFilteredCheats(filter);
 
@@ -148,7 +142,7 @@ const SearchInCheatName = (props) => {
           className="searchInput"
           // ajoute error si la recherche n'a pas de résultat et affiche un message d'erreur
           error={searchError.length > 0}
-          errorMessages={searchError}
+          errormessages={searchError}
         />
 
         <div
@@ -156,11 +150,11 @@ const SearchInCheatName = (props) => {
           className="searchIcon"
           style={{ cursor: "pointer" }}
         >
-          <span class="material-symbols-outlined">search</span>
+          <span className="material-symbols-outlined">search</span>
         </div>
       </div>
       <div className="resetSearch" onClick={handleResetSearch}>
-        <span class="material-symbols-outlined">close</span>
+        <span className="material-symbols-outlined">close</span>
       </div>
       <div className="searchError">{searchError}</div>
     </>

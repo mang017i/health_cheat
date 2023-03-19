@@ -7,11 +7,10 @@ import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-// import { Card, CardActionArea, CardContent, CardMedia, Typography } from "@mui/material";
 
 export default function ActionAreaCard() {
-  const contextValue = useContext(FilteredCheatsContext);
 
+  const contextValue = useContext(FilteredCheatsContext);
   const [cheats, setCheats] = useState([]);
 
   useEffect(() => {
@@ -20,7 +19,6 @@ export default function ActionAreaCard() {
 
   async function getAllCheats() {
     await CheatService.findAll().then((response) => {
-      console.log(response.data, "response.data");
       let result = response.data.data.map((cheat) => {
         cheat.createdAt = moment(cheat.createdAt).format(" HH:mm DD/MM/YYYY");
         cheat.title =
@@ -61,7 +59,9 @@ export default function ActionAreaCard() {
 
   const handleDisplayFilteredCheats = () => {
     if (contextValue.filteredCheats && contextValue.filteredCheats.length > 0) {
-      return (
+      return (<div className="ffff">
+
+
         <Table aria-label="simple table">
           <TableBody>
             {contextValue.filteredCheats.map((cheat) => {
@@ -94,10 +94,10 @@ export default function ActionAreaCard() {
             onRowsPerPageChange={handleChangeRowsPerPage}
           />
         </Table>
+      </div>
       );
     }
   };
-
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -131,6 +131,7 @@ export default function ActionAreaCard() {
                       <p className="cheat_creator">{cheat.creator}</p>
                       <p className="cheat_created">{cheat.createdAt}</p>
                     </div>
+                  </div>
                 </TableRow>
               ))}
           </TableBody>

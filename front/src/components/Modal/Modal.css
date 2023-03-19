@@ -1,12 +1,14 @@
 .modal_content{
-  height: 90vh;
-  width: 60vw!important;
   border-radius: 10px;
   background-color: #C6F3C6!important;
   margin-top: 3vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+.modalCreate{
+  height: 90vh;
+  width: 60vw!important;
 }
 .css-1wnsr1i{
   padding: 16px 32px!important;

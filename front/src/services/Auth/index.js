@@ -4,11 +4,11 @@ const API_URL = "http://localhost:8080/api/auth";
 
 class AuthService {
   register(data) {
-    return axios.post(`${API_URL}/auth/register`, data);
+    return axios.post(`${API_URL}/register`, data);
   }
 
   login(data) {
-    return axios.post(`${API_URL}/auth/login`, data);
+    return axios.post(`${API_URL}/login`, data);
   }
 };
 

@@ -20,7 +20,6 @@ const Sidebar = () => {
     let categories = await CategoryService.findAll().then((response) => {
       return response.data.data;
     });
-    console.log(categories);
     setCategories(categories);
   }
   return (
@@ -28,7 +27,7 @@ const Sidebar = () => {
       <ul>
         {categories.map((category) => (
             <li>
-              <span class='material-symbols-outlined'>{category.icon}</span>
+              <span className='material-symbols-outlined'>{category.icon}</span>
             </li>
         ))}
       </ul>

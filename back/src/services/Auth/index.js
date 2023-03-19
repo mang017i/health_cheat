@@ -27,12 +27,6 @@ class AuthService {
     if (!user.username) {
       throw new Error("Username is required");
     }
-    if(!user.lastname) {
-      throw new Error("Lastname is required");
-    }
-    if(!user.firstname) {
-      throw new Error("Firstname is required");
-    }
 
     const userFoundEmail = await Users.checkUserEmail(user.email);
     const userFoundUsername = await Users.checkUserUsername(user.username);

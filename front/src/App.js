@@ -31,8 +31,8 @@ function App() {
       <BrowserRouter>
       <SetCurrentUser.Provider value={setUser}>
       <FilteredCheatsContext.Provider value={contextValue}>
-        <NavigationBar />
-        <Sidebar />
+        {window.location.pathname === "/login" || window.location.pathname === "/register" || window.location.pathname === "/reset" ? null : <NavigationBar />}
+        {window.location.pathname === "/login" || window.location.pathname === "/register" || window.location.pathname === "/reset" ? null : <Sidebar />}
         {/* <SearchInCategory /> */}
 
         <Routes>

@@ -60,10 +60,8 @@ const NavigationBar = () => {
     ).then((response) => {
       let currentImage = parseInt(response.data.data.avatar.match(/\d+/)[0]);
       setCurrentAvatar(currentImage);
-      console.log(currentAvatar, "currentAvatar");
       return response.data.data;
     });
-    console.log(users, "users");
     setUsers(users);
   }
 

@@ -1,0 +1,252 @@
+.printCheat_container {
+  height: 85%;
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 4.5%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  background-color: #a49a31;
+  overflow: hidden;
+  border-radius: 15px;
+  position: relative;
+}
+.cheat_card_content {
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 15px;
+}
+.print {
+  position: absolute;
+  top: 7.5%;
+  right: 15%;
+  z-index: 2;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  opacity: 0.6;
+}
+.print span {
+  font-size: 2.9rem;
+  color: #fff;
+}
+.titleCheatContent {
+  width: 100%;
+  height: 30%;
+  background-color: transparent;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  text-align: left;
+  position: relative;
+  margin: 3vh 0 .5vh 0;
+}
+.printTitle {
+  border-radius: 15px;
+  width: 95%;
+  height: 40%;
+  background-color: #6369d4;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 0.1rem 2rem;
+  box-shadow:rgba(0, 0, 0, 0.4) 0px 0px 10px;
+}
+.printTitle h3 {
+  margin: 0;
+  font-size: 2rem;
+  height: 55%;
+}
+.titleCheatContent p {
+  margin: 0;
+  font-size: 1rem;
+  height: 50%;
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-transform: none;
+  padding: 0 2rem;
+}
+.addToBook {
+  position: absolute;
+  top: 17%;
+  right: 7%;
+  font-size: 2.5rem;
+}
+.cheat_card_imagePrint {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #93387c;
+  overflow: hidden;
+  border-radius: 5px;
+  left: 0;
+  top: 0;
+}
+.cheat_card_imagePrint img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cheatCardPrint {
+  width: 57%;
+  height: 100%;
+  background-color: transparent;
+  overflow: hidden;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.cheatCardPrint::after{
+  display: none;
+}
+.cheatforprint{
+  width: 92%;
+  height: 60%;
+  background-color: transparent;
+  overflow: hidden;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: space-between;
+  justify-content: space-between;
+}
+.cheatRecommendation,
+.cheatStep {
+  width: 100%;
+  height: 40%;
+  background-color: #93df82;
+  overflow: hidden;
+  border-radius: 15px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+
+}
+.cheatRecommendation {
+  height: 37%;
+}
+.cheatStep {
+  height: 57%;
+}
+.signature {
+  width: 95%;
+  height: 20%;
+  background-color: transparent;
+  overflow: hidden;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1rem;
+  margin: 1.4rem 0 1rem 0;
+}
+.signature p {
+  margin: 0;
+}
+.cheatMaterials {
+  width: 97%;
+  height: 85%;
+  background-color: #d46363;
+  overflow: hidden;
+  border-radius: 5px;
+  text-align: left;
+  padding: 0.1rem 2rem;
+}
+.cheatMaterials h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  padding: .3rem 4rem;
+  height: 30%;
+  color: #802e2e;
+  font-weight: 700;
+}
+.blurCheat{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right:0;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.cheatImagePrint{
+  width: 40.8%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 15px;
+  border: 1px solid #701919;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 10px;
+}
+.cheatImagePrint img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cheatforprint::after{
+  display: none;
+}
+.cheatRecommendation h3{
+  margin: 0;
+  font-size: 1.3rem;
+  padding: .7rem 4rem;
+  height: 27%;
+  color: #802e2e;
+  font-weight: 700;
+}
+.cheatRecommendation p{
+  margin: 0;
+  font-size: .9rem;
+  padding: .5rem 2rem;
+  height: 73%;
+  font-weight: 300;
+  text-transform: none;
+}
+.cheatStep h3{
+  margin: 0;
+  font-weight: 700;
+  font-size: 1.3rem;
+  padding: .7rem 4rem;
+  height: 18%;
+  color: #802e2e;
+}
+.cheatStep p{
+  margin: 0;
+  font-size: .9rem;
+  padding: .5rem 2rem;
+  height: 82%;
+  font-weight: 300;
+  text-transform: none;
+}
+.signature .create{
+  font-size: .7rem;
+  font-weight: 300;
+}
+.creator{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 85%;
+  height: 20%;
+  margin-top: .3rem;
+}
+.creator::after{
+  display: none;
+}

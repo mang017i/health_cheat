@@ -7,15 +7,20 @@ import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
+import { useNavigate } from "react-router-dom";
+
 
 export default function ActionAreaCard() {
-
+  const navigate = useNavigate();
   const contextValue = useContext(FilteredCheatsContext);
   const [cheats, setCheats] = useState([]);
 
   useEffect(() => {
     getAllCheats();
   }, []);
+  const handleNavigation = (path) => {
+    navigate(path);
+  };
 
   async function getAllCheats() {
     await CheatService.findAll().then((response) => {
@@ -118,7 +123,7 @@ export default function ActionAreaCard() {
             {cheats
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((cheat) => (
-                <TableRow key={cheat.id} className="cheat_cardIndex">
+                <TableRow key={cheat.id} className="cheat_cardIndex" onClick={() => handleNavigation(`/cheat/${cheat.id}`)}>
                   <span className="material-symbols-outlined addBookIndex">
                     add_circle
                   </span>

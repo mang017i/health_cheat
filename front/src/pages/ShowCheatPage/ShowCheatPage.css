@@ -1,0 +1,17 @@
+.showcheat{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    line-height: 1.5;
+    text-shadow: 0 0 0.5rem #fff;
+    animation: showcheat 1s ease-in-out infinite alternate;
+}

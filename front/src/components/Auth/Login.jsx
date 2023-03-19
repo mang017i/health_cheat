@@ -28,7 +28,6 @@ export default function Login() {
   const handleEmailChange = (event) => {
     const { value } = event.target;
     setEmail(value);
-    console.log(setUser(value), "valuennnnnnnnnnnnnnnnnnnnnnnnnnnn");
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     setError(!emailRegex.test(value));
   };
@@ -41,7 +40,6 @@ export default function Login() {
     setPasswordLength(newPassword.length);
   };
   const handleLogin = (e) => {
-    console.log(setUser(email), "value email");
     if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
       alert("Email incorrect");
       return;

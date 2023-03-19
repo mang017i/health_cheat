@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
@@ -11,6 +11,7 @@ import MaterialService from "../../services/Material/index";
 import MenuItem from "@mui/material/MenuItem";
 import Checkbox from "@mui/material/Checkbox";
 import ListItemText from "@mui/material/ListItemText";
+import { SetCurrentUser } from "../../utils/Context";
 
 const style = {
   position: "absolute",
@@ -32,6 +33,7 @@ export default function TransitionsModal() {
   useEffect(() => {
     getAllMaterials();
   }, []);
+  const { setUser } = useContext(SetCurrentUser);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -43,10 +45,8 @@ export default function TransitionsModal() {
   };
   async function getAllMaterials() {
     let materials = await MaterialService.findAll().then((response) => {
-      console.log(response.data.data, "response.data.datadddddddddddddddd");
       return response.data.data;
     });
-    console.log(materials);
     setMaterials(materials);
   }
   return (
@@ -65,7 +65,7 @@ export default function TransitionsModal() {
         }}
       >
         <Fade in={open}>
-          <Box sx={style} className="modal_content">
+          <Box sx={style} className="modal_content modalCreate">
             <div className="general">
               <div className="title">
                 <div className="logo"></div>
@@ -110,7 +110,7 @@ export default function TransitionsModal() {
                 variant="outlined"
                 placeholder="Recommandation ici ..."
               />
-              <p class="matos">Sélectionne du matériel :</p>
+              <p className="matos">Sélectionne du matériel :</p>
               <Select
                 labelId="materials-multiselect-label"
                 id="Materials-multiselect"

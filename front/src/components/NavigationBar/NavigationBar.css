@@ -14,14 +14,14 @@
 }
 
 .logoNav {
-  background-image: url('../../../../back/public/images/logonav.png');
+  background-image: url("../../../../back/public/images/logonav.png");
   width: 70px;
   height: 70px;
   background-size: cover;
-  opacity: .8;
-  transition:all .3s ease-out;
+  opacity: 0.8;
+  transition: all 0.3s ease-out;
 }
-.logoNav:hover{
+.logoNav:hover {
   opacity: 1;
 }
 
@@ -33,7 +33,18 @@
   cursor: pointer;
   overflow: hidden;
 }
-
+.currentAvatar {
+  width: 50px;
+  height: 50px;
+  background-size: cover;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 1px solid #baeeff;
+  background-color: #ffffff;
+  opacity: 0.7;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 1px 1px 1px rgb(0 0 0 / 50%);
+}
 .searchBar {
   display: flex;
   justify-content: space-between;
@@ -51,7 +62,7 @@
   width: 30%;
 }
 
-.navigation-bar__menu>ul {
+.navigation-bar__menu > ul {
   text-decoration: none;
   list-style-type: none;
   display: flex;
@@ -63,20 +74,20 @@
   height: 100%;
 }
 
-.navigation-bar__menu>ul>li {
+.navigation-bar__menu > ul > li {
   cursor: pointer;
   height: 100%;
   color: white;
-  opacity: .8;
-  transition: all .3s ease-out;
+  opacity: 0.8;
+  transition: all 0.3s ease-out;
   padding-top: 14px;
-  text-shadow: .5px .5px 0px #88daf5;
+  text-shadow: 0.5px 0.5px 0px #88daf5;
 }
-.navigation-bar__menu>ul>li:hover{
+.navigation-bar__menu > ul > li:hover {
   opacity: 1;
   color: #eb2682;
   border-bottom: 3px solid #eb2682;
-  text-shadow: .5px .5px 0px #972e78;
+  text-shadow: 0.5px 0.5px 0px #972e78;
   font-weight: 700;
 }
 
@@ -87,7 +98,7 @@
   background-size: cover;
   background-position: center;
   cursor: pointer;
-  border: 2px solid #C6F3C6;
+  border: 2px solid #c6f3c6;
   box-shadow: 0 0 1px 1px rgba(167, 167, 167, 0.9);
 }
 

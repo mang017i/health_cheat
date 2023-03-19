@@ -5,77 +5,77 @@ import "./Minion.css";
 
 const Minion = () => {
   return (
-    <section class="content" id="target">
-      <ul class="hair hair-left">
+    <section className="content" id="target">
+      <ul className="hair hair-left">
         <li></li>
         <li></li>
         <li></li>
         <li></li>
       </ul>
-      <ul class="hair hair-right">
+      <ul className="hair hair-right">
         <li></li>
         <li></li>
         <li></li>
         <li></li>
       </ul>
-      <div class="body">
-        <div class="glasses">
-          <span class="band band-left"></span>
-          <span class="band band-right"></span>
-          <div class="glass">
-            <div class="iris iris-left">
-              <div class="shine"></div>
+      <div className="body">
+        <div className="glasses">
+          <span className="band band-left"></span>
+          <span className="band band-right"></span>
+          <div className="glass">
+            <div className="iris iris-left">
+              <div className="shine"></div>
             </div>
           </div>
-          <div class="glass">
-            <div class="iris iris-right">
-              <div class="shine"></div>
+          <div className="glass">
+            <div className="iris iris-right">
+              <div className="shine"></div>
             </div>
           </div>
         </div>
       </div>
-      <div class="mouth">
-        <ul class="teeth">
+      <div className="mouth">
+        <ul className="teeth">
           <li></li>
           <li></li>
           <li></li>
           <li></li>
         </ul>
       </div>
-      <div class="pants">
-        <div class="belt belt-left"></div>
-        <div class="belt belt-right"></div>
+      <div className="pants">
+        <div className="belt belt-left"></div>
+        <div className="belt belt-right"></div>
       </div>
-      <div class="super-pants">
-        <div class="symbol">
-          <div class="s-first-part"></div>
-          <div class="s-second-part"></div>
+      <div className="super-pants">
+        <div className="symbol">
+          <div className="s-first-part"></div>
+          <div className="s-second-part"></div>
         </div>
       </div>
-      <div class="arm arm-left">
-        <div class="hand">
-          <ul class="fingers fingers-left">
-            <li class="finger"></li>
-            <li class="finger"></li>
-            <li class="finger"></li>
+      <div className="arm arm-left">
+        <div className="hand">
+          <ul className="fingers fingers-left">
+            <li className="finger"></li>
+            <li className="finger"></li>
+            <li className="finger"></li>
           </ul>
         </div>
       </div>
-      <div class="arm arm-right">
-        <div class="hand">
-          <ul class="fingers fingers-right">
-            <li class="finger"></li>
-            <li class="finger"></li>
+      <div className="arm arm-right">
+        <div className="hand">
+          <ul className="fingers fingers-right">
+            <li className="finger"></li>
+            <li className="finger"></li>
           </ul>
         </div>
       </div>
-      <div class="legs">
-        <div class="leg"></div>
-        <div class="leg"></div>
+      <div className="legs">
+        <div className="leg"></div>
+        <div className="leg"></div>
       </div>
-      <div class="shoes shoes-left"></div>
-      <div class="shoes shoes-right"></div>
-      <div class="coat"></div>
+      <div className="shoes shoes-left"></div>
+      <div className="shoes shoes-right"></div>
+      <div className="coat"></div>
     </section>
   );
 };

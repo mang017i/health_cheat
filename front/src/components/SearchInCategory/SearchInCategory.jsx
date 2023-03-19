@@ -40,7 +40,6 @@ const SearchInCategory = () => {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    console.log("submit");
     let selectedCategories = [];
     for (let i = 0; i < categoryName.length; i++) {
       if (categoryName[i]) {
@@ -51,14 +50,12 @@ const SearchInCategory = () => {
       return categories.find((cat) => cat.title === category);
     });
     setSelectedCategories(userSelectedCategories);
-    console.log(userSelectedCategories, "userSelectedCategories");
   }
 
   async function getAllCategories() {
     let categories = await CategoryService.findAll().then((response) => {
       return response.data.data;
     });
-    console.log(categories);
     setCategories(categories);
   }
 
@@ -95,12 +92,14 @@ const SearchInCategory = () => {
           </Select>
         </div>
         <Button type="submit" variant="contained" color="primary">
-          <span class="material-symbols-outlined">search</span>
+          <span className="material-symbols-outlined">search</span>
         </Button>
       </FormControl>
-      <div className="createCheat">
-        <Modal />
-      </div>
+      {localStorage.getItem("user") !== null ? (
+        <div className="createCheat">
+          <Modal />
+        </div>
+      ) : null}
       {/* <div>
         <h2>
           {" "}

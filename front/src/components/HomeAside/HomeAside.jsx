@@ -1,16 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Button from "@mui/material/Button";
 import CheatService from "../../services/Cheat";
 import "./HomeAside.css";
 import Modal from "../Modal/Modal";
-// import {useNavigate} from "react-router-dom";
 
-export default function BasicTextFields() {
-  // const navigate = useNavigate();
-
-  // const handleNavigation = (path) => {
-  //   navigate(path);
-  // }
+export default function HomeAside() {
   const [cheats, setCheats] = useState([]);
   useEffect(() => {
     getAllCheats();
@@ -18,18 +11,14 @@ export default function BasicTextFields() {
 
   async function getAllCheats() {
     await CheatService.findAll().then((response) => {
-      console.log(response.data, "response.data");
       const lastThree = response.data.data
         .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
         .slice(0, 3);
-
       setCheats(lastThree);
-      console.log(lastThree, "lastThree");
     });
   }
   return (
     <div className="aside_container">
-
       <div className="lastCheat">
         <h2 className="aside_title">Dernières Fiches</h2>
         {cheats.map((cheat) => (
@@ -44,15 +33,17 @@ export default function BasicTextFields() {
               <p>{cheat.description}</p>
             </div>
             <div className="cardBlur"></div>
-            <span class="material-symbols-outlined addToBookmark">
+            <span className="material-symbols-outlined addToBookmark">
               add_circle
             </span>
           </div>
         ))}
       </div>
-      <div className="createCheat">
-        <Modal />
-      </div>
+      {localStorage.getItem("user") !== null ? (
+        <div className="createCheat">
+          <Modal />
+        </div>
+      ) : null}
     </div>
   );
 }

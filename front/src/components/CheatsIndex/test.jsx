@@ -35,7 +35,6 @@ const SearchInCategory = () => {
   };
   async function handleSubmit(event) {
     event.preventDefault();
-    console.log("submit");
     let selectedCategories = [];
     for (let i = 0; i < categoryName.length; i++) {
       if (categoryName[i]) {

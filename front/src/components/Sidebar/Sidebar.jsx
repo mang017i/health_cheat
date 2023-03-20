@@ -26,7 +26,7 @@ const Sidebar = () => {
     <nav>
       <ul>
         {categories.map((category) => (
-            <li>
+            <li key={category.id}>
               <span className='material-symbols-outlined'>{category.icon}</span>
             </li>
         ))}

@@ -32,7 +32,7 @@ export default function HomeAside() {
       <div className="lastCheat">
         <h2 className="aside_title">Dernières Fiches</h2>
         {cheats.map((cheat) => (
-          <div className="cheat_card" onClick={() => handleNavigation(`/cheat/${cheat.id}`)}>
+          <div key={cheat.id} className="cheat_card" onClick={() => handleNavigation(`/cheat/${cheat.id}`)}>
             <div className="cheat_card_image">
               <img src={cheat.image} alt="cheat" />
             </div>

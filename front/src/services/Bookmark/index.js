@@ -8,15 +8,30 @@ class BookmarkService {
   }
 
   getAllBookmarksForUser(userId) {
-    return axios.get(API_URL + `/user/${userId}`);
+    try {
+    const response = axios.get(API_URL + '/user', {
+      params: { user_id: userId },
+    });
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response.data.message);
   }
+}
 
   getAllBookmarksForCheat() {
     return axios.get(API_URL + "/cheat");
   }
 
-  findBookmarkByUserAndCheat() {
-    return axios.get(API_URL + "/user/cheat");
+  findBookmarkByUserAndCheat(userId, cheatId) {
+    try {
+      const response = axios.get(API_URL + '/user/cheat', {
+        params: { user_id: userId,
+                  cheat_id: cheatId },
+      });
+      return response.data;
+    } catch (error) {
+      throw new Error(error.response.data.message);
+    }
   }
 
   isCheatBookmarkedByUser() {
@@ -27,11 +42,19 @@ class BookmarkService {
     return axios.post(API_URL + "/add", data);
   }
 
-  removeCheatFromUser(data) {
-    return axios.delete(API_URL + "/remove", { data: data });
+  removeBookmarkFromUser(userId, cheatId) {
+    try {
+      const response = axios.delete(API_URL +'/remove', {
+        data: { user_id: userId, cheat_id: cheatId },
+      });
+      return response.data;
+    } catch (error) {
+      throw new Error(error.response.data.message);
+    }
   }
+
 }
 
 const bookmarkService = new BookmarkService();
 
-export default bookmarkService();
+export default bookmarkService;

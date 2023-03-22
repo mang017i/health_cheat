@@ -8,15 +8,8 @@ class BookmarkService {
   }
 
   getAllBookmarksForUser(userId) {
-    try {
-    const response = axios.get(API_URL + '/user', {
-      params: { user_id: userId },
-    });
-    return response.data;
-  } catch (error) {
-    throw new Error(error.response.data.message);
+    return axios.get(API_URL + "/user", { params: { user_id: userId } });
   }
-}
 
   getAllBookmarksForCheat() {
     return axios.get(API_URL + "/cheat");

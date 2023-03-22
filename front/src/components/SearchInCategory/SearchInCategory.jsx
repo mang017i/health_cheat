@@ -148,10 +148,10 @@ const SearchInCategory = () => {
                 {selectedCategories &&
                   selectedCategories.map((category) => {
                     return (
-                      <div>
+                      <div key={category.id}>
                         {category.cheats.map((cheatsheet) => {
                           return (
-                            <ul>
+                            <ul key={cheatsheet.id}>
                               <li>{cheatsheet.title}</li>
                             </ul>
                           );

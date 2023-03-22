@@ -45,13 +45,11 @@ const SearchInCategory = () => {
       return categories.find((cat) => cat.title === category);
     });
     setSelectedCategories(userSelectedCategories);
-    console.log(userSelectedCategories, "userSelectedCategories");
   }
   async function getAllCategories() {
     let categories = await CategoryService.findAll().then((response) => {
       return response.data.data;
     });
-    console.log(categories);
     setCategories(categories);
   }
   return (

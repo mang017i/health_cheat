@@ -3,8 +3,7 @@ import "./CheatShow.css";
 import CheatService from "../../services/Cheat";
 import CategoryService from "../../services/Category";
 import BookmarkService from "../../services/Bookmark";
-
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import moment from "moment";
 
 function PrintComponent({ children }) {
@@ -46,26 +45,21 @@ function PrintComponent({ children }) {
 }
 
 export default function CheatShow() {
-  const location = useLocation(); // Retrieve the current URL
-  // const navigate = useNavigate();
+  const location = useLocation();
   const [cheat, setCheat] = useState([]);
   const [category, setCategory] = useState([]);
   const [bookmarked, setBookmarked] = useState(false);
+
   const data = {
     user_id: parseInt(localStorage.getItem("user")),
     cheat_id: cheat.id,
   };
   const userId = parseInt(localStorage.getItem("user"));
   const cheatId = cheat.id;
-
-  // const handleNavigation = (path) => {
-  //   navigate(path);
-  // };
   useEffect(() => {
     async function getOneCategory(categoryId) {
       try {
         const category = await CategoryService.findOne(categoryId);
-        // console.log("Category:", category.data.data);
         setCategory(category.data.data);
       } catch (error) {
         console.log(error);
@@ -73,10 +67,9 @@ export default function CheatShow() {
     }
 
     async function getOneCheat() {
-      const currentUrl = location.pathname.split("/")[2]; // Retrieve the current URL
+      const currentUrl = location.pathname.split("/")[2];
       try {
         const cheat = await CheatService.findOne(currentUrl);
-        // console.log("Cheat:", cheat.data.data);
         const result = {
           ...cheat.data.data,
           created: moment(cheat.data.data.createdAt).format(
@@ -85,32 +78,10 @@ export default function CheatShow() {
         };
         setCheat(result);
         getOneCategory(cheat.data.data.category_id);
-        getBookmarksForUserAndCheat(userId, cheat.data.data.id);
       } catch (error) {
         console.log(error);
       }
     }
-
-    async function getBookmarksForUserAndCheat(userId, cheatId) {
-      try {
-        const response = await BookmarkService.findBookmarkByUserAndCheat(
-          userId,
-          cheatId
-        );
-        console.log("Bookmark response:", response.status);
-        // if (response.status === 200) {
-        //   setBookmarked(true);
-        //   // console.log("Bookmark found");
-        // } else {
-        //   setBookmarked(false);
-        //   console.log("Bookmark not found");
-        // }
-      } catch (error) {
-        console.log(error);
-      }
-    }
-
-    const userId = localStorage.getItem("user"); // Replace with your actual user ID
     getOneCheat();
   }, []);
 
@@ -118,14 +89,12 @@ export default function CheatShow() {
     await BookmarkService.addCheatToUser(data).then((response) => {
       if (response.status === 200) {
         setBookmarked(true);
-        console.log("Bookmark added", bookmarked);
       }
     });
   }
   async function deleteBookmarks(userId, cheatId) {
     await BookmarkService.removeBookmarkFromUser(userId, cheatId);
     setBookmarked(false);
-    console.log("Bookmark deleted", bookmarked);
   }
 
   return (

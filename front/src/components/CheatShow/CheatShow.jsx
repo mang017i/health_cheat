@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./CheatShow.css";
 import CheatService from "../../services/Cheat";
 import CategoryService from "../../services/Category";
-
-import { useNavigate, useLocation } from "react-router-dom";
+import BookmarkService from "../../services/Bookmark";
+import { useLocation } from "react-router-dom";
 import moment from "moment";
 
 function PrintComponent({ children }) {
@@ -16,7 +16,7 @@ function PrintComponent({ children }) {
       {children}
 
       <button className="print" onClick={handlePrint}>
-        <span class="material-symbols-outlined">print</span>
+        <span className="material-symbols-outlined">print</span>
       </button>
 
       <style>
@@ -45,37 +45,58 @@ function PrintComponent({ children }) {
 }
 
 export default function CheatShow() {
-  const location = useLocation(); // Retrieve the current URL
-  const navigate = useNavigate();
+  const location = useLocation();
   const [cheat, setCheat] = useState([]);
-  const [Category, setCategory] = useState([]);
+  const [category, setCategory] = useState([]);
+  const [bookmarked, setBookmarked] = useState(false);
 
+  const data = {
+    user_id: parseInt(localStorage.getItem("user")),
+    cheat_id: cheat.id,
+  };
+  const userId = parseInt(localStorage.getItem("user"));
+  const cheatId = cheat.id;
   useEffect(() => {
+    async function getOneCategory(categoryId) {
+      try {
+        const category = await CategoryService.findOne(categoryId);
+        setCategory(category.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    async function getOneCheat() {
+      const currentUrl = location.pathname.split("/")[2];
+      try {
+        const cheat = await CheatService.findOne(currentUrl);
+        const result = {
+          ...cheat.data.data,
+          created: moment(cheat.data.data.createdAt).format(
+            "DD/MM/YYYY à HH:mm"
+          ),
+        };
+        setCheat(result);
+        getOneCategory(cheat.data.data.category_id);
+      } catch (error) {
+        console.log(error);
+      }
+    }
     getOneCheat();
   }, []);
 
-  const handleNavigation = (path) => {
-    navigate(path);
-  };
-
-  async function getOneCheat(id) {
-    const currentUrl = location.pathname.split("/")[2]; // Retrieve the current URL
-    await CheatService.findOne(currentUrl).then((response) => {
-      console.log(">>>>>>>>>>", response.data.data);
-      const result = {
-        ...response.data.data,
-        created: moment(response.data.data.createdAt).format(
-          "DD/MM/YYYY à HH:mm"
-        ),
-      };
-      setCheat(result);
-    });
-    console.log("zzzzzzzzzz", cheat.category_id);
-    await CategoryService.findOne(cheat.category_id).then((response) => {
-      console.log(">>>>>>>>>>", response.data.data);
-      setCategory(response.data.data.title);
+  async function createBookmarks(data) {
+    await BookmarkService.addCheatToUser(data).then((response) => {
+      if (response.status === 200) {
+        setBookmarked(true);
+      }
     });
   }
+  async function deleteBookmarks(userId, cheatId) {
+    await BookmarkService.removeBookmarkFromUser(userId, cheatId);
+    setBookmarked(false);
+  }
+
   return (
     <PrintComponent>
       <div className="cheat_card_imagePrint">
@@ -86,10 +107,24 @@ export default function CheatShow() {
         <div className="titleCheatContent">
           <div className="printTitle">
             <h3>{cheat.title}</h3>
-            <span>{Category}</span>
+            <span>{category.title}</span>
           </div>
           <p>{cheat.description}</p>
-          <span class="material-symbols-outlined addToBook">heart_plus</span>
+          {bookmarked ? (
+            <span
+              className="material-symbols-outlined deleteFromBook"
+              onClick={() => deleteBookmarks(userId, cheatId)}
+            >
+              heart_minus
+            </span>
+          ) : (
+            <span
+              className="material-symbols-outlined addToBook"
+              onClick={() => createBookmarks(data)}
+            >
+              heart_plus
+            </span>
+          )}
         </div>
         <div className="cheatforprint">
           <div className="cheatImagePrint">

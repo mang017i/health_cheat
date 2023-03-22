@@ -60,7 +60,7 @@ export default function TransitionsModal() {
                 <div className="avatarRadio">
                   {avatarArray.map((avatar) => {
                     return (
-                      <div className="avatarItem">
+                      <div key={avatar} className="avatarItem">
                         <input
                           type="radio"
                           id={`minion${avatar}`}

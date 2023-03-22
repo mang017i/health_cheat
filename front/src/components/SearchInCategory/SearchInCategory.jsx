@@ -25,6 +25,8 @@ const SearchInCategory = () => {
   const [categories, setCategories] = useState([]);
   const [categoryName, setCategoryName] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
+  const [open, setOpen] = useState(true);
+  const [search, setSearch] = useState(false);
 
   useEffect(() => {
     getAllCategories();
@@ -50,6 +52,17 @@ const SearchInCategory = () => {
       return categories.find((cat) => cat.title === category);
     });
     setSelectedCategories(userSelectedCategories);
+    setOpen(false);
+    localStorage.setItem("search", open);
+    setSearch(true);
+  }
+  async function handleReset(event) {
+    event.preventDefault();
+    setCategoryName([]);
+    setSelectedCategories([]);
+    setOpen(true);
+    localStorage.setItem("search", open);
+    setSearch(false);
   }
 
   async function getAllCategories() {
@@ -61,7 +74,7 @@ const SearchInCategory = () => {
 
   return (
     <div className="searchByCategory">
-      <FormControl sx={{ m: 1, minWidth: 180 }} onClick={handleSubmit}>
+      <FormControl sx={{ m: 1, minWidth: 180 }}>
         <div className="inputCategory">
           <InputLabel
             style={{
@@ -91,48 +104,66 @@ const SearchInCategory = () => {
             ))}
           </Select>
         </div>
-        <Button type="submit" variant="contained" color="primary">
-          <span className="material-symbols-outlined">search</span>
-        </Button>
+        {open ? (
+          <Button
+            onClick={handleSubmit}
+            type="submit"
+            variant="contained"
+            color="primary"
+          >
+            <span className="material-symbols-outlined">search</span>
+          </Button>
+        ) : (
+          <Button
+            onClick={handleReset}
+            type="submit"
+            variant="contained"
+            color="primary"
+          >
+            <span className="material-symbols-outlined">close</span>{" "}
+          </Button>
+        )}
       </FormControl>
       {localStorage.getItem("user") !== null ? (
         <div className="createCheat">
           <Modal />
         </div>
       ) : null}
-      {/* <div>
-        <h2>
-          {" "}
-          Catégories sélectionnées :{" "}
-          {selectedCategories &&
-            selectedCategories.map((category) => {
-              return <div>{category.title}</div>;
-            })}
-        </h2>
+      {search ? (
+        <div>
+          <h2>
+            {" "}
+            Catégories sélectionnées :{" "}
+            {selectedCategories &&
+              selectedCategories.map((category) => {
+                return <div>{category.title}</div>;
+              })}
+          </h2>
 
-        <h2>
-          {" "}
-          Fiches Correspondantes :{" "}
-          {
-            <div>
-              {selectedCategories &&
-                selectedCategories.map((category) => {
-                  return (
-                    <div>
-                      {category.cheats.map((cheatsheet) => {
-                        return (
-                          <ul>
-                            <li>{cheatsheet.title}</li>
-                          </ul>
-                        );
-                      })}
-                    </div>
-                  );
-                })}
-            </div>
-          }
-        </h2>
-      </div> */}
+          <h2>
+            {" "}
+            Fiches Correspondantes :{" "}
+            {
+              <div>
+                {selectedCategories &&
+                  selectedCategories.map((category) => {
+                    return (
+                      <div key={category.id}>
+                        {category.cheats.map((cheatsheet) => {
+                          return (
+                            <ul key={cheatsheet.id}>
+                              <li>{cheatsheet.title}</li>
+                            </ul>
+                          );
+                        })}
+                      </div>
+                    );
+                  })}
+              </div>
+            }
+          </h2>
+        </div>
+      ) : null}
     </div>
   );
 };

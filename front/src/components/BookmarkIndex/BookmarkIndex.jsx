@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext, useRef } from "react";
 import CheatService from "../../services/Cheat";
 import CategoryService from "../../services/Category";
 import BookmarkService from "../../services/Bookmark";
-import "./CheatsIndex.css";
+import "./BookmarkIndex.css";
 import { FilteredCheatsContext } from "../../utils/Context";
 import moment from "moment";
 import TablePagination from "@mui/material/TablePagination";
@@ -28,7 +28,7 @@ const MenuProps = {
   },
 };
 
-export default function CheatsIndex() {
+export default function BookmarkIndex(props) {
   const navigate = useNavigate();
   const contextValue = useContext(FilteredCheatsContext);
   const [cheats, setCheats] = useState([]);
@@ -39,11 +39,15 @@ export default function CheatsIndex() {
   const [search, setSearch] = useState(false);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
-
+  const [bookmarksArray, setBookmarksArray] = useState([]);
+  const filterBookmarkCheats = bookmarksArray
+  console.log(filterBookmarkCheats, "bookmarksArrayyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
   useEffect(() => {
-    getAllCheats();
+    getBookmarkForCurrentUser(props.userId);
     getAllCategories();
-  }, []);
+    getAllCheats();
+  }, [props.userId]);
+
   const handleNavigation = (path) => {
     navigate(path);
   };
@@ -85,15 +89,25 @@ export default function CheatsIndex() {
     });
     setCategories(categories);
   }
+  async function getBookmarkForCurrentUser(userId) {
+    userId = parseInt(localStorage.getItem("user"));
 
+    const response = await BookmarkService.getAllBookmarksForUser(userId);
+    const bookmarks = response.data.data;
+    setBookmarksArray(bookmarks.map((bookmark) => bookmark.cheat_id));
+  }
   async function getAllCheats() {
+    console.log(bookmarksArray, "bookmarksAzzzzzzzzzzzzzzzzzzzzzzzrray");
     await CheatService.findAll().then((response) => {
-      let result = response.data.data.map((cheat) => {
-        cheat.createdAt = moment(cheat.createdAt).format(" HH:mm DD/MM/YYYY");
-        cheat.title =
-          cheat.title.charAt(0).toUpperCase() + cheat.title.slice(1);
-        return cheat;
-      });
+      console.log(response.data.data, "response");
+      let result = response.data.data.filter((item) => bookmarksArray.includes(item.id));
+      // .map((cheat) => {
+      //   cheat.createdAt = moment(cheat.createdAt).format(" HH:mm DD/MM/YYYY");
+      //   cheat.title =
+      //     cheat.title.charAt(0).toUpperCase() + cheat.title.slice(1);
+      //   return cheat;
+      // });
+      console.log(result, "result");
       setCheats(result);
     });
   }
@@ -106,7 +120,7 @@ export default function CheatsIndex() {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
-
+  console.log(bookmarksArray, "ggggggggggggggggggggg");
   return (
     <div className="cheats_container">
       <FormControl sx={{ m: 1, minWidth: 180 }}>
@@ -172,7 +186,9 @@ export default function CheatsIndex() {
                 <div key={category.id}>
                   <div>{category.title}</div>
                   {category.cheats.length === 0 ? (
-                    <div className="noCheat">Aucune fiche trouvée dans la catégorie {category.title}</div>
+                    <div className="noCheat">
+                      Aucune fiche trouvée dans la catégorie {category.title}
+                    </div>
                   ) : (
                     category.cheats
                       .slice(

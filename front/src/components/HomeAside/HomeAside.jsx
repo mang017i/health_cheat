@@ -19,7 +19,6 @@ export default function HomeAside() {
 
   async function getAllCheats() {
     await CheatService.findAll().then((response) => {
-      console.log('>>>>>>>>>>',response.data.data);
       const lastThree = response.data.data
         .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
         .slice(0, 3);
@@ -32,7 +31,7 @@ export default function HomeAside() {
       <div className="lastCheat">
         <h2 className="aside_title">Dernières Fiches</h2>
         {cheats.map((cheat) => (
-          <div className="cheat_card" onClick={() => handleNavigation(`/cheat/${cheat.id}`)}>
+          <div key={cheat.id} className="cheat_card" onClick={() => handleNavigation(`/cheat/${cheat.id}`)}>
             <div className="cheat_card_image">
               <img src={cheat.image} alt="cheat" />
             </div>
@@ -43,9 +42,6 @@ export default function HomeAside() {
               <p>{cheat.description}</p>
             </div>
             <div className="cardBlur"></div>
-            <span className="material-symbols-outlined addToBookmark">
-              add_circle
-            </span>
           </div>
         ))}
       </div>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Tabs.css";
 import CheatsIndex from "../CheatsIndex/CheatsIndex";
 import SearchInCategory from "../SearchInCategory/SearchInCategory";
+import BookmarkIndex from "../BookmarkIndex/BookmarkIndex";
 
 function TabsComponent() {
   const [activeTab, setActiveTab] = useState(1);
@@ -19,13 +20,12 @@ function TabsComponent() {
       <div className="tabsContent">
         {activeTab === 1 && (
           <div>
-            <SearchInCategory />
             <CheatsIndex />
           </div>
         )}
         {activeTab === 2 && (
           <div className="bookmark_container">
-            <SearchInCategory />
+            <BookmarkIndex />
           </div>
         )}
       </div>

@@ -28,7 +28,6 @@
   box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.4);
   overflow: hidden;
   position: relative;
-  cursor: pointer;
   transition: all .3s ease-out;
 }
 .cheat_cardIndex img{
@@ -95,7 +94,7 @@
   width: 30%;
   background-color: rgba(0, 0, 0, 0.4);
 }
-.addBookIndex{
+.bookIndex{
   position:absolute;
   top: 15px;
   height: 10%;
@@ -106,6 +105,7 @@
   font-weight: 700;
   opacity: .8;
   transition: all .3s ease-out;
+  z-index: 5;
 
 }
 .addBookIndex:hover{
@@ -117,4 +117,41 @@
 }
 .cheat_cardIndex:hover .blurIndex{
   background-color: rgba(0, 0, 0, 0);
+}
+.inputCategory .css-sghohy-MuiButtonBase-root-MuiButton-root{
+  background: transparent!important;
+  box-shadow: none!important;
+  position: absolute!important;
+}
+.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root{
+  top: -12px!important;
+  left: -12px!important;
+}
+.inputCategory .css-sghohy-MuiButtonBase-root-MuiButton-root.resetCategoryBtn{
+  top: 5px!important;
+  left: -12px!important;
+}
+.inputCategory .css-sghohy-MuiButtonBase-root-MuiButton-root.searchCategoryBtn{
+  top: 0!important;
+  right: -66px!important;
+}
+.inputCategory .css-sghohy-MuiButtonBase-root-MuiButton-root.searchCategoryBtn:hover {
+  box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.4)!important;
+}
+
+.inputCategory .css-sghohy-MuiButtonBase-root-MuiButton-root.searchCategoryBtn span {
+  font-size: 2rem!important;
+}
+.addBookIndex{
+  color: #eb2682;
+}
+.deleteBookIndex{
+  color: #102465;
+}
+.goToShow{
+  height: 78%;
+  width: 100%;
+  position: absolute;
+  align-self: flex-end;
+  cursor: pointer;
 }

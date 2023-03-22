@@ -10,6 +10,8 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import HomePage from "./pages/HomePage/HomePage";
 import IndexCheatPage from "./pages/IndexCheatPage/IndexCheatPage";
 import ShowCheatPage from "./pages/ShowCheatPage/ShowCheatPage";
+import IndexCategoryPage from "./pages/IndexCategoryPage/IndexCategoryPage";
+import ShowCategoryPage from "./pages/ShowCategoryPage/ShowCategoryPage";
 import { FilteredCheatsContext, SetCurrentUser } from "./utils/Context";
 
 
@@ -40,7 +42,9 @@ function App() {
           <Route path="/cheats" element={<IndexCheatPage />} />
           <Route path="/profile" element={<Dashboard />} />
           <Route path="*" element={<h1>404</h1>} />
-          <Route path="/cheat/:id" element={<ShowCheatPage />} />*
+          <Route path="/cheat/:id" element={<ShowCheatPage />} />
+          <Route path="/categories" element={<IndexCategoryPage />} />
+          <Route path="/category/:id/" element={<ShowCategoryPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/reset" element={<ResetPassword />} />

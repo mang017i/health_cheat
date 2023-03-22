@@ -8,7 +8,6 @@ import CheatService from "../../services/Cheat";
 import moment from "moment";
 import { FilteredCheatsContext } from "../../utils/Context";
 
-
 const SearchInCheatName = (props) => {
   const contextValue = useContext(FilteredCheatsContext);
 
@@ -23,22 +22,20 @@ const SearchInCheatName = (props) => {
     getAllCheatNames();
   }, [contextValue.filteredCheats]);
 
-
   async function getAllCheatNames() {
     const response = await CheatService.findAll();
     const cheatsResult = response.data.data;
     let cheats = [];
     cheatsResult.forEach((cheat) => {
       cheat.createdAt = moment(cheat.createdAt).format(" HH:mm DD/MM/YYYY");
-      cheat.title =
-          cheat.title.charAt(0).toUpperCase() + cheat.title.slice(1);
+      cheat.title = cheat.title.charAt(0).toUpperCase() + cheat.title.slice(1);
       cheats.push(cheat);
     });
     setCheats(cheats);
   }
 
   // commence à filtrer les cheatNames dès que l'utilisateur tape deux lettres
-  function handleChange (event) {
+  function handleChange(event) {
     let userInput = event.target.value;
 
     if (userInput.length < prevInputLength) {
@@ -62,7 +59,6 @@ const SearchInCheatName = (props) => {
       if (filteredCheats.length === 0) {
         setFoundCheat([]);
         setSearchError("Aucun résultat");
-
       } else {
         // met à jour le state avec les cheats filtrées
         setFoundCheat(filteredCheats);
@@ -72,31 +68,25 @@ const SearchInCheatName = (props) => {
       setFoundCheat([]);
     }
     setPrevInputLength(userInput.length);
+  }
 
-  };
-
-   const handleClick = () => {
-
+  const handleClick = () => {
     if (foundCheat.length > 0) {
       let filter = foundCheat;
       if (window.location.pathname !== "/cheats") {
         navigate("/cheats");
         contextValue.updateFilteredCheats(filter);
-
       } else {
         contextValue.updateFilteredCheats(filter);
-
       }
     }
-  }
-
+  };
 
   async function handleKeyPress(event) {
     handleChange(event);
     if (event.key === "Enter") {
       handleClick();
     }
-
   }
 
   function handleResetSearch() {
@@ -105,14 +95,11 @@ const SearchInCheatName = (props) => {
     contextValue.updateFilteredCheats([]);
     setPrevInputLength(0);
     setCheats([]);
-    let inputClass = document.querySelector(".css-10botns-MuiInputBase-input-MuiFilledInput-input");
+    let inputClass = document.querySelector(
+      ".css-10botns-MuiInputBase-input-MuiFilledInput-input"
+    );
     inputClass.value = "";
   }
-
-
-
-
-
 
   return (
     <>

@@ -2,7 +2,7 @@
 
   border: 1px solid #ccc;
   border-radius: 4px;
-  padding: 5px;
+  padding: 10px 10px 10px 40px;
   font-size: 16px;
   background-color: rgba(0, 0, 0, 0.5);
   color : #fff;
@@ -15,8 +15,6 @@
 .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
   border-color: #fff;
 }
-
-
 
 /* // enleve tous les styles quand on clique sur le champ */
 .css-1d3z3hw-MuiOutlinedInput-notchedOutline:hover {
@@ -34,12 +32,12 @@
         align-items: center !important;
         height: 45px  !important;
         position: absolute;
-        top: -22px !important;
+        top: -17px !important;
         left: 12px !important;
 }
 
 .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root:focus-visible, .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root:focus, .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root:hover, .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
-  top: -15px !important;
+  top: -12px !important;
   left: -12px !important;
 }
 
@@ -62,6 +60,7 @@
 }
 .inputCategory{
   width: 20vw;
+  position: relative;
 }
 
 .MuiInputBase-root.MuiOutlinedInput-root.MuiInputBase-colorPrimary.MuiInputBase-formControl.css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root{

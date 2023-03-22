@@ -16,7 +16,7 @@ module.exports = (sequelize, Sequelize) => {
         allowNull: false,
       },
       step: {
-        type: Sequelize.TEXT("long"),
+        type: Sequelize.JSON,
         allowNull: true,
       },
       recommendation: {

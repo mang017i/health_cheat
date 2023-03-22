@@ -8,7 +8,7 @@ body {
   background-image: url("../../back/public/images/back.jpg");
   color: white;
   background-size: cover;
-  background-position: 55px;
+  /* background-position: 55px; */
 }
 
 code {

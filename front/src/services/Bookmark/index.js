@@ -16,15 +16,9 @@ class BookmarkService {
   }
 
   findBookmarkByUserAndCheat(userId, cheatId) {
-    try {
-      const response = axios.get(API_URL + '/user/cheat', {
-        params: { user_id: userId,
-                  cheat_id: cheatId },
-      });
-      return response.data;
-    } catch (error) {
-      throw new Error(error.response.data.message);
-    }
+    return axios.get(API_URL + "/user/cheat", {
+      params: { user_id: userId, cheat_id: cheatId },
+    });
   }
 
   isCheatBookmarkedByUser() {

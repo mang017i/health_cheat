@@ -17,15 +17,16 @@ module.exports = (sequelize, Sequelize) => {
       },
       step: {
         type: Sequelize.JSON,
-        allowNull: true,
+        allowNull: false,
       },
       recommendation: {
         type: Sequelize.TEXT("long"),
-        allowNull: true,
+        allowNull: false,
       },
       image: {
         type: Sequelize.STRING,
-        allowNull: true,
+        allowNull: false,
+        defaultValue: "../../public/images/category/cardiologie.png",
       },
       creator: {
         type: Sequelize.STRING,

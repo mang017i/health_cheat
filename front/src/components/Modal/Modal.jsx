@@ -16,6 +16,12 @@ import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import { TextareaAutosize } from "@mui/material";
+import CheatService from "../../services/Cheat/index";
+import UserService from "../../services/User/index";
+import EquipmentService from "../../services/Equipment/index";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import CategoryService from "../../services/Category/index";
 
 const style = {
   position: "absolute",
@@ -34,15 +40,36 @@ export default function TransitionsModal() {
   const [materialName, setMaterialName] = useState([]);
   const [stringifyStep, setStringifyStep] = useState({});
   const [selectedMaterials, setSelectedMaterials] = useState([]);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [recommendation, setRecommendation] = useState("");
+  const [image, setImage] = useState("");
+  const [creator, setCreator] = useState("");
+  const [cheatIds, setCheatIds] = useState("");
+  const [categories, setCategories] = useState([]);
+  const [inputValues, setInputValues] = useState([""]);
+  const [category, setCategory] = useState("");
+  const [open, setOpen] = React.useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const { setUser } = useContext(SetCurrentUser);
 
   useEffect(() => {
     getAllMaterials();
+    getAllCategories();
+    getCurrentUser();
+    CheatService.findAll().then((response) => {
+      console.log(response.data.data.length, "response.data.data.length");
+      let cheatId = response.data.data.length + 1;
+      console.log(cheatId, "cheatId");
+      return setCheatIds(cheatId);
+    });
   }, []);
-  const { setUser } = useContext(SetCurrentUser);
-  const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const [inputValues, setInputValues] = useState([""]);
+  const handleFileInputChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+  };
 
   const handleInputChange = (index, value) => {
     const newValues = [...inputValues];
@@ -59,23 +86,113 @@ export default function TransitionsModal() {
       const key = `step${i + 1}`;
       stringifyStep[key] = inputValues[i];
     }
-    console.log("Input values:", stringifyStep);
+    console.log(stringifyStep, "stringifyStep");
   };
 
   const isLastInputValid = inputValues[inputValues.length - 1].length >= 5;
 
   const handleChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setMaterialName(typeof value === "string" ? value.split(",") : value);
+    setMaterialName(event.target.value);
   };
+  async function getAllCategories() {
+    let categories = await CategoryService.findAll().then((response) => {
+      return response.data.data;
+    });
+    setCategories(categories);
+  }
+  console.log(categories, "categories");
   async function getAllMaterials() {
     let materials = await MaterialService.findAll().then((response) => {
       return response.data.data;
     });
     setMaterials(materials);
   }
+  const handleTitle = (event) => {
+    const { value } = event.target;
+    setTitle(value);
+  };
+  const handleDescription = (event) => {
+    const { value } = event.target;
+    setDescription(value);
+  };
+  const handleRecommendation = (event) => {
+    const { value } = event.target;
+    setRecommendation(value);
+  };
+  const handleImage = (event) => {
+    const { value } = event.target;
+    setImage(value);
+  };
+  const handleCategory = (event) => {
+    setCategory(event.target.value);
+    console.log(event.target.value, "event.target");
+  };
+  async function getCurrentUser() {
+    await UserService.getUserById(sessionStorage.getItem("user"))
+      .then((response) => {
+        let createBy = response.data.data.username;
+        return setCreator(createBy);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  async function handleSubmit(e) {
+    let materialIds = [];
+    console.log(selectedMaterials, "selectedMatefdsqgdfgdfgtfdghdrfsygrials");
+    await MaterialService.findAll().then((response) => {
+      materialIds = selectedMaterials.map(
+        (name) =>
+          response.data.data.filter((material) => material.name === name)[0]?.id
+      );
+      console.log(
+        materialIds,
+        "response.data.datsssssssssssssssssssssssssssssa"
+      );
+      return materialIds;
+    });
+
+    console.log(creator, "creator");
+    console.log(setUser, "userrrrrrrrrrrrrrrrrrrrrrrrrrr");
+    const datum = {
+      title,
+      description,
+      category_id: category,
+      step: stringifyStep,
+      recommendation,
+      creator,
+    };
+    console.log(datum);
+    await CheatService.create(datum).then((response) => {
+      console.log(response.data.data, "response.data.data");
+    });
+
+    for (let i = 0; i < materialIds.length; i++) {
+      console.log(cheatIds, "cheatIds");
+      const data = {
+        material_id: materialIds[i],
+        cheat_id: cheatIds,
+      };
+      await EquipmentService.addCheatToMaterial(data).then((response) => {
+        console.log(response.data.data, "response.data.data");
+      });
+    }
+
+    const formData = new FormData();
+    formData.append("file", selectedFile);
+    formData.append("cheat_id", cheatIds);
+
+    CheatService.uploadFile(formData)
+      .then((response) => {
+        console.log("Fichier téléchargé avec succès :", response.data);
+      })
+      .catch((error) => {
+        console.error("Erreur lors du téléchargement du fichier :", error);
+      });
+    window.location.reload();
+  }
+
   return (
     <div>
       <Button onClick={handleOpen}>Je crée ma fiche</Button>
@@ -104,17 +221,42 @@ export default function TransitionsModal() {
               <div className="inputBasics">
                 <TextField
                   className="input"
+                  onChange={handleTitle}
                   id="filled-basic"
                   label="Titre"
                   variant="filled"
                 />
-                <Button variant="contained">
+                <Button variant="contained" component="label">
                   Télécharge une photo pour ta fiche
+                  <input
+                    type="file"
+                    style={{ display: "none" }}
+                    onChange={handleFileInputChange}
+                  />
                 </Button>
+                <FormControl fullWidth>
+                  <InputLabel id="demo-simple-select-label">
+                    Catégory
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={category}
+                    onChange={handleCategory}
+                    label="Category"
+                  >
+                    {categories.map((cat) => (
+                      <MenuItem key={cat.id} value={cat.id}>
+                        {cat.title}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
               </div>
               <div className="textarea">
                 <TextField
                   id="outlined-multiline-static"
+                  onChange={handleDescription}
                   label="Description"
                   multiline
                   rows={3}
@@ -123,6 +265,7 @@ export default function TransitionsModal() {
                 />
                 <TextField
                   id="outlined-multiline-static"
+                  onChange={handleRecommendation}
                   label="Recommandation"
                   multiline
                   rows={3}
@@ -145,7 +288,6 @@ export default function TransitionsModal() {
                 <Button onClick={handleAddInput} disabled={!isLastInputValid}>
                   Add input
                 </Button>
-                <Button onClick={handleSaveValues}>Save values</Button>
                 <p className="matos">Sélectionne du matériel :</p>
                 <Select
                   labelId="materials-multiselect-label"
@@ -153,8 +295,10 @@ export default function TransitionsModal() {
                   multiple
                   value={materialName}
                   onChange={handleChange}
-                  renderValue={(selected) => selected.join(", ")}
-                  // variant="filled"
+                  renderValue={(selected) => {
+                    setSelectedMaterials(selected);
+                    return selected.join(", ");
+                  }}
                 >
                   {materials.map((material) => (
                     <MenuItem key={material.id} value={material.name}>
@@ -162,13 +306,20 @@ export default function TransitionsModal() {
                         checked={materialName.indexOf(material.name) > -1}
                       />
                       <ListItemText primary={material.name} />
-                      <img src={material.image} alt="" />
                     </MenuItem>
                   ))}
                 </Select>
               </div>
               <div className="submitBtn">
-                <Button variant="contained">Création</Button>
+                <Button
+                  onClick={() => {
+                    handleSaveValues();
+                    handleSubmit();
+                  }}
+                  variant="contained"
+                >
+                  Création
+                </Button>
               </div>
             </div>
           </Box>

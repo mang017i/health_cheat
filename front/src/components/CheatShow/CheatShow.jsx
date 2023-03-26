@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import "./CheatShow.css";
 import CheatService from "../../services/Cheat";
 import CategoryService from "../../services/Category";
+import EquipmentService from "../../services/Equipment";
 import BookmarkService from "../../services/Bookmark";
+import MaterialService from "../../services/Material";
 import { useLocation } from "react-router-dom";
 import moment from "moment";
 
@@ -49,6 +51,8 @@ export default function CheatShow() {
   const [cheat, setCheat] = useState([]);
   const [category, setCategory] = useState([]);
   const [bookmarked, setBookmarked] = useState(false);
+  const [steps, setSteps] = useState([]);
+  const [materialsCheat, setMaterialsCheat] = useState([]);
 
   const data = {
     user_id: parseInt(sessionStorage.getItem("user")),
@@ -65,6 +69,17 @@ export default function CheatShow() {
         console.log(error);
       }
     }
+    // async function getMaterialByCheat() {
+    //   try {
+    //     const material = await EquipmentService.getAllEquipmentsForCheat();
+    //     console.log(material, "materialddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd");
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // }
+
+
+
 
     async function getOneCheat() {
       const currentUrl = location.pathname.split("/")[2];
@@ -77,19 +92,28 @@ export default function CheatShow() {
           ),
         };
         setCheat(result);
-        console.log(userId, "userId");
+        setSteps(Object.entries(result.step));
         let cheatId = parseInt(location.pathname.split("/")[2]);
-        console.log(cheatId, "cheatId");
+        let equipment = await EquipmentService.getAllEquipmentsForCheat(cheatId);
+        console.log(equipment, "equipment");
+        let materials = await MaterialService.findAll(cheatId);
+        console.log(materials, "materials");
+        // setMaterialsCheat(materials.data.data.filter(item => {
+        //   return equipment.data.data.some(firstItem => firstItem.material_id === item.id)
+        // }))
+        // setMaterialsCheat(equipmentCheat);
+        // console.log(equipmentCheat, "equipmentCheat");
+        console.log(materialsCheat, "materialsfffffffffffffffffffffffffffffffffffffff");
         let res = await BookmarkService.findBookmarkByUserAndCheat(
           userId,
           cheatId
         );
-        console.log(res, "res");
         if (res.data.code === 200) {
           setBookmarked(true);
         }
 
         getOneCategory(cheat.data.data.category_id);
+        // getMaterialByCheat(cheatId);
       } catch (error) {
         console.log(error);
       }
@@ -149,14 +173,19 @@ export default function CheatShow() {
             </div>
             <div className="cheatStep">
               <h3>étapes</h3>
-              <p>{cheat.step}</p>
+              {steps.map((key) => (
+                <p key={key[0]}>{key[1]}</p>
+              ))}
             </div>
           </div>
         </div>
         <div className="signature">
           <div className="cheatMaterials">
             <h3>Matériels Utilisés</h3>
-            <p>{cheat.material}</p>
+            {materialsCheat.map((material) => (
+              <p key={material.id}>{material.title}</p>
+            ))}
+            {/* <p>{cheat.material}</p> */}
           </div>
           <div className="creator">
             <p className="create">Signé par {cheat.creator}</p>

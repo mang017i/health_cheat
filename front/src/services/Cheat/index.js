@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API_URL = "http://localhost:8080/api/cheats";
-
+const API_PICTURE = "http://localhost:8080/api/pictures";
 
 class CheatService {
   create(data) {
@@ -22,6 +22,11 @@ class CheatService {
 
   delete(id) {
     return axios.delete(API_URL + `/remove/${id}`);
+  }
+  uploadFile(formData) {
+    return axios.post(API_PICTURE + "/upload", formData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
   }
 }
 

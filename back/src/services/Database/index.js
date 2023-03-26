@@ -273,8 +273,9 @@ class DatabaseService {
           step1: "1. Prendre un verre d'eau",
           step2: "2. Prendre un verre d'eau",
           step3: "3. Prendre un verre d'eau",
+          step4: "4. Prendre un verre d'eau",
         },
-        recommendation: "2. Prendre un verre d'eau",
+        recommendation: "Prendre un verre d'eau",
         image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQl8HaQ_201vTKuSsfr3-6lRkZsblE9GJmpXg&usqp=CAU",
         category_id: 1,
@@ -288,7 +289,7 @@ class DatabaseService {
           step2: "2. Prendre un verre d'eau",
           step3: "3. Prendre un verre d'eau",
         },
-        recommendation: "2. Prendre un verre d'eau",
+        recommendation: "Prendre un verre d'eau",
         image:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJoI8LQQGyv1LGAYiVwC39N-gSuTEaRSnyQVbm7Nqj6WBFt4LF8AIzZlKbfpId_yz3Ol4&usqp=CAU",
         category_id: 2,

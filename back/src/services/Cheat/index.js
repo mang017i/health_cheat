@@ -1,6 +1,9 @@
 const Cheat = require("../../models/index")["Cheat"];
 const Category = require("../../models/index")["Category"];
 const dotenv = require("dotenv");
+const Pic = require("../../models/index")["Picture"];
+const Picture = require("../../services/Picture");
+
 // const qs = require("qs");
 // const axios = require("axios");
 // const moment = require("moment");
@@ -29,12 +32,17 @@ class CheatService {
   async findAll() {
     return await this.cheat
       .findAll({
-        // include: [
+        include: [
           // {
           //   model: Category,
           //   as: "categories",
           // },
-        // ],
+          {
+            model: Pic,
+            as: "picture"
+          }
+        ],
+
       })
       .then((cheats) => {
         if (cheats.length !== 0) {
@@ -55,12 +63,16 @@ class CheatService {
         where: {
           id: id,
         },
-        // include: [
+        include: [
         //   {
         //     model: Category,
         //     as: "categories",
         //   },
-        // ],
+        {
+          model: Pic,
+          as: "picture"
+        }
+        ],
       })
       .then((cheat) => {
         if (cheat) {

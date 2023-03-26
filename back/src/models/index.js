@@ -73,6 +73,8 @@ db.Category = require("./categories.model")(sequelize, Sequelize);
 db.Material = require("./materials.model")(sequelize, Sequelize);
 db.Bookmark = require("./bookmark.model")(sequelize, Sequelize);
 db.Equipment = require("./equipment.model")(sequelize, Sequelize);
+db.Picture = require("./picture.model")(sequelize, Sequelize);
+
 
 //= ==============================
 // Define all Relationships below
@@ -119,8 +121,17 @@ db.User.belongsToMany(db.Cheat, {
 // cheat has many User
 db.Cheat.belongsToMany(db.User, {
   through: "Bookmark",
-  as: "users",
+  as: "cheats",
   foreignKey: "cheat_id",
+});
+// Cheat has one Picture
+db.Cheat.hasOne(db.Picture, {
+  foreignKey: "cheat_id",
+  as: "picture",
+});
+db.Picture.belongsTo(db.Cheat, {
+  foreignKey: "cheat_id",
+  as: "cheat",
 });
 
 

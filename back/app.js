@@ -79,5 +79,6 @@ require("./src/routes/Bookmark")(app);
 require("./src/routes/Category")(app);
 require("./src/routes/Material")(app);
 require("./src/routes/Equipment")(app);
+require("./src/routes/Picture")(app);
 
 module.exports = app;

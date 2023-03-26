@@ -15,25 +15,25 @@ class DatabaseService {
     this.categoryService = new CategoryService();
     // this.bookmarkService = new BookmarkService();
   }
-    /**
+  /**
    * @description Create mandatory roles
    */
-    async createMandatoryRoles() {
-      const roles = [
-        {
-          name: "user",
-        },
-        {
-          name: "admin",
-        },
-      ];
+  async createMandatoryRoles() {
+    const roles = [
+      {
+        name: "user",
+      },
+      {
+        name: "admin",
+      },
+    ];
 
-      for (let i = 0; i < roles.length; i++) {
-        await this.roleService.create(roles[i]);
-      }
-
-      return true;
+    for (let i = 0; i < roles.length; i++) {
+      await this.roleService.create(roles[i]);
     }
+
+    return true;
+  }
 
   /**
    * @description Create mandatory users
@@ -100,10 +100,10 @@ class DatabaseService {
 
     return true;
   }
-   /**
+  /**
    * @description Create mandatory categories
    */
-   async createMandatoryCategories() {
+  async createMandatoryCategories() {
     const categories = [
       {
         title: "Cardiologie",
@@ -159,7 +159,7 @@ class DatabaseService {
         title: "Urologie",
         icon: "urology",
         image: "../../public/images/category/urologie.jpg",
-      }
+      },
     ];
 
     for (let i = 0; i < categories.length; i++) {
@@ -260,25 +260,37 @@ class DatabaseService {
     return true;
   }
 
-   /**
+  /**
    * @description Create mandatory cheats
    */
-   async createMandatoryCheats() {
+  async createMandatoryCheats() {
     const cheats = [
       {
         title: "urinaire",
-        description: "La cystite est une infection urinaire localisée au niveau de la vessie. Le plus souvent, elle est due à la bactérie Escherichia Coli.",
-        step: "1. Prendre un verre d'eau",
+        description:
+          "La cystite est une infection urinaire localisée au niveau de la vessie. Le plus souvent, elle est due à la bactérie Escherichia Coli.",
+        step: {
+          step1: "1. Prendre un verre d'eau",
+          step2: "2. Prendre un verre d'eau",
+          step3: "3. Prendre un verre d'eau",
+        },
         recommendation: "2. Prendre un verre d'eau",
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQl8HaQ_201vTKuSsfr3-6lRkZsblE9GJmpXg&usqp=CAU",
+        image:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQl8HaQ_201vTKuSsfr3-6lRkZsblE9GJmpXg&usqp=CAU",
         category_id: 1,
       },
       {
         title: "pulmonaire",
-        description: "On appelle « Pulmonaire » diverses plantes et lichens dont les feuilles, la racine ou le thalle ont une forme évoquant plus ou moins celle d'un poumon.",
-        step: "1. Prendre un verre d'eau",
+        description:
+          "On appelle « Pulmonaire » diverses plantes et lichens dont les feuilles, la racine ou le thalle ont une forme évoquant plus ou moins celle d'un poumon.",
+        step: {
+          step1: "1. Prendre un verre d'eau",
+          step2: "2. Prendre un verre d'eau",
+          step3: "3. Prendre un verre d'eau",
+        },
         recommendation: "2. Prendre un verre d'eau",
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJoI8LQQGyv1LGAYiVwC39N-gSuTEaRSnyQVbm7Nqj6WBFt4LF8AIzZlKbfpId_yz3Ol4&usqp=CAU",
+        image:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJoI8LQQGyv1LGAYiVwC39N-gSuTEaRSnyQVbm7Nqj6WBFt4LF8AIzZlKbfpId_yz3Ol4&usqp=CAU",
         category_id: 2,
       },
     ];
@@ -291,7 +303,11 @@ class DatabaseService {
       await this.cheatService.create({
         title: faker.science.unit().name,
         description: faker.hacker.phrase(),
-        step: faker.hacker.phrase(),
+        step: {
+          step1: faker.hacker.phrase(),
+          step2: faker.hacker.phrase(),
+          step3: faker.hacker.phrase(),
+        },
         recommendation: faker.hacker.phrase(),
         image: faker.image.imageUrl(),
         category_id: 1,
@@ -326,7 +342,6 @@ class DatabaseService {
 
   //   return true;
   // }
-
 }
 
 module.exports = DatabaseService;

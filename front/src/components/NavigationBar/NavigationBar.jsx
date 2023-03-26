@@ -43,7 +43,7 @@ const NavigationBar = () => {
   const handleLogout = () => {
     setUser(null);
     setOpen(false);
-    localStorage.removeItem("user");
+    sessionStorage.removeItem("user");
     handleNavigation("/");
   };
   const handleOpenUserMenu = (event) => {
@@ -56,7 +56,7 @@ const NavigationBar = () => {
 
   async function getCurrentUser() {
     let users = await UserService.getUserById(
-      localStorage.getItem("user")
+      sessionStorage.getItem("user")
     ).then((response) => {
       let currentImage = parseInt(response.data.data.avatar.match(/\d+/)[0]);
       setCurrentAvatar(currentImage);
@@ -90,7 +90,7 @@ const NavigationBar = () => {
           <SearchInCheatName />
         </Box>
 
-        {!/^\d+$/.test(localStorage.getItem("user")) ? (
+        {!/^\d+$/.test(sessionStorage.getItem("user")) ? (
           <div>
 
             <p onClick={() => handleNavigation("/register")}>Register</p>

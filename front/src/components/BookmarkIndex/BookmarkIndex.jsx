@@ -40,12 +40,11 @@ export default function BookmarkIndex(props) {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [bookmarksArray, setBookmarksArray] = useState([]);
-  const filterBookmarkCheats = bookmarksArray
-  console.log(filterBookmarkCheats, "bookmarksArrayyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
+
   useEffect(() => {
     getBookmarkForCurrentUser(props.userId);
     getAllCategories();
-    getAllCheats();
+    return;
   }, [props.userId]);
 
   const handleNavigation = (path) => {
@@ -70,6 +69,7 @@ export default function BookmarkIndex(props) {
       return categories.find((cat) => cat.title === category);
     });
     setSelectedCategories(userSelectedCategories);
+    console.log(selectedCategories, "selectedCategories");
     setOpen(false);
     localStorage.setItem("search", open);
     setSearch(true);
@@ -85,29 +85,23 @@ export default function BookmarkIndex(props) {
 
   async function getAllCategories() {
     let categories = await CategoryService.findAll().then((response) => {
+      console.log(response.data.data, "responsefffffffffffffffffffffff");
       return response.data.data;
     });
     setCategories(categories);
   }
   async function getBookmarkForCurrentUser(userId) {
-    userId = parseInt(localStorage.getItem("user"));
+    userId = parseInt(sessionStorage.getItem("user"));
 
     const response = await BookmarkService.getAllBookmarksForUser(userId);
     const bookmarks = response.data.data;
+    localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
     setBookmarksArray(bookmarks.map((bookmark) => bookmark.cheat_id));
-  }
-  async function getAllCheats() {
-    console.log(bookmarksArray, "bookmarksAzzzzzzzzzzzzzzzzzzzzzzzrray");
-    await CheatService.findAll().then((response) => {
-      console.log(response.data.data, "response");
-      let result = response.data.data.filter((item) => bookmarksArray.includes(item.id));
-      // .map((cheat) => {
-      //   cheat.createdAt = moment(cheat.createdAt).format(" HH:mm DD/MM/YYYY");
-      //   cheat.title =
-      //     cheat.title.charAt(0).toUpperCase() + cheat.title.slice(1);
-      //   return cheat;
-      // });
-      console.log(result, "result");
+    CheatService.findAll().then((response) => {
+      const booki = JSON.parse(localStorage.getItem("bookmarks")).map(
+        (item) => item.cheat_id
+      );
+      let result = response.data.data.filter((item) => booki.includes(item.id));
       setCheats(result);
     });
   }
@@ -120,161 +114,49 @@ export default function BookmarkIndex(props) {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
-  console.log(bookmarksArray, "ggggggggggggggggggggg");
   return (
     <div className="cheats_container">
-      <FormControl sx={{ m: 1, minWidth: 180 }}>
-        <div className="inputCategory">
-          <InputLabel
-            style={{
-              color: "white",
-              display: "flex",
-              justifyContent: "center",
-            }}
-            id="categories-multiselect-label"
-          >
-            Catégories
-          </InputLabel>
-          <Select
-            labelId="categories-multiselect-label"
-            id="categories-multiselect"
-            multiple
-            value={categoryName}
-            onChange={handleChange}
-            renderValue={(selected) => selected.join(", ")}
-            MenuProps={MenuProps}
-          >
-            {categories.map((category) => (
-              <MenuItem key={category.id} value={category.title}>
-                <Checkbox checked={categoryName.indexOf(category.title) > -1} />
-                <ListItemText primary={category.title} />
-              </MenuItem>
-            ))}
-          </Select>
-          <Button
-            onClick={handleReset}
-            type="submit"
-            variant="contained"
-            color="primary"
-            disabled={categoryName.length === 0}
-            className="resetCategoryBtn"
-          >
-            <span className="material-symbols-outlined">close</span>{" "}
-          </Button>
-          <Button
-            onClick={handleSubmit}
-            type="submit"
-            variant="contained"
-            color="primary"
-            className="searchCategoryBtn"
-            disabled={categoryName.length === 0}
-          >
-            <span className="material-symbols-outlined">search</span>
-          </Button>
-        </div>
-      </FormControl>
-      {localStorage.getItem("user") !== null ? (
+      {sessionStorage.getItem("user") !== null ? (
         <div className="createCheat">
           <Modal />
         </div>
       ) : null}
-      {search ? (
+      <section className="cheatsIndex">
+        {contextValue.filteredCheats}
         <div>
-          {selectedCategories &&
-            selectedCategories.map((category) => {
-              return (
-                <div key={category.id}>
-                  <div>{category.title}</div>
-                  {category.cheats.length === 0 ? (
-                    <div className="noCheat">
-                      Aucune fiche trouvée dans la catégorie {category.title}
-                    </div>
-                  ) : (
-                    category.cheats
-                      .slice(
-                        page * rowsPerPage,
-                        page * rowsPerPage + rowsPerPage
-                      )
-                      .map((cheatsheet) => {
-                        return (
-                          <div
-                            key={cheatsheet.id}
-                            className={`cheat_cardIndex ${cheatsheet.id}`}
-                            onClick={() =>
-                              handleNavigation(`/cheat/${cheatsheet.id}`)
-                            }
-                          >
-                            <div className="blurIndex"></div>
-                            <img src={cheatsheet.image} alt="green iguana" />
-                            <div className="cheat_cardDescription">
-                              <h2 className="cheatTitle">{cheatsheet.title}</h2>
-                              <p className="cheatDesc">
-                                {cheatsheet.description}
-                              </p>
-                              <div className="init_cheat">
-                                <p className="cheat_creator">
-                                  {cheatsheet.creator}
-                                </p>
-                                <p className="cheat_created">
-                                  {cheatsheet.createdAt}
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                        );
-                      })
-                  )}
-                  <TablePagination
-                    rowsPerPageOptions={[5, 10, 25]}
-                    component="div"
-                    count={category.cheats.length}
-                    rowsPerPage={rowsPerPage}
-                    page={page}
-                    onPageChange={handleChangePage}
-                    onRowsPerPageChange={handleChangeRowsPerPage}
-                  />
-                </div>
-              );
-            })}
-        </div>
-      ) : (
-        <section className="cheatsIndex">
-          {contextValue.filteredCheats}
           <div>
-            <div>
-              {cheats
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((cheat) => (
-                  <div
-                    key={cheat.id}
-                    className={`cheat_cardIndex ${cheat.id}`}
-                    onClick={() => handleNavigation(`/cheat/${cheat.id}`)}
-                  >
-                    <div className="blurIndex"></div>
-                    <img src={cheat.image} alt="green iguana" />
-                    <div className="cheat_cardDescription">
-                      <h2 className="cheatTitle">{cheat.title}</h2>
-                      <p className="cheatDesc">{cheat.description}</p>
-                      <div className="init_cheat">
-                        <p className="cheat_creator">{cheat.creator}</p>
-                        <p className="cheat_created">{cheat.createdAt}</p>
-                      </div>
+            {cheats
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map((cheat) => (
+                <div
+                  key={cheat.id}
+                  className={`cheat_cardIndex ${cheat.id}`}
+                  onClick={() => handleNavigation(`/cheat/${cheat.id}`)}
+                >
+                  <div className="blurIndex"></div>
+                  <img src={cheat.image} alt="green iguana" />
+                  <div className="cheat_cardDescription">
+                    <h2 className="cheatTitle">{cheat.title}</h2>
+                    <p className="cheatDesc">{cheat.description}</p>
+                    <div className="init_cheat">
+                      <p className="cheat_creator">{cheat.creator}</p>
+                      <p className="cheat_created">{cheat.createdAt}</p>
                     </div>
                   </div>
-                ))}
-            </div>
-            <TablePagination
-              rowsPerPageOptions={[5, 10, 25]}
-              component="div"
-              count={cheats.length}
-              rowsPerPage={rowsPerPage}
-              page={page}
-              onPageChange={handleChangePage}
-              onRowsPerPageChange={handleChangeRowsPerPage}
-            />
+                </div>
+              ))}
           </div>
-        </section>
-      )}
+          <TablePagination
+            rowsPerPageOptions={[5, 10, 25]}
+            component="div"
+            count={cheats.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+          />
+        </div>
+      </section>
     </div>
   );
 }

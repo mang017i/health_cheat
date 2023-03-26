@@ -45,7 +45,7 @@ export default function HomeAside() {
           </div>
         ))}
       </div>
-      {localStorage.getItem("user") !== null ? (
+      {sessionStorage.getItem("user") !== null ? (
         <div className="createCheat">
           <Modal />
         </div>

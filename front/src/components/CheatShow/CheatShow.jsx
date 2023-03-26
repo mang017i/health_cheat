@@ -51,10 +51,10 @@ export default function CheatShow() {
   const [bookmarked, setBookmarked] = useState(false);
 
   const data = {
-    user_id: parseInt(localStorage.getItem("user")),
+    user_id: parseInt(sessionStorage.getItem("user")),
     cheat_id: cheat.id,
   };
-  const userId = parseInt(localStorage.getItem("user"));
+  const userId = parseInt(sessionStorage.getItem("user"));
   const cheatId = cheat.id;
   useEffect(() => {
     async function getOneCategory(categoryId) {
@@ -77,6 +77,18 @@ export default function CheatShow() {
           ),
         };
         setCheat(result);
+        console.log(userId, "userId");
+        let cheatId = parseInt(location.pathname.split("/")[2]);
+        console.log(cheatId, "cheatId");
+        let res = await BookmarkService.findBookmarkByUserAndCheat(
+          userId,
+          cheatId
+        );
+        console.log(res, "res");
+        if (res.data.code === 200) {
+          setBookmarked(true);
+        }
+
         getOneCategory(cheat.data.data.category_id);
       } catch (error) {
         console.log(error);

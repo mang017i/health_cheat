@@ -50,7 +50,7 @@ export default function Login() {
     AuthService.login({ email, password })
       .then((response) => {
         setUser(response.data.accessToken[1]);
-        localStorage.setItem("user", response.data.accessToken[1]);
+        sessionStorage.setItem("user", response.data.accessToken[1]);
         handleNavigation("/");
       })
       .catch((error) => {

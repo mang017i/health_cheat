@@ -159,7 +159,7 @@ export default function CheatsIndex() {
           </Button>
         </div>
       </FormControl>
-      {localStorage.getItem("user") !== null ? (
+      {sessionStorage.getItem("user") !== null ? (
         <div className="createCheat">
           <Modal />
         </div>

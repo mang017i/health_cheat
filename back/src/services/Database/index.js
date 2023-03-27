@@ -173,83 +173,83 @@ class DatabaseService {
     const materials = [
       {
         name: "Valve anti-retour",
-        image: "../../public/images/materials/back-check-valve.png",
+        image: "var",
       },
       {
         name: "Bandage",
-        image: "../../public/images/materials/bandage-crepe-coton.png",
+        image: "bandage",
       },
       {
         name: "Casaque",
-        image: "../../public/images/materials/casaque.png",
+        image: "casaque",
       },
       {
         name: "Cathéter",
-        image: "../../public/images/materials/catheter.png",
+        image: "catheter",
       },
       {
         name: "Charlotte",
-        image: "../../public/images/materials/charlotte.png",
+        image: "charlotte",
       },
       {
         name: "Ciseaux",
-        image: "../../public/images/materials/ciseau.png",
+        image: "ciseaux",
       },
       {
         name: "Compresse",
-        image: "../../public/images/materials/compresse.png",
+        image: "compresse",
       },
       {
         name: "Gants",
-        image: "../../public/images/materials/gants.png",
+        image: "gants",
       },
       {
         name: "Glucomètre",
-        image: "../../public/images/materials/glucometre.png",
+        image: "gluco",
       },
       {
         name: "Masque",
-        image: "../../public/images/materials/masque-ffp2.png",
+        image: "masque",
       },
       {
         name: "NaCl 0,9%",
-        image: "../../public/images/materials/nacl.png",
+        image: "nacl",
       },
       {
         name: "Oxymètre",
-        image: "../../public/images/materials/Oxymetre.png",
+        image: "oxy",
       },
       {
         name: "Pansements",
-        image: "../../public/images/materials/pansements.png",
+        image: "pansements",
       },
       {
         name: "Seringue",
-        image: "../../public/images/materials/seringue.png",
+        image: "seringue",
       },
       {
         name: "Sonde nasale",
-        image: "../../public/images/materials/sonde_nasale.png",
+        image: "nasale",
       },
       {
         name: "Sonde urinaire",
-        image: "../../public/images/materials/sonde_urinaire.png",
+        image: "urinaire",
       },
       {
         name: "Stéthoscope",
-        image: "../../public/images/materials/stethoscope.png",
+        image: "stethoscope",
       },
       {
         name: "Tegaderm",
-        image: "../../public/images/materials/tegaderm.png",
+        image: "tegaderm",
       },
       {
         name: "Tensiomètre",
-        image: "../../public/images/materials/tensiometre.png",
+        image: "tensio",
       },
       {
         name: "Thermomètre",
-        image: "../../public/images/materials/thermometre.png",
+        image: "thermo",
       },
     ];
 

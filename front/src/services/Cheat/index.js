@@ -28,6 +28,9 @@ class CheatService {
       headers: { "Content-Type": "multipart/form-data" },
     });
   }
+  getPictureByCheatId(id) {
+    return axios.get(API_PICTURE + `/cheat/${id}`);
+  }
 }
 
 const cheatService = new CheatService();

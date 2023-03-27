@@ -92,9 +92,22 @@ const NavigationBar = () => {
 
         {!/^\d+$/.test(sessionStorage.getItem("user")) ? (
           <div>
-
-            <p onClick={() => handleNavigation("/register")}>Register</p>
-            <p onClick={() => handleNavigation("/login")}>Login</p>
+            <button
+              onClick={() => {
+                handleNavigation("/register");
+                window.location.reload();
+              }}
+            >
+              Register
+            </button>
+            <button
+              onClick={() => {
+                handleNavigation("/login");
+                window.location.reload();
+              }}
+            >
+              Login
+            </button>
           </div>
         ) : (
           <Box className="avatarUser" sx={{ flexGrow: 0 }}>

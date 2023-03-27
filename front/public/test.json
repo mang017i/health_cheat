@@ -1,0 +1,34 @@
+{
+  "id": 53,
+  "title": "pansements de traitements par  pression negative",
+  "description": "consiste a placer la surfaces d'une plaie sous une pression inférieur à  la pression atmosphériques ambiante.\nLe pansements est alors raccordé à une source de dépression et à un système de recueil des exsudats.",
+  "step": {
+      "step1": "stopper l'appareil 30min avant la réfection du pansement",
+      "step2": "lavage des mains au sha",
+      "step3": "mettre les gants à usage unique pour retirer le dispositif médicale",
+      "step4": "mettre dans la poubelle DASRI si touillé +++ sinon sac noir ",
+      "step5": "lavage des mains au SHA",
+      "step6": "préparer tout le matos sur le champs stérile ",
+      "step7": "lavage des mains aux SHA",
+      "step8": "mettre les gants stériles ",
+      "step9": "nettoyer la plaie au serum phy",
+      "step10": "appliquer l'hydrocolloïde sur les berges saines si peau perilesionnelle",
+      "step11": "découper la mousse à la taille de la plaie avec ciseaux stériles",
+      "step12": "poser un pansements interface entre la plaie et la mousse ",
+      "step13": "recouvrir la mousse et l'hydrocolloïde avec le pansement occlusif transparent",
+      "step14": "faire une fenetre de la taille d'une piece de 2$ au dessus de la mousse dans le champs adhésifs ",
+      "step15": "mettre le ports d'aspiration au dessus de la fenêtre",
+      "step16": "relier la tubulure à celle du reservoir",
+      "step17": "raccorder le reservoir à la machine et mettre en route"
+  },
+  "recommendation": "Correspond aux :\n- plaies traumatiques non suturables\n- plaies d'amputation\n- Désunion de plaies opératoires\n- Permet de : Diminuer l'œdème, maintenir un milieu humide, évacuer les exsudat, contracter les berges d'une plaie et stimuler l'angiogenèse favorisant le bourgeonnement\n- A refaire tout les trois jours selon protocole et PM\n- Le TPN doit être arrêté si pas d'amélioration visible selon PM\n",
+  "image": "../../public/images/category/cardiologie.png",
+  "creator": "mango",
+  "createdAt": "2023-03-26T20:38:21.000Z",
+  "category_id": 2,
+  "picture": {
+      "id": 1,
+      "path": "/images/cheat/lion.jpg",
+      "cheat_id": 53
+  }
+}

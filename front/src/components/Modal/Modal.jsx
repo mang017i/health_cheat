@@ -38,12 +38,11 @@ const style = {
 export default function TransitionsModal() {
   const [materials, setMaterials] = useState([]);
   const [materialName, setMaterialName] = useState([]);
-  const [stringifyStep, setStringifyStep] = useState({});
+  const [stringifyStep] = useState({});
   const [selectedMaterials, setSelectedMaterials] = useState([]);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [recommendation, setRecommendation] = useState("");
-  const [image, setImage] = useState("");
   const [creator, setCreator] = useState("");
   const [cheatIds, setCheatIds] = useState("");
   const [categories, setCategories] = useState([]);
@@ -59,9 +58,7 @@ export default function TransitionsModal() {
     getAllCategories();
     getCurrentUser();
     CheatService.findAll().then((response) => {
-      console.log(response.data.data.length, "response.data.data.length");
       let cheatId = response.data.data.length + 1;
-      console.log(cheatId, "cheatId");
       return setCheatIds(cheatId);
     });
   }, []);
@@ -86,7 +83,6 @@ export default function TransitionsModal() {
       const key = `step${i + 1}`;
       stringifyStep[key] = inputValues[i];
     }
-    console.log(stringifyStep, "stringifyStep");
   };
 
   const isLastInputValid = inputValues[inputValues.length - 1].length >= 5;
@@ -100,7 +96,6 @@ export default function TransitionsModal() {
     });
     setCategories(categories);
   }
-  console.log(categories, "categories");
   async function getAllMaterials() {
     let materials = await MaterialService.findAll().then((response) => {
       return response.data.data;
@@ -119,13 +114,8 @@ export default function TransitionsModal() {
     const { value } = event.target;
     setRecommendation(value);
   };
-  const handleImage = (event) => {
-    const { value } = event.target;
-    setImage(value);
-  };
   const handleCategory = (event) => {
     setCategory(event.target.value);
-    console.log(event.target.value, "event.target");
   };
   async function getCurrentUser() {
     await UserService.getUserById(sessionStorage.getItem("user"))
@@ -140,21 +130,14 @@ export default function TransitionsModal() {
 
   async function handleSubmit(e) {
     let materialIds = [];
-    console.log(selectedMaterials, "selectedMatefdsqgdfgdfgtfdghdrfsygrials");
     await MaterialService.findAll().then((response) => {
       materialIds = selectedMaterials.map(
         (name) =>
           response.data.data.filter((material) => material.name === name)[0]?.id
       );
-      console.log(
-        materialIds,
-        "response.data.datsssssssssssssssssssssssssssssa"
-      );
       return materialIds;
     });
 
-    console.log(creator, "creator");
-    console.log(setUser, "userrrrrrrrrrrrrrrrrrrrrrrrrrr");
     const datum = {
       title,
       description,
@@ -169,7 +152,6 @@ export default function TransitionsModal() {
     });
 
     for (let i = 0; i < materialIds.length; i++) {
-      console.log(cheatIds, "cheatIds");
       const data = {
         material_id: materialIds[i],
         cheat_id: cheatIds,

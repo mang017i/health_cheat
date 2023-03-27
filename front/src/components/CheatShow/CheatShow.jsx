@@ -46,18 +46,29 @@ function PrintComponent({ children }) {
   );
 }
 
-export default function CheatShow() {
+export default function CheatShow(props) {
   const location = useLocation();
   const [cheat, setCheat] = useState([]);
   const [category, setCategory] = useState([]);
   const [bookmarked, setBookmarked] = useState(false);
   const [steps, setSteps] = useState([]);
-  const [materialsCheat, setMaterialsCheat] = useState([]);
+  const [filteredMaterials, setFilteredMaterials] = useState([]);
+  const [imageByCheat, setImageByCheat] = useState([]);
+  // const [materialsCheat, setMaterialsCheat] = useState([]);
 
   const data = {
     user_id: parseInt(sessionStorage.getItem("user")),
     cheat_id: cheat.id,
   };
+  // const styles = {
+  //   backgroundImage: 'url("./tensiometre.png")',
+  //   padding: '10px',
+  //   borderRadius: '5px',
+  //   backgroundSize: 'cover',
+  //   backgroundPosition: 'center',
+  //   height: '50px',
+  //   width: '50px',
+  // };
   const userId = parseInt(sessionStorage.getItem("user"));
   const cheatId = cheat.id;
   useEffect(() => {
@@ -69,17 +80,6 @@ export default function CheatShow() {
         console.log(error);
       }
     }
-    // async function getMaterialByCheat() {
-    //   try {
-    //     const material = await EquipmentService.getAllEquipmentsForCheat();
-    //     console.log(material, "materialddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd");
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // }
-
-
-
 
     async function getOneCheat() {
       const currentUrl = location.pathname.split("/")[2];
@@ -94,16 +94,6 @@ export default function CheatShow() {
         setCheat(result);
         setSteps(Object.entries(result.step));
         let cheatId = parseInt(location.pathname.split("/")[2]);
-        let equipment = await EquipmentService.getAllEquipmentsForCheat(cheatId);
-        console.log(equipment, "equipment");
-        let materials = await MaterialService.findAll(cheatId);
-        console.log(materials, "materials");
-        // setMaterialsCheat(materials.data.data.filter(item => {
-        //   return equipment.data.data.some(firstItem => firstItem.material_id === item.id)
-        // }))
-        // setMaterialsCheat(equipmentCheat);
-        // console.log(equipmentCheat, "equipmentCheat");
-        console.log(materialsCheat, "materialsfffffffffffffffffffffffffffffffffffffff");
         let res = await BookmarkService.findBookmarkByUserAndCheat(
           userId,
           cheatId
@@ -113,13 +103,38 @@ export default function CheatShow() {
         }
 
         getOneCategory(cheat.data.data.category_id);
-        // getMaterialByCheat(cheatId);
       } catch (error) {
         console.log(error);
       }
     }
     getOneCheat();
-  }, []);
+    async function fetchData() {
+      let cheatId = parseInt(location.pathname.split("/")[2]);
+      const equipment = await EquipmentService.getAllEquipmentsForCheat(
+        cheatId
+      );
+      console.log(equipment, "equipment");
+      const materials = await MaterialService.findAll(props.cheatId);
+      console.log(materials, "materials");
+      const filtered = materials.data.data.filter((m) => {
+        return equipment.data.data.find((e) => e.material_id === m.id);
+      });
+      console.log(filtered, "filtered");
+      setFilteredMaterials(filtered);
+      // const materialArray = filteredMaterials.map((m) => {
+      //   return m.image;
+      // });
+      // console.log(materialArray, "materialArray");
+      // setMaterialsCheat(materialArray);
+    }
+    fetchData();
+    async function getPictureByCheatId() {
+      const pictureId = await CheatService.getPictureByCheatId(cheatId);
+      console.log(pictureId, "picturerrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrId");
+      setImageByCheat(pictureId.data.data.path);
+    }
+    getPictureByCheatId();
+  }, [location.pathname, userId, props.cheatId, cheatId]);
 
   async function createBookmarks(data) {
     await BookmarkService.addCheatToUser(data).then((response) => {
@@ -131,6 +146,8 @@ export default function CheatShow() {
   async function deleteBookmarks(userId, cheatId) {
     await BookmarkService.removeBookmarkFromUser(userId, cheatId);
     setBookmarked(false);
+    console.log(filteredMaterials, "filteredMaterials");
+    console.log(imageByCheat, "imageByCheattttttttttttttttttttttttttttttttttttttttt");
   }
 
   return (
@@ -164,7 +181,7 @@ export default function CheatShow() {
         </div>
         <div className="cheatforprint">
           <div className="cheatImagePrint">
-            <img src={cheat.image} alt="cheat" />
+            <img src={imageByCheat} alt="cheat" />
           </div>
           <div className="cheatCardPrint">
             <div className="cheatRecommendation">
@@ -173,8 +190,8 @@ export default function CheatShow() {
             </div>
             <div className="cheatStep">
               <h3>étapes</h3>
-              {steps.map((key) => (
-                <p key={key[0]}>{key[1]}</p>
+              {steps.map((key, index) => (
+                <p key={key[0]}>{index + 1}- {key[1]}</p>
               ))}
             </div>
           </div>
@@ -182,10 +199,15 @@ export default function CheatShow() {
         <div className="signature">
           <div className="cheatMaterials">
             <h3>Matériels Utilisés</h3>
-            {materialsCheat.map((material) => (
-              <p key={material.id}>{material.title}</p>
-            ))}
-            {/* <p>{cheat.material}</p> */}
+            <div className="materialsByCheat">
+              {/* <div style={styles}></div> */}
+              {filteredMaterials.map((m) => (
+                <div key={m.id}>
+                  <div className={`${m.image} materialChoose`}></div>
+                  <p>{m.name}</p>
+                </div>
+              ))}
+            </div>
           </div>
           <div className="creator">
             <p className="create">Signé par {cheat.creator}</p>

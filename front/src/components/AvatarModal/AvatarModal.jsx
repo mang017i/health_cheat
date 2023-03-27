@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
@@ -21,7 +21,6 @@ const style = {
 const avatarArray = [1, 2, 3, 4, 5, 6];
 
 export default function TransitionsModal() {
-
   const { setSelectedAvatar } = useContext(AvatarContext);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -32,8 +31,8 @@ export default function TransitionsModal() {
   }
 
   return (
-    <div>
-      <Button onClick={handleOpen}>Choisis ton avatar</Button>
+    <div className="avatarModal_container">
+      <Button className="btnForAvatar" onClick={handleOpen}><p>Choisis ton avatar</p></Button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"

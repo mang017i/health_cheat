@@ -69,7 +69,6 @@ export default function BookmarkIndex(props) {
       return categories.find((cat) => cat.title === category);
     });
     setSelectedCategories(userSelectedCategories);
-    console.log(selectedCategories, "selectedCategories");
     setOpen(false);
     localStorage.setItem("search", open);
     setSearch(true);
@@ -85,7 +84,6 @@ export default function BookmarkIndex(props) {
 
   async function getAllCategories() {
     let categories = await CategoryService.findAll().then((response) => {
-      console.log(response.data.data, "responsefffffffffffffffffffffff");
       return response.data.data;
     });
     setCategories(categories);

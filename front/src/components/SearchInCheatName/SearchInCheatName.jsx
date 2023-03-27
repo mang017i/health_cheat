@@ -69,7 +69,6 @@ const SearchInCheatName = (props) => {
     }
     setPrevInputLength(userInput.length);
   }
-
   const handleClick = () => {
     if (foundCheat.length > 0) {
       let filter = foundCheat;

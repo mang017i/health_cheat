@@ -263,3 +263,94 @@
 .creator::after{
   display: none;
 }
+.materialsByCheat{
+  width: 100%;
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.materialsByCheat::after{
+  display: none;
+}
+.test{
+  height: 70px;
+  width: 70px;
+}
+.catheter{
+  background-image:  url("../../../../back/public/images/materials/catheter.png");
+}
+.var{
+  background-image:  url("../../../../back/public/images/materials/back-check-valve.png");
+}
+.bandage{
+  background-image:  url("../../../../back/public/images/materials/bandage-crepe-coton.png");
+}
+.casaque{
+  background-image:  url("../../../../back/public/images/materials/casaque.png");
+}
+.charlotte{
+  background-image:  url("../../../../back/public/images/materials/charlotte.png");
+}
+.ciseaux{
+  background-image:  url("../../../../back/public/images/materials/ciseau.png");
+}
+.compresse{
+  background-image:  url("../../../../back/public/images/materials/compresse.png");
+}
+.gants{
+  background-image:  url("../../../../back/public/images/materials/gants.png");
+}
+.masque{
+  background-image:  url("../../../../back/public/images/materials/masque-ffp2.png");
+}.nacl{
+  background-image:  url("../../../../back/public/images/materials/nacl.png");
+}
+.oxy{
+  background-image:  url("../../../../back/public/images/materials/Oxymetre.png");
+}
+.pansements{
+  background-image:  url("../../../../back/public/images/materials/pansements.png");
+}
+.seringue{
+  background-image:  url("../../../../back/public/images/materials/seringue.png");
+}
+.nasale{
+  background-image:  url("../../../../back/public/images/materials/sonde_nasale.png");
+}
+.urinaire{
+  background-image:  url("../../../../back/public/images/materials/sonde_urinaire.png");
+}
+.stethoscope{
+  background-image:  url("../../../../back/public/images/materials/stethoscope.png");
+}
+.tegaderm{
+  background-image:  url("../../../../back/public/images/materials/tegaderm.png");
+}
+.tensio{
+  background-image:  url("../../../../back/public/images/materials/tensiometre.png");
+}
+.thermo{
+  background-image:  url("../../../../back/public/images/materials/thermometre.png");
+}
+.gluco{
+  background-image:  url("../../../../back/public/images/materials/glucometre.png");
+}
+.materialChoose {
+  width: 50px;
+  height: 50px;
+  background-size: cover;
+  border-radius: 50%;
+  border: 1px solid #aa211e;
+  background-color: #ffffff;
+  opacity: 0.7;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1vh;
+}
+.materialsByCheat div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

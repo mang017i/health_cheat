@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
 import CheatService from "../../services/Cheat";
 import CategoryService from "../../services/Category";
-import BookmarkService from "../../services/Bookmark";
 import "./CheatsIndex.css";
 import { FilteredCheatsContext } from "../../utils/Context";
 import moment from "moment";
@@ -15,6 +14,7 @@ import Checkbox from "@mui/material/Checkbox";
 import ListItemText from "@mui/material/ListItemText";
 import Modal from "../Modal/Modal";
 import Button from "@mui/material/Button";
+
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -106,6 +106,45 @@ export default function CheatsIndex() {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
+  const handleDisplayFilteredCheats = () => {
+    if (contextValue.filteredCheats && contextValue.filteredCheats.length > 0) {
+      return (
+        <div>
+          {contextValue.filteredCheats
+            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+            .map((cheat) => {
+              return (
+                <div
+                  key={cheat.id}
+                  className={`cheat_cardIndex ${cheat.id}`}
+                  onClick={() => handleNavigation(`/cheat/${cheat.id}`)}
+                >
+                  <div className="blurIndex"></div>
+                  <img src={cheat.image} alt="green iguana" />
+                  <div className="cheat_cardDescription">
+                    <h2 className="cheatTitle">{cheat.title}</h2>
+                    <p className="cheatDesc">{cheat.description}</p>
+                    <div className="init_cheat">
+                      <p className="cheat_creator">{cheat.creator}</p>
+                      <p className="cheat_created">{cheat.createdAt}</p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          <TablePagination
+            rowsPerPageOptions={[5, 10, 25]}
+            component="div"
+            count={contextValue.filteredCheats.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+          />
+        </div>
+      );
+    }
+  };
 
   return (
     <div className="cheats_container">
@@ -172,7 +211,9 @@ export default function CheatsIndex() {
                 <div key={category.id}>
                   <div>{category.title}</div>
                   {category.cheats.length === 0 ? (
-                    <div className="noCheat">Aucune fiche trouvée dans la catégorie {category.title}</div>
+                    <div className="noCheat">
+                      Aucune fiche trouvée dans la catégorie {category.title}
+                    </div>
                   ) : (
                     category.cheats
                       .slice(
@@ -223,7 +264,8 @@ export default function CheatsIndex() {
         </div>
       ) : (
         <section className="cheatsIndex">
-          {contextValue.filteredCheats}
+          {contextValue.filteredCheats.length === 0}
+          {contextValue.filteredCheats && handleDisplayFilteredCheats()}
           <div>
             <div>
               {cheats

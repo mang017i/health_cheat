@@ -12,6 +12,9 @@ require("./src/config/sequelize.config");
 
 const app = express();
 
+
+app.use(express.static(path.join(process.cwd(), 'public')));
+
 // SESSION MANAGER
 app.use(
   session({

@@ -69,6 +69,7 @@ const NavigationBar = () => {
     <div className="navigation-bar">
       <div className="navigation-bar__logo">
         <div className="logoNav " onClick={() => handleNavigation("/")}></div>
+        <p>IFCHU Rennes</p>
       </div>
       <div className="navigation-bar__menu">
         <ul>
@@ -91,7 +92,7 @@ const NavigationBar = () => {
         </Box>
 
         {!/^\d+$/.test(sessionStorage.getItem("user")) ? (
-          <div>
+          <div className='auth'>
             <button
               onClick={() => {
                 handleNavigation("/register");

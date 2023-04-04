@@ -4,3 +4,60 @@
   width: 100vw;
   overflow:hidden;
 }
+:root {
+  --bg: #051626;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+}
+#doodle {
+  height: 100vh;
+}
+
+#doodle::after {
+  content: '';
+  background: var(--bg);
+  width: calc(100% - 5px);
+  height: calc(100% - 5px);
+  z-index: 1;
+}
+
+#doodle::before {
+  content: '';
+  position: absolute;
+  background: conic-gradient(
+    #78E7D4 10%, #E3383F 40%, #EFF4DD, #F2A341
+  );
+  width: 200%;
+  height: 200%;
+  animation: cycle 3s 5s linear infinite;
+  animation-delay: -8s;
+  z-index: 0;
+}
+
+#doodle {
+  display: grid;
+  grid-template-columns: repeat(8, 50vmin);
+  overflow: hidden;
+}
+
+#doodle > * {
+  justify-self: center;
+  width: calc(100% - calc(var(--i) * 3%));
+  height: calc(100% - calc(var(--i) * 3%));
+}
+
+@keyframes cycle {
+  to {
+    transform: rotate(1turn);
+  }
+}

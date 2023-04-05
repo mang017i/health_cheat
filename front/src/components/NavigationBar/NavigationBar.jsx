@@ -11,12 +11,12 @@ import SearchInCheatName from "../../components/SearchInCheatName/SearchInCheatN
 import { SetCurrentUser } from "../../utils/Context";
 import UserService from "../../services/User/index";
 import LogoutModal from "../Auth/Logout.jsx";
-import Button from "@mui/material/Button";
+// import Button from "@mui/material/Button";
 
-const settings = ["Accueil", "Mon compte", "Déconnexion"];
+// const settings = ["Accueil", "Mon compte", "Déconnexion"];
 
 const NavigationBar = () => {
-  const [users, setUsers] = useState();
+  // const [users, setUsers] = useState();
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [open, setOpen] = useState(false);
   const [currentAvatar, setCurrentAvatar] = useState();
@@ -60,16 +60,20 @@ const NavigationBar = () => {
     ).then((response) => {
       let currentImage = parseInt(response.data.data.avatar.match(/\d+/)[0]);
       setCurrentAvatar(currentImage);
+      console.log(users);
       return response.data.data;
     });
-    setUsers(users);
+    // setUsers(users);
   }
 
   return (
     <div className="navigation-bar">
-      <div className="navigation-bar__logo">
-        <div className="logoNav " onClick={() => handleNavigation("/")}></div>
-        <p>IFCHU Rennes</p>
+      <div onClick={() => handleNavigation("/")} className="navigation-bar__logo">
+        <div className="logoNav " ></div>
+        <div className="appHealth">
+          <p>MÉMO-SOINS</p>
+          <p>IFCHU Rennes</p>
+        </div>
       </div>
       <div className="navigation-bar__menu">
         <ul>
@@ -92,14 +96,14 @@ const NavigationBar = () => {
         </Box>
 
         {!/^\d+$/.test(sessionStorage.getItem("user")) ? (
-          <div className='auth'>
+          <div className="auth">
             <button
               onClick={() => {
                 handleNavigation("/register");
                 window.location.reload();
               }}
             >
-              Register
+              Inscription
             </button>
             <button
               onClick={() => {
@@ -107,7 +111,7 @@ const NavigationBar = () => {
                 window.location.reload();
               }}
             >
-              Login
+              Connexion
             </button>
           </div>
         ) : (
@@ -139,7 +143,7 @@ const NavigationBar = () => {
                   handleCloseUserMenu();
                 }}
               >
-                <Typography textAlign="center">acount</Typography>
+                <Typography textAlign="center">Mon compte</Typography>
               </MenuItem>
 
               <MenuItem
@@ -149,7 +153,7 @@ const NavigationBar = () => {
                 }}
               >
                 {" "}
-                <Typography textAlign="center">log out</Typography>
+                <Typography textAlign="center">Déconnexion</Typography>
               </MenuItem>
               <LogoutModal
                 open={open}

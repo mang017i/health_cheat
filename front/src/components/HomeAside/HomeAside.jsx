@@ -12,26 +12,35 @@ export default function HomeAside() {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
+    async function getOneCategory(categoryId) {
+      try {
+        const category = await CategoryService.findOne(categoryId);
+        setCategories(category.data.data);
+        console.log(categories, "categories");
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    async function getAllCheats() {
+      await CheatService.findAll().then((response) => {
+        const lastThree = response.data.data
+          .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
+          .slice(0, 3);
+        setCheats(lastThree);
+      });
+      console.log(cheats);
+      cheats.map((cheat) => {
+        return getOneCategory(cheat.category_id);
+      });
+    }
     getAllCheats();
-  }, []);
+  }, [cheats, categories]);
 
   const handleNavigation = (path) => {
     navigate(path);
   };
 
-  async function getAllCheats() {
-    await CheatService.findAll().then((response) => {
-      const lastThree = response.data.data
-        .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
-        .slice(0, 3);
-      setCheats(lastThree);
-    });
-  }
-  async function getAllCategories() {
-    await CategoryService.findAll().then((response) => {
-      setCategories(response.data.data);
-    });
-  }
+
 
 
   return (
@@ -46,11 +55,8 @@ export default function HomeAside() {
             <div className="cheat_card_title">
               <h3>{cheat.title}</h3>
             </div>
-            {/* <div className="cheat_card_category">
-              <p>{categories.name}</p>
-            </div> */}
             <div className="cheat_card_description">
-              <p>{cheat.description}</p>
+              <p>{categories.title}</p>
             </div>
             <div className="cardBlur"></div>
           </div>

@@ -26,7 +26,7 @@ export default function BasicTextFields() {
       <div className="general">
         <div className="title">
           <div className="logo"></div>
-          <h1>Health Cheat</h1>
+          <h1>Mémo soins</h1>
         </div>
         <h2>Réinitialiser votre mot de passe</h2>
         <p>Plus de trou de mémoire ? <span onClick={() => handleNavigation("/login")}>Je me connecte</span></p>

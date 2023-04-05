@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import AuthService from "../../services/Auth";
 import { SetCurrentUser } from "../../utils/Context";
 import Box from "@mui/material/Box";
@@ -73,7 +73,7 @@ export default function Login() {
       <div className="general">
         <div className="title">
           <div className="logo"></div>
-          <h1>Health Cheat</h1>
+          <h1>Mémo soins</h1>
         </div>
         <h2>Connexion</h2>
         <p>
@@ -149,9 +149,9 @@ export default function Login() {
           </Button>
         </div>
 
-        <span onClick={() => handleNavigation("/reset")}>
+        {/* <span onClick={() => handleNavigation("/reset")}>
           Mot de passe oublié
-        </span>
+        </span> */}
       </div>
 
     </Box>

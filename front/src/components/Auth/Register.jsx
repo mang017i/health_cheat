@@ -111,7 +111,7 @@ export default function Register() {
         <div className="general">
           <div className="title">
             <div className="logo"></div>
-            <h1>Health Cheat</h1>
+            <h1>Mémo soins</h1>
           </div>
           <h2>Inscription</h2>
           <p>
@@ -136,13 +136,13 @@ export default function Register() {
                 <InputAdornment position="end">
                   {validUsername ? (
                     <Tooltip title="Valid username">
-                      <IconButton>
+                      <IconButton className="infoIcon">
                         <CheckIcon color="success" />
                       </IconButton>
                     </Tooltip>
                   ) : (
                     <Tooltip title="Username must be at least 5 characters long">
-                      <IconButton>
+                      <IconButton className="infoIcon">
                         <InfoIcon color="black" />
                       </IconButton>
                     </Tooltip>
@@ -163,6 +163,7 @@ export default function Register() {
                     color={error ? "error" : "action"}
                     fontSize="small"
                     titleAccess={error ? "Invalid email" : "Valid email"}
+                    className = "emailIcon"
                   />
                 ),
               }}

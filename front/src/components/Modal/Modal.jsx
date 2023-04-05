@@ -195,7 +195,7 @@ export default function TransitionsModal() {
             <div className="general">
               <div className="title">
                 <div className="logo"></div>
-                <h1>Health Cheat</h1>
+                <h1>Mémo soins</h1>
               </div>
               <h2>Création de ma fiche</h2>
             </div>

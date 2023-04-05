@@ -13,11 +13,10 @@ nav {
   left: 0;
 	background: transparent;
   position:fixed;
-  top:7.2vh;
+  top:9.7vh;
   left:0;
-  z-index: 1;
+  z-index: 2;
 }
-
 nav ul {
 	text-align: center;
   padding:0;
@@ -26,10 +25,9 @@ nav ul {
 
 nav ul li {
 	position: relative;
-  width: 4.3vw;
-  height: 8.42vh;
+  width: 4vw;
+  height: 8.2vh;
   cursor: pointer;
-  background-color: rgba(179, 179, 179, 0.1);
 	text-transform: uppercase;
 	transition:all .4s ease-out;
   display:flex;
@@ -40,7 +38,8 @@ nav ul li {
   box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.4);
 }
 .material-symbols-outlined {
-  font-size: 2.5rem;
+  font-size: 1.9rem;
+  color: rgba(32, 32, 32, 0.9);
 }
 
 nav ul li:after {
@@ -48,7 +47,7 @@ nav ul li:after {
 	background: white;
 	color: rgba(32, 32, 32, 0.9);
 	top:0;
-	left: 4.3vw;
+	left: 4vw;
 	width: 5.8vw;
   height: 100%;
   opacity:.5;
@@ -59,59 +58,92 @@ nav ul li:after {
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size: 1rem;
+  font-size: .65rem;
   letter-spacing: 0px;
   font-weight: 700;
   box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.4);
 }
+nav ul li:nth-child(1) {
+  background: #B49FDC;
+}
+nav ul li:nth-child(2) {
+  background: #FFC8FF;
+}
+nav ul li:nth-child(3) {
+  background: #A0C4FF;
+}
+nav ul li:nth-child(4) {
+  background: #C5EBFE;
+}
+nav ul li:nth-child(5) {
+  background: #bbffe5;
+}
+nav ul li:nth-child(6) {
+  background: #A5FBCE;
+}
+nav ul li:nth-child(7) {
+  background: #FEFD97;
+}
+nav ul li:nth-child(8) {
+  background: #FEC9A7;
+}
+nav ul li:nth-child(9) {
+  background: #FA9189;
+}
+nav ul li:nth-child(10) {
+  background: #AB9680;
+}
+nav ul li:nth-child(11) {
+  background: #FFFFFC;
+}
 
 nav ul li:nth-child(1):after {
 	content: "Cardiologie";
-	height:  8.45vh;
+	height:  8.2vh;
 }
 nav ul li:nth-child(2):after {
 	content: "Dermatologie";
-	height:  8.45vh;
+	height:  8.2vh;
 }
 nav ul li:nth-child(3):after {
 	content: "Gastro-Enterologie";
-	height:  8.45vh;
+	height:  8.2vh;
 }
 nav ul li:nth-child(4):after {
 	content: "Hématologie";
-	height:  8.45vh;
+	height:  8.2vh;
 }
 nav ul li:nth-child(5):after {
 	content: "Néphrologie";
-	height:  8.45vh;
+	height:  8.2vh;
 }
 nav ul li:nth-child(6):after {
 	content: "Neurologie";
-	height:  8.45vh;
+	height:  8.2vh;
 }
 nav ul li:nth-child(7):after {
 	content: "Odontologie";
-	height:  8.45vh;
+	height:  8.2vh;
 }
 nav ul li:nth-child(8):after {
 	content: "Oncologie";
-	height:  8.45vh;
+	height:  8.2vh;
 }
 nav ul li:nth-child(9):after {
 	content: "ORL";
-	height:  8.45vh;
+	height:  8.2vh;
 }
 nav ul li:nth-child(10):after {
 	content: "Pédiatrie";
-	height:  8.45vh;
+	height:  8.2vh;
 }
 nav ul li:nth-child(11):after {
 	content: "Urologie";
-	height:  8.45vh;
+	height:  8.2vh;
 }
 
 nav ul li:hover {
-	transform: translateX(-4.3vw);
+	transform: translateX(-4vw);
 }
 
 nav ul li:hover:after {

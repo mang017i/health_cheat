@@ -3,9 +3,9 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 7vh;
-  background-color: rgba(179, 179, 179, 0.2);
-  border-bottom: 1px solid #e6e6e6;
+  height: 9vh;
+  background-color: #fffdf3;
+  border-bottom: 1px solid #ffffff;
   padding-left: 20px;
   position: fixed;
   width: 100%;
@@ -15,8 +15,8 @@
 
 .logoNav {
   background-image: url("../../../../back/public/images/logonav.png");
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   background-size: cover;
   opacity: 0.8;
   transition: all 0.3s ease-out;
@@ -29,18 +29,33 @@
 .navigation-bar__logo {
   display: flex;
   align-items: center;
+  flex-direction: row;
   height: 100%;
   width: 15%;
   justify-content: space-around;
   cursor: pointer;
   overflow: hidden;
 }
+.appHealth{
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
 .navigation-bar__logo p {
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: 700;
-  color: #74d2c1;
-  text-shadow: 0.5px 0.5px 0px #972e78;
+  color: #464646;
   transition: all 0.3s ease-out;
+  margin: 0;
+}
+.appHealth p:nth-child(2){
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #acd2f2;
+  transition: all 0.3s ease-out;
+  margin: 0;
 }
 .currentAvatar {
   width: 50px;
@@ -83,25 +98,23 @@
   width: 100%;
   margin: 0;
   height: 100%;
-  margin-top: 20px;
-
 }
 
 .navigation-bar__menu > ul > li {
   cursor: pointer;
-  height: 80%;
-  color: white;
+  height: 100%;
+  color: #464646;
   opacity: 0.8;
   transition: all 0.3s ease-out;
   padding-top: 14px;
   font-size: 1.2rem;
-  text-shadow: 0.5px 0.5px 0px #88daf5;
+  transition: all 0.3s ease-out;
 }
 .navigation-bar__menu > ul > li:hover {
   opacity: 1;
-  color: #eb2682;
-  border-bottom: 3px solid #eb2682;
-  text-shadow: 0.5px 0.5px 0px #972e78;
+  color: #acd2f2;
+  border-bottom: 3px solid #acd2f2;
+  text-shadow: 0.5px 0.5px 0px #464646;
   font-weight: 700;
 }
 
@@ -129,6 +142,14 @@
 .avatarUser {
   margin-left: 17vw;
 }
+.css-av538e-MuiButtonBase-root-MuiIconButton-root {
+  position:relative;
+}
+.minion2.currentAvatar{
+  position: absolute;
+  top: -28px;
+  right: 28px;
+}
 .auth{
   display: flex;
   margin-left: 2vw;
@@ -146,7 +167,7 @@
   display:none;
 }
 .auth button {
-  color: white;
+  color: #464646;
   border: none;
   background-color: transparent;
   border-radius: 5px;
@@ -155,4 +176,7 @@
   font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease-out;
+}
+.auth button:hover {
+  color: #acd2f2;
 }

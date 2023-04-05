@@ -30,14 +30,13 @@ export default function IndexCategoryPage() {
     <div className="Category_container">
       <HomeAside />
       <Sidebar setCurrentUrl={setCurrentUrl} />
-      <h1>Annuaire des Catégories</h1>
-      <div className="Category_container">
+      <div className="blurPage"></div>
+
+      <div className="category_container">
         {category.map((category) => {
           return (
-            <div key={category.id} className="Category_card">
+            <div key={category.id} className={`category${category.title} Category_card`}>
               <h2>{category.title}</h2>
-              <p>{category.description}</p>
-              <img src={category.image} alt="cheat" />
             </div>
           );
         })}

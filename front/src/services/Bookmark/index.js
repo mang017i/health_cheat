@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/api/bookmarks";
+const API_URL = "http://localhost:8000/api/bookmarks";
 
 class BookmarkService {
   getAllBookmarks() {

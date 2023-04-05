@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/api/cheats";
-const API_PICTURE = "http://localhost:8080/api/pictures";
+const API_URL = "http://localhost:8000/api/cheats";
+const API_PICTURE = "http://localhost:8000/api/pictures";
 
 class CheatService {
   create(data) {

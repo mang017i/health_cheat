@@ -131,7 +131,7 @@ export default function CheatShow(props) {
     async function getPictureByCheatId() {
       const pictureId = await CheatService.getPictureByCheatId(cheatId);
       console.log(pictureId, "picturerrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrId");
-      setImageByCheat('http://localhost:8080' + pictureId.data.data.path);
+      setImageByCheat('http://localhost:8000' + pictureId.data.data.path);
     }
     getPictureByCheatId();
   }, [location.pathname, userId, props.cheatId, cheatId]);

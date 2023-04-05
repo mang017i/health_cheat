@@ -8,7 +8,7 @@ const DBData = new DatabaseService();
 const setUpExpress = () => {
   dotenv.config({ path: ".env" });
 
-  const port = process.env.PORT || 8080;
+  const port = process.env.PORT || 8000;
 
   // SYNC DB
   const db = require("./src/models");

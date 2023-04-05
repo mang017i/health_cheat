@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/api/equipments";
+const API_URL = "http://localhost:8000/api/equipments";
 
 class EquipmentService {
   getAllEquipments() {

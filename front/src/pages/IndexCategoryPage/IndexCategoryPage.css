@@ -34,10 +34,7 @@
 .Category_card::after{
   display: none;
 }
-.Category_card h2{
 
-  text-shadow: 1px 1px 10px rgba(164, 68, 68, 0.2);
-}
 .Category_card:hover{
   transform: scale(1.02);
   opacity: 1;
@@ -66,6 +63,7 @@
   background-size: cover;
   background-position: center;
   opacity: .7;
+
 }
 .categoryNeurologie {
   background-image: url("../../../../back/public/images/category/neurologie.jpg");
@@ -79,8 +77,8 @@
   background-position: center;
   opacity: .7;
 }
-.categoryOdontologie {
-  background-image: url("../../../../back/public/images/category/odontologie.jpg");
+.categoryAutres {
+  background-image: url("../../../../back/public/images/category/other.jpg");
   background-size: cover;
   background-position: center;
   opacity: .7;
@@ -102,7 +100,6 @@
   background-size: cover;
   background-position: center;
   opacity: .7;
-  margin-left: 11vw;
 }
 .categoryUrologie {
   background-image: url("../../../../back/public/images/category/urologie.jpg");

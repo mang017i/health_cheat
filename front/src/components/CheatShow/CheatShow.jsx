@@ -131,7 +131,7 @@ export default function CheatShow(props) {
     async function getPictureByCheatId() {
       const pictureId = await CheatService.getPictureByCheatId(cheatId);
       console.log(pictureId, "picturerrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrId");
-      setImageByCheat('http://localhost:8000' + pictureId.data.data.path);
+      setImageByCheat("http://localhost:8000" + pictureId.data.data.path);
     }
     getPictureByCheatId();
   }, [location.pathname, userId, props.cheatId, cheatId]);
@@ -147,15 +147,14 @@ export default function CheatShow(props) {
     await BookmarkService.removeBookmarkFromUser(userId, cheatId);
     setBookmarked(false);
     console.log(filteredMaterials, "filteredMaterials");
-    console.log(imageByCheat, "imageByCheattttttttttttttttttttttttttttttttttttttttt");
+    console.log(
+      imageByCheat,
+      "imageByCheattttttttttttttttttttttttttttttttttttttttt"
+    );
   }
 
   return (
     <PrintComponent>
-      <div className="cheat_card_imagePrint">
-        <img src={cheat.image} alt="cheat" />
-      </div>
-      <div className="blurCheat"></div>
       <div className="cheat_card_content">
         <div className="titleCheatContent">
           <div className="printTitle">
@@ -180,18 +179,20 @@ export default function CheatShow(props) {
           )}
         </div>
         <div className="cheatforprint">
-          <div className="cheatImagePrint">
-            <img src={imageByCheat} alt="cheat" />
+          <div className="cheatRecommendation">
+            <h3>Recommandation</h3>
+            <p>{cheat.recommendation}</p>
           </div>
           <div className="cheatCardPrint">
-            <div className="cheatRecommendation">
-              <h3>Recommandation</h3>
-              <p>{cheat.recommendation}</p>
+            <div className={`cheat${cheat.image} cheatImagePrint`}>
+              {cheat.id > 17 && <img src={cheat.picturePath} alt="cheat" />}
             </div>
             <div className="cheatStep">
               <h3>étapes</h3>
               {steps.map((key, index) => (
-                <p key={key[0]}>{index + 1}- {key[1]}</p>
+                <p key={key[0]}>
+                  {index + 1}- {key[1]}
+                </p>
               ))}
             </div>
           </div>
@@ -203,7 +204,7 @@ export default function CheatShow(props) {
               {/* <div style={styles}></div> */}
               {filteredMaterials.map((m) => (
                 <div key={m.id}>
-                  <div className={`${m.image} materialChoose`}></div>
+                  {/* <div className={`${m.image} materialChoose`}></div> */}
                   <p>{m.name}</p>
                 </div>
               ))}

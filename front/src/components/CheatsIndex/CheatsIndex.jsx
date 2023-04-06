@@ -15,7 +15,6 @@ import ListItemText from "@mui/material/ListItemText";
 import Modal from "../Modal/Modal";
 import Button from "@mui/material/Button";
 
-
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 
@@ -119,8 +118,12 @@ export default function CheatsIndex() {
                   className={`cheat_cardIndex ${cheat.id}`}
                   onClick={() => handleNavigation(`/cheat/${cheat.id}`)}
                 >
-                  <div className="blurIndex"></div>
-                  <img src={cheat.image} alt="green iguana" />
+                  {/* <div className="blurIndex"></div> */}
+                  <div className={`cheat${cheat.image} cheatImagePrint`}>
+                    {cheat.id > 17 && (
+                      <img src={cheat.picturePath} alt="cheat" />
+                    )}
+                  </div>
                   <div className="cheat_cardDescription">
                     <h2 className="cheatTitle">{cheat.title}</h2>
                     <p className="cheatDesc">{cheat.description}</p>
@@ -229,8 +232,14 @@ export default function CheatsIndex() {
                               handleNavigation(`/cheat/${cheatsheet.id}`)
                             }
                           >
-                            <div className="blurIndex"></div>
-                            <img src={cheatsheet.image} alt="green iguana" />
+                            {/* <div className="blurIndex"></div> */}
+                            <div
+                              className={`cheat${cheatsheet.image} cheatImagePrint`}
+                            >
+                              {cheatsheet.id > 17 && (
+                                <img src={cheatsheet.picturePath} alt="cheat" />
+                              )}
+                            </div>
                             <div className="cheat_cardDescription">
                               <h2 className="cheatTitle">{cheatsheet.title}</h2>
                               <p className="cheatDesc">
@@ -276,8 +285,12 @@ export default function CheatsIndex() {
                     className={`cheat_cardIndex ${cheat.id}`}
                     onClick={() => handleNavigation(`/cheat/${cheat.id}`)}
                   >
-                    <div className="blurIndex"></div>
-                    <img src={cheat.image} alt="green iguana" />
+                    {/* <div className="blurIndex"></div> */}
+                    <div className={`cheat${cheat.image} cheatImagePrint`}>
+                      {cheat.id > 17 && (
+                        <img src={cheat.picturePath} alt="cheat" />
+                      )}
+                    </div>
                     <div className="cheat_cardDescription">
                       <h2 className="cheatTitle">{cheat.title}</h2>
                       <p className="cheatDesc">{cheat.description}</p>

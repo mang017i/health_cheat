@@ -122,23 +122,23 @@ nav ul li:nth-child(6):after {
 	height:  8.2vh;
 }
 nav ul li:nth-child(7):after {
-	content: "Odontologie";
-	height:  8.2vh;
-}
-nav ul li:nth-child(8):after {
 	content: "Oncologie";
 	height:  8.2vh;
 }
-nav ul li:nth-child(9):after {
+nav ul li:nth-child(8):after {
 	content: "ORL";
 	height:  8.2vh;
 }
-nav ul li:nth-child(10):after {
+nav ul li:nth-child(9):after {
 	content: "Pédiatrie";
 	height:  8.2vh;
 }
-nav ul li:nth-child(11):after {
+nav ul li:nth-child(10):after {
 	content: "Urologie";
+	height:  8.2vh;
+}
+nav ul li:nth-child(11):after {
+	content: "Odontologie";
 	height:  8.2vh;
 }
 

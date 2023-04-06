@@ -16,8 +16,8 @@
   flex-direction: column;
 }
 .cheat_cardIndex{
-  margin: .3vh 0;
-  height: 15vh;
+  margin: .8vh 0;
+  height: 22vh;
   width: 100%;
   display: flex!important;
   background-color: white;
@@ -128,7 +128,7 @@
   left: -12px!important;
 }
 .inputCategory .css-sghohy-MuiButtonBase-root-MuiButton-root.resetCategoryBtn{
-  top: 5px!important;
+  top: 1px!important;
   left: -12px!important;
 }
 .inputCategory .css-sghohy-MuiButtonBase-root-MuiButton-root.searchCategoryBtn{

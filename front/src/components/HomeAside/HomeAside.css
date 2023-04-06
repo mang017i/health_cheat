@@ -55,22 +55,33 @@
 }
 .cheat_card_title {
   height: 10%;
-  width: 80%;
+  width: 94%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .cheat_card_title h3{
-  font-size: .8rem;
+  font-size: .6rem;
   margin: 0;
-  margin-top: 5px;
+  margin-top: 15px;
   padding: 0;
-  width: 100%;
   font-weight: 700;
-  text-align: left;
   text-transform: capitalize;
+  text-align: center;
+}
+.cheat_card_title h3::after{
+  display: none;
 }
 .cheat_card_description {
   height: 25%;
   width: 88%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   overflow: auto;
+
 }
 .cheat_card_description p{
   font-size: .7rem;

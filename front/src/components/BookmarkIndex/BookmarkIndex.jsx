@@ -131,8 +131,12 @@ export default function BookmarkIndex(props) {
                   className={`cheat_cardIndex ${cheat.id}`}
                   onClick={() => handleNavigation(`/cheat/${cheat.id}`)}
                 >
-                  <div className="blurIndex"></div>
-                  <img src={cheat.image} alt="green iguana" />
+                  {/* <div className="blurIndex"></div> */}
+                  <div className={`cheat${cheat.image} cheatImagePrint`}>
+                      {cheat.id > 17 && (
+                        <img src={cheat.picturePath} alt="cheat" />
+                      )}
+                    </div>
                   <div className="cheat_cardDescription">
                     <h2 className="cheatTitle">{cheat.title}</h2>
                     <p className="cheatDesc">{cheat.description}</p>

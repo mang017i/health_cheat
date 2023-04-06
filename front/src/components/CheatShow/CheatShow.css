@@ -2,12 +2,11 @@
   height: 85%;
   width: 90%;
   margin-left: 5%;
-  margin-top: 4.5%;
+  margin-top: 6.5%;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  background-color: #a49a31;
   overflow: hidden;
   border-radius: 15px;
   position: relative;
@@ -21,12 +20,15 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
-  border-radius: 15px;
+  background-color: rgba(201, 201, 201, .2);
+  box-shadow: inset 0 0 10px 0px rgba(0, 0, 0, 0.4);
+
+  border-radius: 5px;
 }
 .print {
   position: absolute;
-  top: 7.5%;
-  right: 15%;
+  top: 4.5vh;
+  right: 8%;
   z-index: 2;
   border: none;
   background-color: transparent;
@@ -34,8 +36,8 @@
   opacity: 0.6;
 }
 .print span {
-  font-size: 2.9rem;
-  color: #fff;
+  font-size: 2.35rem;
+  color: #3f3f3f;
 }
 .titleCheatContent {
   width: 100%;
@@ -52,21 +54,24 @@
   margin: 3vh 0 .5vh 0;
 }
 .printTitle {
-  border-radius: 15px;
+  border-radius: 5px;
   width: 95%;
   height: 40%;
-  background-color: #6369d4;
+  background-color: #a9d4ff;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: center;
   padding: 0.1rem 2rem;
-  box-shadow:rgba(0, 0, 0, 0.4) 0px 0px 10px;
+  color:rgba(0, 0, 0, 0.8);
+  padding-bottom: 20px;
+  box-shadow: inset 0 0 10px 0px rgba(0, 0, 0, 0.4);
+  margin-bottom: 2vh
 }
 .printTitle h3 {
   margin: 0;
-  font-size: 2rem;
+  font-size: 1.5rem;
   height: 55%;
 }
 .titleCheatContent p {
@@ -80,35 +85,40 @@
   align-items: center;
   text-transform: none;
   padding: 0 2rem;
+  color:rgba(0, 0, 0, 0.8)
 }
 .addToBook, .deleteFromBook{
   position: absolute;
-  top: 17%;
-  right: 7%;
-  font-size: 2.5rem;
+  top: 2vh;
+  right: 5%;
+  font-size: 2rem;
   font-weight: 700;
   cursor: cell;
   transition: all .3s ease-out;
 }
 .addToBook{
-  color: #eb2682;
+  color: #f44b9a;
 }
 .deleteFromBook{
-  color: #102465;
+  color: #07031f;
 }
 .addToBook:hover{
-  color: #eb2682;
+  color: #ef4e99;
   font-weight: 700;
 }
 .cheat_card_imagePrint {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: #93387c;
+  background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 0 10px 0px rgba(0, 0, 0, 0.4);
+
   overflow: hidden;
   border-radius: 5px;
   left: 0;
+  box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.4);
   top: 0;
+  color:rgba(0, 0, 0, 0.8)
 }
 .cheat_card_imagePrint img {
   width: 100%;
@@ -116,15 +126,16 @@
   object-fit: cover;
 }
 .cheatCardPrint {
-  width: 57%;
+  width: 100%;
   height: 100%;
   background-color: transparent;
   overflow: hidden;
   border-radius: 5px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  align-items: flex-start;
   justify-content: space-between;
+  margin-top: 2vh;
 }
 .cheatCardPrint::after{
   display: none;
@@ -136,21 +147,35 @@
   overflow: hidden;
   border-radius: 5px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: space-between;
   justify-content: space-between;
 }
-.cheatRecommendation,
-.cheatStep {
+.cheatRecommendation{
   width: 100%;
-  height: 40%;
-  background-color: #93df82;
+  height: 80%;
+  background-color: #FFC8FF;
+  box-shadow: inset 0 0 10px 0px rgba(0, 0, 0, 0.4);
+
   overflow: hidden;
-  border-radius: 15px;
+  border-radius: 5px;
   text-align: left;
   display: flex;
   flex-direction: column;
 
+}
+.cheatStep {
+  width: 70%;
+  margin-left: 1.5rem;
+  height: 40%;
+  background-color: #FEC9A7;
+  box-shadow: inset 0 0 10px 0px rgba(0, 0, 0, 0.4);
+
+  overflow: hidden;
+  border-radius: 5px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
 }
 .cheatRecommendation {
   height: 37%;
@@ -177,7 +202,9 @@
 .cheatMaterials {
   width: 97%;
   height: 85%;
-  background-color: #d46363;
+  background-color: #A5FBCE;
+  box-shadow: inset 0 0 10px 0px rgba(0, 0, 0, 0.4);
+
   overflow: hidden;
   border-radius: 5px;
   text-align: left;
@@ -203,9 +230,9 @@
   width: 40.8%;
   height: 100%;
   overflow: hidden;
-  border-radius: 15px;
-  border: 1px solid #701919;
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 10px;
+  border-radius: 5px;
+  background-color: #90d3f8;
+  box-shadow: inset 0 0 10px 0px rgba(0, 0, 0, 0.4);
 }
 .cheatImagePrint img{
   width: 100%;
@@ -250,6 +277,7 @@
 .signature .create{
   font-size: .7rem;
   font-weight: 300;
+  color:rgba(0, 0, 0, 0.8);
 }
 .creator{
   display: flex;
@@ -268,6 +296,7 @@
   display:flex;
   flex-direction: row;
   align-items: center;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 .materialsByCheat::after{
@@ -279,63 +308,190 @@
 }
 .catheter{
   background-image:  url("../../../../back/public/images/materials/catheter.png");
+  background-size: cover;
+  background-position: center;
 }
 .var{
   background-image:  url("../../../../back/public/images/materials/back-check-valve.png");
+  background-size: cover;
+  background-position: center;
 }
 .bandage{
   background-image:  url("../../../../back/public/images/materials/bandage-crepe-coton.png");
+  background-size: cover;
+  background-position: center;
 }
 .casaque{
   background-image:  url("../../../../back/public/images/materials/casaque.png");
+  background-size: cover;
+  background-position: center;
 }
 .charlotte{
   background-image:  url("../../../../back/public/images/materials/charlotte.png");
+  background-size: cover;
+  background-position: center;
 }
 .ciseaux{
   background-image:  url("../../../../back/public/images/materials/ciseau.png");
+  background-size: cover;
+  background-position: center;
 }
 .compresse{
   background-image:  url("../../../../back/public/images/materials/compresse.png");
+  background-size: cover;
+  background-position: center;
 }
 .gants{
   background-image:  url("../../../../back/public/images/materials/gants.png");
+  background-size: cover;
+  background-position: center;
 }
 .masque{
   background-image:  url("../../../../back/public/images/materials/masque-ffp2.png");
-}.nacl{
+  background-size: cover;
+  background-position: center;
+}
+  .nacl{
   background-image:  url("../../../../back/public/images/materials/nacl.png");
+  background-size: cover;
+  background-position: center;
 }
 .oxy{
   background-image:  url("../../../../back/public/images/materials/Oxymetre.png");
+  background-size: cover;
+  background-position: center;
 }
 .pansements{
   background-image:  url("../../../../back/public/images/materials/pansements.png");
+  background-size: cover;
+  background-position: center;
 }
 .seringue{
   background-image:  url("../../../../back/public/images/materials/seringue.png");
+  background-size: cover;
+  background-position: center;
 }
 .nasale{
   background-image:  url("../../../../back/public/images/materials/sonde_nasale.png");
+  background-size: cover;
+  background-position: center;
 }
 .urinaire{
   background-image:  url("../../../../back/public/images/materials/sonde_urinaire.png");
+  background-size: cover;
+  background-position: center;
 }
 .stethoscope{
   background-image:  url("../../../../back/public/images/materials/stethoscope.png");
+  background-size: cover;
+  background-position: center;
 }
 .tegaderm{
   background-image:  url("../../../../back/public/images/materials/tegaderm.png");
+  background-size: cover;
+  background-position: center;
 }
 .tensio{
   background-image:  url("../../../../back/public/images/materials/tensiometre.png");
+  background-size: cover;
+  background-position: center;
 }
 .thermo{
   background-image:  url("../../../../back/public/images/materials/thermometre.png");
+  background-size: cover;
+  background-position: center;
 }
 .gluco{
   background-image:  url("../../../../back/public/images/materials/glucometre.png");
+  background-size: cover;
+  background-position: center;
 }
+.cheat1{
+  background-image:  url("../../../../back/public/images/cheat/1.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.cheat2{
+  background-image:  url("../../../../back/public/images/cheat/2.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.cheat3{
+  background-image:  url("../../../../back/public/images/cheat/3.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.cheat4{
+  background-image:  url("../../../../back/public/images/cheat/4.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.cheat5{
+  background-image:  url("../../../../back/public/images/cheat/4.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.cheat6{
+  background-image:  url("../../../../back/public/images/cheat/3.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.cheat7{
+  background-image:  url("../../../../back/public/images/cheat/8.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.cheat8{
+  background-image:  url("../../../../back/public/images/cheat/8.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.cheat9{
+  background-image:  url("../../../../back/public/images/cheat/14.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.cheat10{
+  background-image:  url("../../../../back/public/images/cheat/10.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.cheat11{
+  background-image:  url("../../../../back/public/images/cheat/11.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.cheat12{
+  background-image:  url("../../../../back/public/images/cheat/12.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.cheat13{
+  background-image:  url("../../../../back/public/images/cheat/13.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.cheat14{
+  background-image:  url("../../../../back/public/images/cheat/14.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.cheat15{
+  background-image:  url("../../../../back/public/images/cheat/15.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.cheat16{
+  background-image:  url("../../../../back/public/images/cheat/15.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.cheat17{
+  background-image:  url("../../../../back/public/images/cheat/17.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
 .materialChoose {
   width: 50px;
   height: 50px;
@@ -345,7 +501,7 @@
   background-color: #ffffff;
   opacity: 0.7;
   transition: all 0.3s ease-in-out;
-  box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 10px 0px rgba(0, 0, 0, 0.4);
   margin-bottom: 1vh;
 }
 .materialsByCheat div{

@@ -26,6 +26,10 @@ export default function IndexCategoryPage() {
     }
     getAllCategories();
   }, []);
+  const handleNavigation = (path, id) => {
+    setCurrentUrl(id);
+    navigate(path);
+  };
   return (
     <div className="Category_container">
       <HomeAside />
@@ -35,7 +39,13 @@ export default function IndexCategoryPage() {
       <div className="category_container">
         {category.map((category) => {
           return (
-            <div key={category.id} className={`category${category.title} Category_card`}>
+            <div
+              key={category.id}
+              onClick={() =>
+                handleNavigation(`/category/${category.id}`, category.id)
+              }
+              className={`category${category.title} Category_card`}
+            >
               <h2>{category.title}</h2>
             </div>
           );

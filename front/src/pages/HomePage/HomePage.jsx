@@ -19,29 +19,39 @@ const HomePage = () => {
         <div className="blurHeart"></div>
         <Sidebar setCurrentUrl={setCurrentUrl} />
         <div className="presentation">
-          <h2>Bienvenue sur Mémo-soins futurs soignants de l'IFCHU Rennes !</h2>
+          <h2>
+            Hello, hello, bienvenue sur Mémo-soins futurs soignants de l'IFCHU
+            Rennes !
+          </h2>
+          <p className="intro">
+            Nous nous appelons Erell, Anissa, Raphaëlle, Stella et Laetitia,
+            nous sommes 5 étudiantes en soins infirmiers de troisième année
+            (promotion 2020-2023).
+          </p>
           <p className="ggg">
-            Cette application est l'idée de six étudiantes en école d'infirmier
-            : Laeticia, Erell, Katell, Raphaëlle, Stella et Anissa. Elles ont
-            travaillé ensemble pour faciliter l'apprentissage et le partage des
-            fiches techniques de soins.
+            Dans le cadre de l’UE optionnelle 5.7.S6, nous avons travaillé sur
+            le thème des techniques de soins. Notre projet a pour but de
+            faciliter les premières prises de poste et/ou les soins peu
+            rencontrés lors de la formation.
           </p>
           <p className="hello">
-            Avec cette application, tu peux facilement créer et stocker des
-            fiches techniques de soins pour différents types de patients et de
-            pathologies. Tu peux également
+            En effet, durant nos 3 ans de formation, nous avons toutes été
+            confrontées à des soins jamais ou peu vu. Cela a amené notre groupe
+            à concevoir l'idée de détailler ces soins sur un endroit accessible
+            à tous,
           </p>
           <p className="hola">
-            les organiser et les partager avec tes amis pour favoriser la
-            collaboration et l'apprentissage en groupe.
+            qui serait adapté à l’hygiène nécessaire en service mais également à
+            la facilité d’accès.
           </p>
           <p className="bonjour">
-            L'application est régulièrement mise à jour pour intégrer les
-            dernières pratiques et découvertes en matière de soins.
+            Avec cette application, tu peux facilement créer et stocker des
+            fiches techniques de soins pour différents types de patients et de
+            pathologies.
           </p>
           <p className="recapito">
-            Cela te permet de toujours avoir accès aux informations les plus
-            récentes et les plus pertinentes en matière de soins.
+            Tu peux également les organiser et les partager avec tes amis pour
+            favoriser la collaboration et l'apprentissage en groupe.
           </p>
           <p className="recapita">
             En somme, mémo-soins est un outil précieux pour t'aider à améliorer

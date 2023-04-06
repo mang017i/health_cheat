@@ -1,9 +1,7 @@
-const dotenv = require('dotenv');
-const app = require('./app');
+const dotenv = require("dotenv");
+const app = require("./app");
 const DatabaseService = require("./src/services/Database");
 const DBData = new DatabaseService();
-// const CheatService = require("./src/services/Cheat");
-// const Cheat = new CheatService();
 
 const setUpExpress = () => {
   dotenv.config({ path: ".env" });
@@ -13,15 +11,16 @@ const setUpExpress = () => {
   // SYNC DB
   const db = require("./src/models");
   db.sequelize.drop().then(() => {
-      console.log("Drop DB...");
+    console.log("Drop DB...");
     db.sequelize.sync().then(() => {
       console.log("Loading Sync DB...");
       DBData.createMandatoryRoles();
       DBData.createMandatoryUsers();
       DBData.createMandatoryCategories();
       DBData.createMandatoryMaterials();
-      DBData.createMandatoryCheats();
-      // DBData.createMandatoryBookmarks();
+      setTimeout(() => {
+        DBData.createMandatoryCheats();
+      }, 7000);
       console.log("Sync DB loaded successfully.");
     });
   });

@@ -18,7 +18,6 @@ class PictureController {
       return errorResponse(req, res, error.message);
     }
   }
-
   /**
    * @returns {Promise<Picture[]>}
    */

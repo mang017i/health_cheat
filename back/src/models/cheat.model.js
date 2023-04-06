@@ -25,7 +25,7 @@ module.exports = (sequelize, Sequelize) => {
       },
       image: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
         defaultValue: "../../public/images/category/cardiologie.png",
       },
       creator: {

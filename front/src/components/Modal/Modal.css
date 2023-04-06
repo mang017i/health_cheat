@@ -1,14 +1,14 @@
 .modal_content{
   border-radius: 10px;
-  background-color: #7d90c0!important;
-  margin-top: 3vh;
+  background-color: #e0e0e0!important;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.5);
 }
 .modalCreate{
-  height: 90vh;
-  width: 60vw!important;
+  height: 100vh;
+  width: 70vw!important;
 }
 .css-1wnsr1i{
   padding: 16px 32px!important;
@@ -33,7 +33,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 84%;
+  height: 100%;
   overflow:hidden;
 }
 .inputBasics{

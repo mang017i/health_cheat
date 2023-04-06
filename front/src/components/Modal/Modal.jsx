@@ -192,13 +192,6 @@ export default function TransitionsModal() {
       >
         <Fade in={open}>
           <Box sx={style} className="modal_content modalCreate">
-            <div className="general">
-              <div className="title">
-                <div className="logo"></div>
-                <h1>Mémo soins</h1>
-              </div>
-              <h2>Création de ma fiche</h2>
-            </div>
             <div className="input_part">
               <div className="inputBasics">
                 <TextField
@@ -254,7 +247,7 @@ export default function TransitionsModal() {
                   variant="outlined"
                   placeholder="Recommandation ici ..."
                 />
-                <Stepper orientation="vertical">
+                <Stepper orientation="horizontal">
                   {inputValues.map((value, index) => (
                     <Step key={index}>
                       <StepLabel>Step {index + 1}</StepLabel>

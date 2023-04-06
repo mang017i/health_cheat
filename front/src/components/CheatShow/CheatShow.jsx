@@ -185,7 +185,7 @@ export default function CheatShow(props) {
           </div>
           <div className="cheatCardPrint">
             <div className={`cheat${cheat.image} cheatImagePrint`}>
-              {cheat.id > 17 && <img src={cheat.picturePath} alt="cheat" />}
+              {cheat.id > 17 && <img src={imageByCheat} alt="cheat" />}
             </div>
             <div className="cheatStep">
               <h3>étapes</h3>
